@@ -210,3 +210,12 @@ footer {
   border-color: #6ea8ff;
   opacity: .65;
 }
+
+/* Video Overlay */
+.video-overlay {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+.card:hover .video-overlay {
+  opacity: 1;
+}

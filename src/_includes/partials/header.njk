@@ -8,6 +8,7 @@
     {% set publicationsUrl = '/publications/' | url %}
     {% set aboutUrl = '/about/' | url %}
     {% set k12Url = '/k12/' | url %}
+    {% set resourcesUrl = '/resources/' | url %}
     {% set donateUrl = '/donate/' | url %}
     {% set appUrl = '/app/' | url %}
 
@@ -104,12 +105,15 @@
 
           </ul>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link{% if page.url == publicationsUrl %} active{% endif %}" href="{{ publicationsUrl }}">Publications</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url == k12Url %} active{% endif %}" href="{{ k12Url }}">K‑12</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle{% if page.url == k12Url or page.url == resourcesUrl %} active{% endif %}" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Knowledge Base
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="learningDropdown">
+            <li><a class="dropdown-item{% if page.url == publicationsUrl %} active{% endif %}" href="{{ publicationsUrl }}">Publications</a></li>
+            <li><a class="dropdown-item{% if page.url == resourcesUrl %} active{% endif %}" href="{{ resourcesUrl }}">Online resources</a></li>
+            <li><a class="dropdown-item{% if page.url == k12Url %} active{% endif %}" href="{{ k12Url }}">K-12 learning</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if page.url == aboutUrl %} active{% endif %}" href="{{ aboutUrl }}">About</a>
