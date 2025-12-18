@@ -18,20 +18,18 @@ body {
 
 .hero-landing {
   position: relative;
-  padding: 6rem 2rem 5rem;
+  padding: 8rem 2rem 8rem;
   color: #fff;
   background-size: cover;
-  background-position: center center;
+  background-position: left center;
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
   overflow: hidden;
 }
 
 
 .hero-landing {
-  background-image: url("../img/blue_jay_2.jpg");
+  background-image: url("../img/blue_jay_1.jpg");
 }
 
 .hero-overlay {

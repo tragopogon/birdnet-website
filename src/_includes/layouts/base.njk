@@ -17,7 +17,7 @@
   {% include "partials/header.njk" %}
 
   <main class="flex-fill">
-    <div class="container py-4">
+    <div class="{{ containerClass or 'container py-4' }}">
       {{ content | safe }}
     </div>
   </main>
