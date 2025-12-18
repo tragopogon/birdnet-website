@@ -10,6 +10,7 @@
     {% set k12Url = '/k12/' | url %}
     {% set resourcesUrl = '/resources/' | url %}
     {% set donateUrl = '/donate/' | url %}
+    {% set contributeUrl = '/contribute/' | url %}
     {% set appUrl = '/app/' | url %}
 
     <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="{{ homeUrl }}">
@@ -106,20 +107,24 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle{% if page.url == k12Url or page.url == resourcesUrl %} active{% endif %}" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle{% if page.url == publicationsUrl or page.url == resourcesUrl or page.url == k12Url or page.url == aboutUrl %} active{% endif %}" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Knowledge Base
           </a>
           <ul class="dropdown-menu" aria-labelledby="learningDropdown">
             <li><a class="dropdown-item{% if page.url == publicationsUrl %} active{% endif %}" href="{{ publicationsUrl }}">Publications</a></li>
             <li><a class="dropdown-item{% if page.url == resourcesUrl %} active{% endif %}" href="{{ resourcesUrl }}">Online resources</a></li>
             <li><a class="dropdown-item{% if page.url == k12Url %} active{% endif %}" href="{{ k12Url }}">K-12 learning</a></li>
+            <li><a class="dropdown-item{% if page.url == aboutUrl %} active{% endif %}" href="{{ aboutUrl }}">About BirdNET</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url == aboutUrl %} active{% endif %}" href="{{ aboutUrl }}">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url == donateUrl %} active{% endif %}" href="{{ donateUrl }}">Donate</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle{% if page.url == contributeUrl or page.url == donateUrl %} active{% endif %}" href="#" id="contributeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contribute
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="contributeDropdown">
+            <li><a class="dropdown-item{% if page.url == contributeUrl %} active{% endif %}" href="{{ contributeUrl }}">Code & data</a></li>
+            <li><a class="dropdown-item{% if page.url == donateUrl %} active{% endif %}" href="{{ donateUrl }}">Donate</a></li>
+          </ul>
         </li>
       </ul>
     </nav>
