@@ -59,7 +59,7 @@ section.bg-dark, .bg-dark {
 }
 
 .bg-glass {
-  background-color: rgba(17, 17, 17, 0.85) !important; /* Neutral dark gray glass */
+  background-color: rgba(26, 26, 26, 0.85) !important; /* Brand dark gray glass */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -551,4 +551,21 @@ footer ul li a:hover {
 }
 .card:hover .video-overlay {
   opacity: 1;
+}
+
+.grayscale {
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+}
+
+.grayscale:hover {
+    filter: grayscale(0);
+}
+
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
 }

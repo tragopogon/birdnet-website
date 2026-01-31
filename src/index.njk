@@ -211,50 +211,70 @@ containerClass: container
   <div class="container">
     <div class="row g-5 align-items-center flex-lg-row-reverse">
       <div class="col-lg-6">
-        <span class="section-label">Analysis Engine</span>
-        <h2 class="display-6 fw-bold mb-4">BirdNET-Analyzer</h2>
+        <span class="section-label">Software Ecosystem</span>
+        <h2 class="display-6 fw-bold mb-4">A complete stack for research.</h2>
         <p class="text-muted mb-4">
-          The scientific workhorse of the BirdNET ecosystem. The Analyzer allows researchers to detect and classify vocalizations across massive acoustic datasets with high precision and reproducible parameters.
+          BirdNET is more than a model—it's an integrated ecosystem of tools designed to fit into your existing research workflow, from raw audio processing to statistical modeling in R.
         </p>
         <div class="mb-5">
-          <div class="d-flex gap-3 mb-3">
-            <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Scalable Batch Processing:</strong> optimized for multi-terabyte passive acoustic datasets.</div>
+          <div class="d-flex gap-3 mb-4">
+            <div class="icon-wrapper sm soft flex-shrink-0">
+              <i class="bi bi-box-seam"></i>
+            </div>
+            <div>
+              <h4 class="h6 fw-bold mb-1">birdnet (Python Package)</h4>
+              <p class="smaller text-muted mb-0">Native Python integration for developers and data scientists. Build custom pipelines or run large-scale inference on your own infrastructure. <a href="https://birdnet-team.github.io/birdnet/" target="_blank">Documentation →</a></p>
+            </div>
           </div>
-          <div class="d-flex gap-3 mb-3">
-            <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Intelligent Filtering:</strong> incorporate species occurrence data via biogeographical priors.</div>
-          </div>
-          <div class="d-flex gap-3 mb-3">
-            <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Export & Integration:</strong> standardized CSV and JSON outputs for R, Python, and Raven Pro pipelines.</div>
+          <div class="d-flex gap-3 mb-4">
+            <div class="icon-wrapper sm soft flex-shrink-0">
+              <i class="bi bi-bar-chart-line"></i>
+            </div>
+            <div>
+              <h4 class="h6 fw-bold mb-1">birdnetR</h4>
+              <p class="smaller text-muted mb-0">The bridge to R-based ecological analysis. Clean, filter, and summarize BirdNET outputs directly within your R environment for occupancy modeling and trend analysis. <a href="https://birdnet-team.github.io/birdnetR/" target="_blank">Documentation →</a></p>
+            </div>
           </div>
           <div class="d-flex gap-3">
-            <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Local Privacy:</strong> perform analysis locally without uploading sensitive ecological data to the cloud.</div>
+            <div class="icon-wrapper sm soft flex-shrink-0">
+              <i class="bi bi-window-stack"></i>
+            </div>
+            <div>
+              <h4 class="h6 fw-bold mb-1">birdnetTools</h4>
+              <p class="smaller text-muted mb-0">User-friendly utilities for researchers. Access graphical interfaces for managing thousands of detections, verifying species, and preparing data for publication. <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank">Documentation →</a></p>
+            </div>
           </div>
         </div>
         <div class="d-flex flex-wrap gap-3">
-          <a href="{{ '/analyzer/' | url }}" class="btn btn-primary btn-lg px-5">Get Started with Analyzer</a>
-          <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="btn btn-outline-dark btn-lg px-4">Read Documentation</a>
+          <a href="{{ '/tools/' | url }}" class="btn btn-primary px-4">Browse All Tools</a>
+          <a href="https://github.com/birdnet-team" target="_blank" class="btn btn-outline-dark px-4">BirdNET-Team on GitHub</a>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="position-relative">
-          <div class="bg-dark rounded-4 shadow-lg p-5 text-white overflow-hidden border border-secondary border-opacity-25">
-             <div class="font-monospace small text-success opacity-75 mb-2">
-               $ python analyzer.py --input recordings/ --output results/
+          <div class="bg-dark rounded-4 shadow-lg p-5 text-light overflow-hidden border border-secondary border-opacity-25" style="background-color: #1a1a1a !important;">
+             <div class="font-monospace small mb-4">
+               <div class="text-white-50 mb-3"># Python Integration</div>
+               <div><span class="text-info">import</span> birdnet</div>
+               <div class="mt-2">model = birdnet.<span class="text-info">load</span>(<span class="text-warning">"acoustic"</span>, <span class="text-warning">"2.4"</span>, <span class="text-warning">"tf"</span>)</div>
+               <div class="mt-2 text-white">predictions = model.<span class="text-info">predict</span>(<span class="text-warning">"example/soundscape.wav"</span>)</div>
+               <div class="mt-2 text-white">predictions.<span class="text-info">to_csv</span>(<span class="text-warning">"example/predictions.csv"</span>)</div>
              </div>
-             <div class="font-monospace smaller text-light opacity-50">
-               [INFO] Loading BirdNET model...<br>
-               [INFO] Processing 1,240 files (PAM-02)...<br>
-               [SUCCESS] 45,231 detections found.<br>
-               [SUCCESS] Species consistency: 94.2%
+             
+             <hr class="border-secondary opacity-25 my-4">
+             
+             <div class="font-monospace small">
+               <div class="text-white-50 mb-3"># R Ecological Analysis</div>
+               <div><span class="text-info">library</span>(birdnetR)</div>
+               <div class="mt-2">model &lt;- <span class="text-info">birdnet_model_tflite</span>()</div>
+               <div class="mt-2">audio_path &lt;- <span class="text-info">system.file</span>(<span class="text-warning">"extdata"</span>, <span class="text-warning">"soundscape.mp3"</span>, package = <span class="text-warning">"birdnetR"</span>)</div>
+               <div class="mt-2 text-white">predictions &lt;- <span class="text-info">predict_species_from_audio_file</span>(model, audio_path)</div>
+               <div class="mt-2 text-white"><span class="text-info">get_top_prediction</span>(predictions)</div>
              </div>
           </div>
-          <!-- Abstract representation of a waveform -->
+          <!-- Abstract representation -->
           <div class="position-absolute bottom-0 end-0 opacity-10 p-3">
-            <i class="bi bi-activity display-1"></i>
+            <i class="bi bi-stack display-1"></i>
           </div>
         </div>
       </div>
@@ -262,102 +282,105 @@ containerClass: container
   </div>
 </section>
 
-<!-- Showroom preview -->
-<section class="py-5">
-  <div class="container text-center mb-5">
-    <span class="section-label mx-auto">Ecosystem</span>
-    <h2 class="display-6 fw-bold">Built with BirdNET</h2>
-    <p class="text-muted">A growing community of projects leveraging the BirdNET engine.</p>
-  </div>
-  <div class="container">
+<!-- The BirdNET Registry -->
+<section class="py-5 bg-white">
+  <div class="container py-lg-4">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-7">
+        <div class="section-label mb-3">REGISTRY</div>
+        <h2 class="h1 fw-bold mb-3">Built with BirdNET</h2>
+        <p class="text-muted lead mb-0">Discover the global network of specialized hardware, educational platforms, and data visualization tools powered by our neural networks.</p>
+      </div>
+    </div>
+
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/haikubox.png' | url }}" class="showroom-logo mb-3" alt="HaikuBox logo" style="height: 40px;">
-            <h3 class="h6 mb-0">HaikuBox</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/haikubox.png' | url }}" class="img-fluid mb-3 grayscale" alt="HaikuBox logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">HaikuBox</h3>
             <a href="https://haikubox.com" class="stretched-link"></a>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/birdnet-pi.png' | url }}" class="showroom-logo mb-3" alt="BirdNET-Pi logo" style="height: 40px;">
-            <h3 class="h6 mb-0">BirdNET-Pi</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/birdnet-pi.png' | url }}" class="img-fluid mb-3 grayscale" alt="BirdNET-Pi logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">BirdNET-Pi</h3>
             <a href="https://birdnetpi.com" class="stretched-link"></a>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/birdweather.png' | url }}" class="showroom-logo mb-3" alt="BirdWeather logo" style="height: 40px;">
-            <h3 class="h6 mb-0">BirdWeather</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/birdweather.png' | url }}" class="img-fluid mb-3 grayscale" alt="BirdWeather logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">BirdWeather</h3>
             <a href="https://app.birdweather.com" class="stretched-link"></a>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/chirpity.png' | url }}" class="showroom-logo mb-3" alt="Chirpity logo" style="height: 40px;">
-            <h3 class="h6 mb-0">Chirpity</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/chirpity.png' | url }}" class="img-fluid mb-3 grayscale" alt="Chirpity logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">Chirpity</h3>
             <a href="https://chirpity.mattkirkland.co.uk" class="stretched-link"></a>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/BirdNET-Go-logo.webp' | url }}" class="showroom-logo mb-3" alt="BirdNET-Go logo" style="height: 40px;">
-            <h3 class="h6 mb-0">BirdNET-Go</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/BirdNET-Go-logo.webp' | url }}" class="img-fluid mb-3 grayscale" alt="BirdNET-Go logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">BirdNET-Go</h3>
             <a href="https://github.com/tphakala/go-birdnet" class="stretched-link"></a>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 shadow-sm border-0 showroom-card text-center p-3">
-          <div class="card-body p-0 d-flex flex-column align-items-center">
-            <img src="{{ '/img/ecosound-web_logo_large_white_on_black.png' | url }}" class="showroom-logo mb-3" alt="ecoSound web logo" style="height: 40px;">
-            <h3 class="h6 mb-0">ecoSound</h3>
+        <div class="card h-100 border border-light-subtle shadow-sm showroom-card text-center p-3 rounded-4 transition-all hover-lift">
+          <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ '/img/ecosound-web_logo_large_white_on_black.png' | url }}" class="img-fluid mb-3 grayscale" alt="ecoSound web logo" style="height: 32px; object-fit: contain;">
+            <h3 class="h6 fw-bold mb-0">ecoSound</h3>
             <a href="https://ecosound-web.de" class="stretched-link"></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center mt-5">
-      <a href="{{ '/showroom/' | url }}" class="btn btn-link link-primary">View the full showroom <i class="bi bi-arrow-right"></i></a>
+    <div class="text-center mt-5 pt-3">
+      <a href="{{ '/showroom/' | url }}" class="btn btn-outline-dark rounded-pill px-4">Browse full showroom <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
   </div>
 </section>
 
 <!-- Science & Education -->
-<section class="py-5 bg-light border-top">
-  <div class="container">
+<section class="py-5 bg-light border-top border-bottom">
+  <div class="container py-lg-4">
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="h-100 p-4 rounded-4 bg-white shadow-sm border border-light">
-          <div class="small text-primary fw-bold mb-2">RESEARCH</div>
-          <h3 class="h5 fw-bold mb-2">Scientific Publications</h3>
-          <p class="small text-muted mb-4">Peer-reviewed studies detailing our neural network architectures and global validation.</p>
-          <a href="{{ '/publications/' | url }}" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Explore Papers →</a>
+        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
+          <div class="badge bg-primary-subtle text-primary mb-3">RESEARCH</div>
+          <h3 class="h4 fw-bold mb-3">Scientific Publications</h3>
+          <p class="text-muted mb-4">Read peer-reviewed studies detailing our neural network architectures, global validation methods, and ecological findings.</p>
+          <a href="{{ '/publications/' | url }}" class="fw-bold text-decoration-none text-primary">Explore the Archive <i class="bi bi-arrow-right ms-1"></i></a>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="h-100 p-4 rounded-4 bg-white shadow-sm border border-light">
-          <div class="small text-primary fw-bold mb-2">EDUCATION</div>
-          <h3 class="h5 fw-bold mb-2">Learning Resources</h3>
-          <p class="small text-muted mb-4">Educational tools for schools, K-12 programs, and introductory workshops.</p>
-          <a href="{{ '/k12/' | url }}" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Learning Tools →</a>
+        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
+          <div class="badge bg-success-subtle text-success mb-3">EDUCATION</div>
+          <h3 class="h4 fw-bold mb-3">Learning Resources</h3>
+          <p class="text-muted mb-4">Educational tools designed for schools, K-12 programs, and workshops to inspire the next generation of bioacousticians.</p>
+          <a href="{{ '/k12/' | url }}" class="fw-bold text-decoration-none text-success">View Curriculum <i class="bi bi-arrow-right ms-1"></i></a>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="h-100 p-4 rounded-4 bg-white shadow-sm border border-light">
-          <div class="small text-primary fw-bold mb-2">RESOURCES</div>
-          <h3 class="h5 fw-bold mb-2">Community Resources</h3>
-          <p class="small text-muted mb-4">Technical tutorials, user-contributed guides, and curated datasets.</p>
-          <a href="{{ '/resources/' | url }}" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold">Get Resources →</a>
+        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
+          <div class="badge bg-info-subtle text-info mb-3">COMMUNITY</div>
+          <h3 class="h4 fw-bold mb-3">Community Hub</h3>
+          <p class="text-muted mb-4">Technical tutorials, user-contributed guides, curated datasets, and discussion forums for all skill levels.</p>
+          <a href="{{ '/resources/' | url }}" class="fw-bold text-decoration-none text-info">Access Resources <i class="bi bi-arrow-right ms-1"></i></a>
         </div>
       </div>
     </div>
@@ -365,21 +388,21 @@ containerClass: container
 </section>
 
 <!-- Join the effort CTA -->
-<section class="py-5 border-top">
-  <div class="container py-lg-4">
-    <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-4">
-      <div class="card-body p-4 p-lg-5 text-center position-relative" style="z-index: 2;">
-        <h2 class="h2 fw-bold mb-3">Support the Future of Bioacoustics</h2>
-        <p class="lead opacity-75 mb-4 mx-auto" style="max-width: 700px;">
-          BirdNET is an open-source research project powered by global collaboration. Help us scale our research and protect biodiversity.
+<section class="py-5 bg-white">
+  <div class="container py-lg-5">
+    <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);">
+      <div class="card-body p-5 text-center position-relative" style="z-index: 2;">
+        <h2 class="display-5 fw-bold mb-4">Support the Future of Bioacoustics</h2>
+        <p class="lead text-white-50 mb-5 mx-auto" style="max-width: 700px;">
+          BirdNET is an open-source research project powered by global collaboration. Whether you're a developer contributing code or a birder recording sounds, your help is vital.
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a href="{{ '/contribute/' | url }}" class="btn btn-primary btn-lg px-4">Join the Community</a>
-          <a href="{{ '/donate/' | url }}" class="btn btn-outline-light btn-lg px-4">Donate</a>
+          <a href="{{ '/contribute/' | url }}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm">Join the Community</a>
+          <a href="{{ '/donate/' | url }}" class="btn btn-outline-light btn-lg px-5 rounded-pill">Make a Donation</a>
         </div>
       </div>
-      <!-- Background glow effect -->
-      <div class="position-absolute top-50 start-50 translate-middle" style="width: 500px; height: 500px; background: radial-gradient(circle, rgba(26, 95, 180, 0.2) 0%, transparent 75%); filter: blur(60px); z-index: 1;"></div>
+      <!-- Enhanced background glow -->
+      <div class="position-absolute top-0 start-0 w-100 h-100" style="background: radial-gradient(circle at 20% 30%, rgba(26, 95, 180, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(26, 95, 180, 0.1) 0%, transparent 50%); z-index: 1;"></div>
     </div>
   </div>
 </section>
