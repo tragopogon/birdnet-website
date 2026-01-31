@@ -60,7 +60,7 @@ permalink: "/publications/"
                   {% if p.tags and p.tags.length %}
                     <div class="d-flex flex-wrap align-items-baseline gap-2 mb-2">
                       {% for t in p.tags %}
-                        <span class="badge rounded-pill {{ tagBadgeClass(t) }} pub-badge">{{ t }}</span>
+                        <span class="badge rounded-3 {{ tagBadgeClass(t) }} pub-badge">{{ t }}</span>
                       {% endfor %}
                     </div>
                   {% endif %}

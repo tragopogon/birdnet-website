@@ -361,32 +361,66 @@ containerClass: container
   </div>
 </section>
 
-<!-- Science & Education -->
-<section class="py-5 bg-light border-top border-bottom">
-  <div class="container py-lg-4">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
-          <div class="section-label mb-3">RESEARCH</div>
-          <h3 class="h4 fw-bold mb-3">Scientific Publications</h3>
-          <p class="text-muted mb-4">Read peer-reviewed studies detailing our neural network architectures, global validation methods, and ecological findings.</p>
-          <a href="{{ '/publications/' | url }}" class="fw-bold text-decoration-none text-primary">Explore the Archive <i class="bi bi-arrow-right ms-1"></i></a>
+<!-- Scientific Impact -->
+<section class="py-5 bg-white border-top">
+  <div class="container py-lg-5">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5">
+        <div class="section-label mb-3">SCIENTIFIC IMPACT</div>
+        <h2 class="display-6 fw-bold mb-4">A peer-reviewed foundation for bioacoustics.</h2>
+        <p class="text-muted lead mb-5">
+          BirdNET is built on a foundation of rigorous research. Our work focuses on developing reliable, open-source tools that transform raw audio into peer-reviewed ecological data.
+        </p>
+        <div class="d-flex flex-column gap-3">
+          <a href="{{ '/publications/' | url }}" class="btn btn-outline-dark d-flex align-items-center justify-content-between p-4 border-light-subtle rounded-4 transition-all hover-lift text-start">
+            <div>
+              <div class="fw-bold text-dark">Publications Archive</div>
+              <div class="smaller text-muted">Explore peer-reviewed papers and conference proceedings.</div>
+            </div>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="{{ '/resources/' | url }}" class="btn btn-outline-dark d-flex align-items-center justify-content-between p-4 border-light-subtle rounded-4 transition-all hover-lift text-start">
+            <div>
+              <div class="fw-bold text-dark">Technical Resources</div>
+              <div class="smaller text-muted">Access documentation, datasets, and research tools.</div>
+            </div>
+            <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
-          <div class="section-label mb-3">EDUCATION</div>
-          <h3 class="h4 fw-bold mb-3">Learning Resources</h3>
-          <p class="text-muted mb-4">Educational tools designed for schools, K-12 programs, and workshops to inspire the next generation of bioacousticians.</p>
-          <a href="{{ '/k12/' | url }}" class="fw-bold text-decoration-none text-success">View Curriculum <i class="bi bi-arrow-right ms-1"></i></a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="h-100 p-4 p-lg-5 rounded-4 bg-white border border-light-subtle shadow-sm transition-all hover-lift">
-          <div class="section-label mb-3">COMMUNITY</div>
-          <h3 class="h4 fw-bold mb-3">Community Hub</h3>
-          <p class="text-muted mb-4">Technical tutorials, user-contributed guides, curated datasets, and discussion forums for all skill levels.</p>
-          <a href="{{ '/resources/' | url }}" class="fw-bold text-decoration-none text-info">Access Resources <i class="bi bi-arrow-right ms-1"></i></a>
+      <div class="col-lg-7">
+        <div class="row g-4">
+          <div class="col-sm-6">
+            <div class="stat-card p-5 rounded-4 h-100 border border-light-subtle shadow-sm transition-all hover-lift">
+              <div class="mb-4">
+                <i class="bi bi-fire text-primary h3"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3 text-dark">Fire Ecology</h3>
+              <p class="text-muted small mb-0">Our research in the Sierra Nevada mountain range evaluates how forest restoration and fire regimes affect bird occupancy, helping land managers understand biodiversity recovery in fire-adapted ecosystems.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="stat-card p-5 rounded-4 h-100 border border-light-subtle shadow-sm transition-all hover-lift">
+              <div class="mb-4">
+                <i class="bi bi-diagram-3 text-primary h3"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3 text-dark">Community Dynamics</h3>
+              <p class="text-muted small mb-0">We quantify how survey design, spatial coverage, and recording duration influence species richness estimates, providing a rigorous benchmark for monitoring shifts in avian community composition.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="stat-card p-5 rounded-4 border border-light-subtle shadow-sm bg-light bg-opacity-25 transition-all hover-lift">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-9">
+                  <h3 class="h5 fw-bold mb-2 text-dark">Research & Education Outreach</h3>
+                  <p class="small text-muted mb-0">We provide tools and documentation for K-12 programs and workshops, supporting the next generation of researchers in bioacoustics.</p>
+                </div>
+                <div class="col-md-3 text-md-end">
+                  <a href="{{ '/k12/' | url }}" class="btn btn-primary px-4">K-12 Resources</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

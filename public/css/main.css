@@ -260,7 +260,7 @@ section {
 
 /* Button Modernization */
 .btn {
-  border-radius: 1.25rem;
+  border-radius: 0.85rem;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   transition: var(--transition-smooth);
@@ -282,6 +282,24 @@ section {
   padding: 0.8rem 2rem;
   font-size: 1rem;
   font-weight: 600;
+}
+
+/* Fix for large action buttons with nested text */
+.btn-outline-dark {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0f172a;
+  border-color: #0f172a;
+  color: #fff !important;
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.2);
+}
+
+.btn-outline-dark:hover .text-dark,
+.btn-outline-dark:hover .text-muted,
+.btn-outline-dark:hover i {
+  color: #fff !important;
 }
 
 .btn-outline-light:hover {
