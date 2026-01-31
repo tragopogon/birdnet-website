@@ -4,30 +4,28 @@ layout: layouts/base.njk
 permalink: "/contribute/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">Contribute to BirdNET</h1>
+<div class="row align-items-center g-5 mb-5 pb-lg-5">
+  <div class="col-lg-7">
+    <span class="section-label">GET INVOLVED</span>
+    <h1 class="page-title mb-4">Contribute to BirdNET</h1>
     <p class="lead text-muted mb-0">
       Advancing conservation through acoustic monitoring requires a global effort. Whether you are a developer, a data scientist, or a bird enthusiast, there are many ways to help.
     </p>
-    <!-- BirdNET contribute header -->
-    <div class="mt-5 text-left">
+  </div>
+  <div class="col-lg-5">
       <img
         src="{{ '/img/contribute_header.jpg' | url }}"
         alt="BirdNET contribute header"
-        class="img-fluid rounded shadow-sm"
-        style="max-height: 400px; width: auto;">
-    </div>
+        class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+        style="width: 100%; height: auto;">
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row g-5">
+<div class="row g-5 pt-5 pb-5">
       <!-- Code Contributions -->
       <div class="col-lg-6">
         <div class="d-flex align-items-center mb-4">
-          <div class="icon-wrapper sm me-3">
+          <div class="icon-wrapper sm soft me-3">
             <i class="bi bi-code-slash"></i>
           </div>
           <h2 class="h4 mb-0 fw-bold">Code & Open Source</h2>
@@ -52,7 +50,7 @@ permalink: "/contribute/"
       <!-- Data Contributions -->
       <div class="col-lg-6">
         <div class="d-flex align-items-center mb-4">
-          <div class="icon-wrapper sm me-3">
+          <div class="icon-wrapper sm soft me-3">
             <i class="bi bi-database"></i>
           </div>
           <h2 class="h4 mb-0 fw-bold">Data & Expertise</h2>
@@ -72,32 +70,34 @@ permalink: "/contribute/"
           Every recording helps us advance conservation bioacoustics. Feel free to <a href="mailto:stefan.kahl@cornell.edu">reach out to us</a> if you have datasets or expertise to share.
         </p>
       </div>
-    </div>
-  </div>
-</section>
+</div>
 
-<section class="py-5 border-top">
-  <div class="container">
-    <div class="row g-5">
+<div class="row g-5 py-5 border-top pb-5">
       <!-- Research & Conservation -->
-      <div class="col-lg-6">
+      <div class="col-lg-12">
         <div class="d-flex align-items-center mb-4">
-          <div class="icon-wrapper sm me-3">
+          <div class="icon-wrapper sm soft me-3">
             <i class="bi bi-globe-americas"></i>
           </div>
           <h2 class="h4 mb-0 fw-bold">Research & Conservation</h2>
         </div>
-        <p class="text-muted">
+      </div>
+      <div class="col-lg-8">
+        <p class="text-muted leading">
           We are always looking for new ways to apply BirdNET in the field. We collaborate with researchers and conservation organizations worldwide to turn acoustic data into actionable insights.
         </p>
-        <p class="text-muted">
-          Opportunities for collaboration:
-        </p>
-        <ul class="text-muted">
-          <li><strong>Monitoring Projects:</strong> If you have a monitoring project that could benefit from AI expertise, we'd love to hear from you.</li>
-          <li><strong>Funding Proposals:</strong> We are open to joint funding proposals that advance the state of the art in bioacoustics and conservation technology.</li>
-          <li><strong>Visiting Scholars:</strong> Chemnitz University of Technology offers a visiting scholar program for researchers interested in working with our team on-site.</li>
-        </ul>
+        <div class="row g-4 mt-3">
+          <div class="col-md-6">
+             <h3 class="h6 fw-bold">Monitoring Projects</h3>
+             <p class="small text-muted">If you have a monitoring project that could benefit from AI expertise, we'd love to hear from you. We provide guidance on survey design and automated identification.</p>
+          </div>
+          <div class="col-md-6">
+             <h3 class="h6 fw-bold">Funding Proposals</h3>
+             <p class="small text-muted">We are open to joint funding proposals that advance the state of the art in bioacoustics and conservation technology.</p>
+          </div>
+        </div>
+      </div>
+</div>
         <p class="text-muted">
           Interested in collaborating? <a href="mailto:stefan.kahl@cornell.edu">Contact us</a> to discuss your project.
         </p>
@@ -132,21 +132,17 @@ permalink: "/contribute/"
         </p>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="py-5 bg-light">
-  <div class="container text-center">
-    <h2 class="h4 mb-4">Other ways to help</h2>
+<div class="mt-5 py-5 bg-light rounded-5 text-center px-4">
+    <h2 class="h4 mb-4 fw-bold">Other ways to help</h2>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <p class="text-muted mb-4">
           If you're not a developer or data specialist, you can still support the project by donating to help cover infrastructure and research costs.
         </p>
-        <a href="{{ '/donate/' | url }}" class="btn btn-primary btn-lg">
+        <a href="{{ '/donate/' | url }}" class="btn btn-primary btn-lg px-5">
           Support the project
         </a>
       </div>
     </div>
-  </div>
-</section>
+</div>

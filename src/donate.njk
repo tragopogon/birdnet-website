@@ -4,59 +4,51 @@ layout: layouts/base.njk
 permalink: "/donate/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">Support BirdNET</h1>
-    <p class="lead text-muted mb-0">
+<div class="row align-items-center g-5 mb-5 pb-lg-5">
+  <div class="col-lg-7">
+    <span class="section-label">GIVING</span>
+    <h1 class="page-title mb-4">Support BirdNET</h1>
+    <p class="lead text-muted mb-4">
       BirdNET is a research project that relies on external funding to improve models, build new tools, and keep
       services available to the global community.
     </p>
-    <!-- BirdNET donation header -->
-    <div class="mt-5 text-left">
+    <a href="https://give.birds.cornell.edu/page/132162/donate/1" class="btn btn-primary px-5 btn-lg shadow-sm" target="_blank">
+      Donate Now
+    </a>
+  </div>
+  <div class="col-lg-5">
       <img
         src="{{ '/img/donate_header.jpg' | url }}"
         alt="BirdNET donation header"
-        class="img-fluid rounded shadow-sm"
-        style="max-height: 400px; width: auto;">
-    </div>
+        class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+        style="width: 100%; height: auto;">
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row g-4 align-items-start">
-      <div class="col-lg-7">
-        <h2 class="section-title h4">Why your support matters</h2>
-        <p class="text-muted">
-          Your contribution helps us:
+<div class="row g-5 pt-5 pb-5">
+  <div class="col-lg-7">
+    <div class="section-label mb-3">IMPACT</div>
+    <h2 class="h3 fw-bold mb-4">Why your support matters</h2>
+    <p class="text-muted lead mb-4">
+      Your contribution helps us:
+    </p>
+    <ul class="text-muted">
+      <li>Develop and train new BirdNET models for more species and regions.</li>
+      <li>Maintain and scale infrastructure for apps, web tools, and APIs.</li>
+      <li>Create open-source software for conservation and research workflows.</li>
+      <li>Work with partners to apply BirdNET in real-world conservation projects.</li>
+    </ul>
+    <p class="text-muted">
+      Every donation, large or small, helps cover server costs and supports ongoing research and development.
+    </p>
+  </div>
+  <div class="col-lg-5">
+    <div class="card shadow-sm border-0 rounded-4 bg-light p-4 h-100">
+        <h2 class="h5 mb-3">Contact the Lab</h2>
+        <p class="text-muted small">
+          If you have questions about supporting BirdNET or the K. Lisa Yang Center for Conservation Bioacoustics:
         </p>
-        <ul class="text-muted">
-          <li>Develop and train new BirdNET models for more species and regions.</li>
-          <li>Maintain and scale infrastructure for apps, web tools, and APIs.</li>
-          <li>Create open-source software for conservation and research workflows.</li>
-          <li>Work with partners to apply BirdNET in real-world conservation projects.</li>
-        </ul>
-        <p class="text-muted">
-          Every donation, large or small, helps cover server costs and supports ongoing research and development.
-        </p>
-      </div>
-      <div class="col-lg-5">
-        <div class="card shadow-sm donate-card">
-          <div class="card-body">
-            <h2 class="h5 mb-3">Make a donation</h2>
-            <p class="text-muted small">
-              Donations to BirdNET are handled through the Cornell Lab of Ornithology.
-            </p>
-            <a href="https://give.birds.cornell.edu/page/132162/donate/1" class="btn btn-primary w-100 mb-3" target="_blank">
-              Go to donation page
-            </a>
-            <p class="text-muted small mb-0">
-              Thank you for helping us make sound recognition tools freely available and useful for people and
-              wildlife around the world.
-            </p>
-          </div>
-        </div>
-      </div>
+        <a href="mailto:ccb-birdnet@cornell.edu" class="btn btn-outline-dark w-100">Contact Team</a>
     </div>
   </div>
-</section>
+</div>

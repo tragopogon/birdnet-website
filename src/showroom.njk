@@ -4,34 +4,33 @@ layout: layouts/base.njk
 permalink: "/showroom/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">BirdNET Showroom</h1>
+<div class="row mb-5 pb-lg-5">
+  <div class="col-lg-8">
+    <span class="section-label">COMMUNITY ECOSYSTEM</span>
+    <h1 class="page-title mb-4">BirdNET Showroom</h1>
     <p class="lead text-muted mb-0">
       BirdNET powers a growing ecosystem of community projects that bring bird sound recognition into homes, fieldwork,
-      and creative tools. Here are some highlights.
+      and creative tools. 
     </p>
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-5">
       <!-- HaikuBox -->
       <div class="col">
-        <div class="card showroom-card h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <img src="{{ '/img/haikubox.png' | url }}" class="showroom-logo" alt="HaikuBox logo">
-            <div class="mb-2 d-flex flex-wrap gap-1">
-              <span class="badge bg-success">Backyard monitoring</span>
-              <span class="badge bg-danger">Community science</span>
+        <div class="card showroom-card h-100 shadow-sm border-0 transition-all hover-lift">
+          <div class="card-body d-flex flex-column p-4">
+            <img src="{{ '/img/haikubox.png' | url }}" class="showroom-logo mb-4" alt="HaikuBox logo" style="height: 40px; width: auto;">
+            <div class="mb-3 d-flex flex-wrap gap-1">
+              <span class="badge bg-light text-muted border fw-normal">Hardware</span>
+              <span class="badge bg-light text-muted border fw-normal">Backyard</span>
             </div>
-            <h2 class="h5 card-title">HaikuBox</h2>
-            <p class="text-muted flex-grow-1">
+            <h2 class="h5 fw-bold mb-3">HaikuBox</h2>
+            <p class="small text-muted flex-grow-1">
               A backyard listening station that continuously detects birds and shares short clips and species IDs via a web
               and mobile app, powered by BirdNET.
             </p>
-            <a href="https://haikubox.com" class="stretched-link small">Learn more</a>
+            <a href="https://haikubox.com" class="stretched-link btn btn-link text-primary p-0 text-start mt-3">Learn more <i class="bi bi-arrow-right small"></i></a>
           </div>
         </div>
       </div>
@@ -347,4 +346,4 @@ permalink: "/showroom/"
 
     </div>
   </div>
-</section>
+</div>
