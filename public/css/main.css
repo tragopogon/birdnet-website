@@ -54,7 +54,7 @@ section.bg-dark, .bg-dark {
 }
 
 .bg-glass {
-  background-color: rgba(26, 26, 26, 0.85) !important; /* Brand dark gray glass */
+  background-color: rgba(0, 0, 7, 0.85) !important; /* Brand dark gray glass */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
