@@ -10,14 +10,14 @@ containerClass: container
   <div class="container hero-landing-content">
     <div class="row align-items-center">
       <div class="col-lg-8 text-center text-lg-start">
-        <h1 class="hero-title mb-5 mt-5">
-          AI-powered bioacoustics, at scale.
+        <h1 class="hero-title mb-4 text-balance">
+          AI-powered bioacoustics, <span class="text-nowrap">at scale.</span>
         </h1>
-        <p class="hero-subtitle mb-5 mt-3 mx-auto mx-lg-0">
+        <p class="hero-subtitle mb-5 mx-auto mx-lg-0">
           BirdNET uses deep learning to recognize thousands of animal species from their vocalizations, powering research,
           monitoring, and citizen science around the world.
         </p>
-        <div class="d-flex flex-wrap gap-3 mb-5 mt-3 justify-content-center justify-content-lg-start">
+        <div class="d-flex flex-wrap gap-3 mb-5 justify-content-center justify-content-lg-start">
           <a class="btn btn-primary btn-lg" href="{{ '/demo/' | url }}">
             Try BirdNET Sound ID
           </a>
@@ -40,6 +40,7 @@ containerClass: container
   <div class="container">
     <div class="row g-4 align-items-start">
       <div class="col-lg-4 mb-4 mb-lg-0">
+        <span class="section-label">Overview</span>
         <h2 class="section-title">What is BirdNET?</h2>
         <p class="text-muted">
           BirdNET is a research platform and family of tools that make it possible to detect, classify, and explore animal
@@ -55,7 +56,9 @@ containerClass: container
           <div class="col">
             <div class="card shadow-sm card-feature h-100">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-phone fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-phone"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">For everyone</h3>
                 <h4 class="h5">Mobile & web apps</h4>
                 <p class="text-muted mb-3">
@@ -70,7 +73,9 @@ containerClass: container
           <div class="col">
             <div class="card shadow-sm card-feature h-100">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-activity fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-activity"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">For research</h3>
                 <h4 class="h5">BirdNET-Analyzer</h4>
                 <p class="text-muted mb-3">
@@ -85,7 +90,9 @@ containerClass: container
           <div class="col">
             <div class="card shadow-sm card-feature h-100">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-code-slash fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-code-slash"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">For developers</h3>
                 <h4 class="h5">Open-source tools</h4>
                 <p class="text-muted mb-3">
@@ -147,7 +154,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-database fs-2 text-primary mb-2 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-database"></i>
+                </div>
                 <h3 class="h6">Large-scale processing</h3>
                 <p class="small text-muted mb-0">Handles thousands of hours from passive acoustic networks.</p>
               </div>
@@ -156,7 +165,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-stars fs-2 text-primary mb-2 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-stars"></i>
+                </div>
                 <h3 class="h6">Latest models</h3>
                 <p class="small text-muted mb-0">Recognizes thousands of species worldwide.</p>
               </div>
@@ -165,7 +176,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-file-earmark-spreadsheet fs-2 text-primary mb-2 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-file-earmark-spreadsheet"></i>
+                </div>
                 <h3 class="h6">Flexible outputs</h3>
                 <p class="small text-muted mb-0">CSV and other formats for Python / R / GIS workflows.</p>
               </div>
@@ -174,7 +187,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-people fs-2 text-primary mb-2 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-people"></i>
+                </div>
                 <h3 class="h6">Community ecosystem</h3>
                 <p class="small text-muted mb-0">Growing scripts and guides for monitoring pipelines.</p>
               </div>
@@ -191,6 +206,7 @@ containerClass: container
   <div class="container">
     <div class="row g-4 align-items-start">
       <div class="col-lg-4 mb-4 mb-lg-0">
+        <span class="section-label">Developers</span>
         <h2 class="section-title">Open-source tools</h2>
         <p class="text-muted">
           BirdNET models power a suite of libraries and platforms across Python, R, embedded systems, and field devices.
@@ -202,7 +218,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-terminal fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-terminal"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">Python</h3>
                 <h4 class="h6">birdnet</h4>
                 <p class="small text-muted mb-2">Library for ecological sound workflows.</p>
@@ -213,7 +231,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-code-square fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-code-square"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">R</h3>
                 <h4 class="h6">birdnetR</h4>
                 <p class="small text-muted mb-2">R wrapper for BirdNET processing & results.</p>
@@ -224,7 +244,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body">
-                <i class="bi bi-cpu fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper">
+                  <i class="bi bi-cpu"></i>
+                </div>
                 <h3 class="h6 text-uppercase text-muted mb-2">Embedded devices</h3>
                 <h4 class="h6">BirdNET-Tiny-Forge</h4>
                 <p class="small text-muted mb-2">Create and deploy lightweight models.</p>
@@ -243,6 +265,7 @@ containerClass: container
   <div class="container">
     <div class="row g-4 align-items-start">
       <div class="col-lg-4 mb-4 mb-lg-0">
+        <span class="section-label">Ecosystem</span>
         <h2 class="section-title">Community showroom</h2>
         <p class="text-muted">
           BirdNET powers devices, apps, and creative platforms built by a growing community.
@@ -329,6 +352,7 @@ containerClass: container
   <div class="container">
     <div class="row g-4 align-items-start">
       <div class="col-lg-4 mb-4 mb-lg-0">
+        <span class="section-label">Library</span>
         <h2 class="section-title">Knowledge Base</h2>
         <p class="text-muted">
           Deepen your understanding of BirdNET through our collection of scientific publications, educational resources, and community guides.
@@ -340,7 +364,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-journal-text fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-journal-text"></i>
+                </div>
                 <h3 class="h5">Publications</h3>
                 <p class="small text-muted mb-3">
                   Read our latest research papers and scientific contributions to the field of bioacoustics.
@@ -352,7 +378,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-collection-play fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-collection-play"></i>
+                </div>
                 <h3 class="h5">Online resources</h3>
                 <p class="small text-muted mb-3">
                   Explore video tutorials, articles, and community-driven guides to help you get the most out of BirdNET.
@@ -364,7 +392,9 @@ containerClass: container
           <div class="col">
             <div class="card h-100 shadow-sm card-feature">
               <div class="card-body text-center text-md-start">
-                <i class="bi bi-backpack fs-2 text-primary mb-3 d-block"></i>
+                <div class="icon-wrapper soft">
+                  <i class="bi bi-backpack"></i>
+                </div>
                 <h3 class="h5">K‑12 learning</h3>
                 <p class="small text-muted mb-3">
                   Discover educational activities, tutorials, and projects designed for classrooms and young learners.

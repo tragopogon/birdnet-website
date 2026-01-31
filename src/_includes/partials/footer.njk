@@ -1,17 +1,53 @@
-<footer class="bg-light border-top mt-4 py-3">
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-    <p class="mb-1 mb-md-0 small text-muted">
-      © {% year %} BirdNET ·
-      <a href="https://www.birds.cornell.edu/ccb" target="_blank" rel="noopener" class="link-secondary text-decoration-underline">K. Lisa Yang Center for Conservation Bioacoustics</a>
-      &amp;
-      <a href="https://www.tu-chemnitz.de/index.html.en" target="_blank" rel="noopener" class="link-secondary text-decoration-underline">Chemnitz University of Technology</a>
-    </p>
-    <p class="mb-0 small">
-      <a href="{{ '/legal/' | url }}" class="link-secondary text-decoration-underline">Legal notice</a>
-      <span class="text-muted mx-2">·</span>
-      <a href="{{ '/privacy/' | url }}" class="link-secondary text-decoration-underline">Privacy policy</a>
-      <span class="text-muted mx-2">·</span>
-      <a href="mailto:ccb-birdnet@cornell.edu" class="link-secondary text-decoration-underline">Contact</a>
-    </p>
+<footer class="mt-auto">
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-4">
+        <a class="footer-brand d-flex align-items-center gap-2 mb-3" href="{{ '/' | url }}">
+          <img src="{{ '/img/logo-birdnet-circle.png' | url }}"
+               alt="BirdNET logo"
+               height="32">
+          <span class="brand-text">BirdNET</span>
+        </a>
+        <p class="small mb-4 pe-lg-5">
+          Advancing bird sound identification through deep learning. A collaboration between the K. Lisa Yang Center for Conservation Bioacoustics and Chemnitz University of Technology.
+        </p>
+        <p class="copyright-text mb-0">
+          © {% year %} BirdNET-Team. All rights reserved.
+        </p>
+      </div>
+
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-4">Tools</h6>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2"><a href="{{ '/analyzer/' | url }}">Analyzer</a></li>
+          <li class="mb-2"><a href="{{ '/app/' | url }}">Mobile App</a></li>
+          <li class="mb-2"><a href="{{ '/demo/' | url }}">Browser Demo</a></li>
+          <li class="mb-2"><a href="https://birdnet-team.github.io/real-time-pwa/">BirdNET Live</a></li>
+          <li class="mb-2"><a href="{{ '/tools/' | url }}">Open Source</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-6">
+        <h6 class="mb-4">Research & Education</h6>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2"><a href="{{ '/publications/' | url }}">Publications</a></li>
+          <li class="mb-2"><a href="{{ '/showroom/' | url }}">Showroom</a></li>
+          <li class="mb-2"><a href="{{ '/k12/' | url }}">K12 Education</a></li>
+          <li class="mb-2"><a href="{{ '/resources/' | url }}">Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h6 class="mb-4">Support & About</h6>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2"><a href="{{ '/about/' | url }}">About Us</a></li>
+          <li class="mb-2"><a href="{{ '/contribute/' | url }}">Contribute</a></li>
+          <li class="mb-2"><a href="{{ '/donate/' | url }}">Donate</a></li>
+          <li class="mb-2"><a href="mailto:ccb-birdnet@cornell.edu">Contact</a></li>
+          <li class="mb-2"><a href="{{ '/legal/' | url }}">Legal Notice</a></li>
+          <li class="mb-2"><a href="{{ '/privacy/' | url }}">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </footer>
