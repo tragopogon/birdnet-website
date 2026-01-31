@@ -4,276 +4,301 @@ layout: layouts/base.njk
 permalink: "/app/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">BirdNET App</h1>
-    <p class="lead text-muted mb-0">
-      Identify birds around you by recording a short snippet of song or call. Fast, free, and powered by BirdNET AI.
+<div class="row align-items-center g-5 mb-5 pb-lg-5">
+  <div class="col-lg-6">
+    <span class="section-label">Mobile Identification</span>
+    <h1 class="page-title mb-4">BirdNET App</h1>
+    <p class="lead text-muted mb-5">
+      Hold up your phone and identify birds in real-time. Fast, free, and powered by high-precision BirdNET AI—bringing professional bioacoustics to everyone.
     </p>
-    <!-- BirdNET app header -->
-    <div class="mt-5 text-left">
+    <div class="d-flex flex-wrap gap-3">
+      <a href="https://play.google.com/store/apps/details?id=de.tu_chemnitz.mi.kahst.birdnet" target="_blank" class="btn btn-dark d-flex align-items-center gap-2 px-4 shadow-sm text-white">
+        <i class="bi bi-google-play"></i> Google Play
+      </a>
+      <a href="https://apps.apple.com/us/app/birdnet/id1541842885" target="_blank" class="btn btn-dark d-flex align-items-center gap-2 px-4 shadow-sm text-white">
+        <i class="bi bi-apple"></i> App Store
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-6 text-center">
+    <div class="position-relative">
       <img
         src="{{ '/img/app_header.jpg' | url }}"
         alt="BirdNET app header"
-        class="img-fluid rounded shadow-sm"
-        style="max-height: 400px; width: auto;">
+        class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+        style="width: 100%; object-fit: cover;">
     </div>
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-
-    <!-- Download buttons -->
-    <div class="mb-5">
-      <a href="https://play.google.com/store/apps/details?id=de.tu_chemnitz.mi.kahst.birdnet"
-         class="btn btn-dark btn-sm me-2" target="_blank" rel="noopener">
-        Android (Google Play) ↗
-      </a>
-      <a href="https://apps.apple.com/us/app/birdnet/id1541842885"
-         class="btn btn-dark btn-sm" target="_blank" rel="noopener">
-        iOS (App Store) ↗
-      </a>
-    </div>
-
+<div class="pt-2 mb-5 pb-4">
     <!-- Live BirdNET app stats -->
-    <div id="network-stats" class="mb-5">
-      <h2 class="h5 section-title mb-3">BirdNET app activity</h2>
-      <div class="row g-3 align-items-stretch text-center">
+    <div id="network-stats">
+      <div class="row mb-5 justify-content-center text-center">
+        <div class="col-lg-8">
+          <span class="section-label mx-auto">GLOBAL NETWORK</span>
+          <h2 class="h3 fw-bold mb-3">Real-time Activity</h2>
+          <p class="text-muted">BirdNET app users contribute to a global biodiversity database. Here is what's happening right now.</p>
+        </div>
+      </div>
+      <div class="row g-4 justify-content-center">
         <div class="col-6 col-md-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body py-3">
-              <div class="small text-muted">Total observations</div>
-              <div id="stat-total-observations" class="h4 mb-0 fw-semibold">—</div>
+          <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
+            <div class="card-body p-4 text-center">
+              <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;">Total Observations</div>
+              <div id="stat-total-observations" class="h3 mb-0 fw-bold text-primary">—</div>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body py-3">
-              <div class="small text-muted">Observations (24h)</div>
-              <div id="stat-observations-24h" class="h4 mb-0 fw-semibold">—</div>
+          <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
+            <div class="card-body p-4 text-center">
+              <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;">Observations (24h)</div>
+              <div id="stat-observations-24h" class="h3 mb-0 fw-bold text-primary">—</div>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body py-3">
-              <div class="small text-muted">Species (24h)</div>
-              <div id="stat-species-24h" class="h4 mb-0 fw-semibold">—</div>
+          <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
+            <div class="card-body p-4 text-center">
+              <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;">Species (24h)</div>
+              <div id="stat-species-24h" class="h3 mb-0 fw-bold text-primary">—</div>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body py-3">
-              <div class="small text-muted">Users (24h)</div>
-              <div id="stat-users-24h" class="h4 mb-0 fw-semibold">—</div>
+          <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
+            <div class="card-body p-4 text-center">
+              <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;">Users (24h)</div>
+              <div id="stat-users-24h" class="h3 mb-0 fw-bold text-primary">—</div>
             </div>
           </div>
         </div>
       </div>
-      <div id="stats-updated" class="small text-muted mt-2">Loading…</div>
-    </div>    
-
-    <div class="row g-4 mb-5">
-      <div class="col-lg-6">
-        <h2 class="h5 section-title">Overview</h2>
-        <p class="text-muted">
-          The BirdNET mobile app lets you hold up your phone, record a few seconds of sound, and get instant
-          identification suggestions. It uses the same core neural network models that power research-grade
-          monitoring tools, simplified for everyday use.
-        </p>
-        <ul class="text-muted small mb-3">
-          <li>Real-time bird sound identification.</li>
-          <li>Confidence scores and alternative suggestions.</li>
-          <li>Optional contribution of observations for research.</li>
-          <li>Works in many regions worldwide (model updates expand coverage).</li>
-        </ul>
-        <p class="text-muted small mb-0">
-          Designed for birders, learners, educators, and anyone curious about the sounds they hear outdoors.
-        </p>
-      </div>
-      <div class="col-lg-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <img src="{{ '/img/birdnet_app_screenshots.png' | url }}"
-                 alt="BirdNET app interface screenshots"
-                 class="img-fluid rounded">
-            <p class="small text-muted mt-2 mb-0">Representative interface screenshots.</p>
-          </div>
-        </div>
-      </div>
+      <div id="stats-updated" class="small text-muted mt-4 text-center opacity-50">Updating network stats…</div>
     </div>
+  </div>
 
-    <!-- Features -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-2">Simple capture</h3>
-            <p class="small text-muted mb-0">Tap record, wait for the birds to call, select a clip, and submit for analysis. No external microphone needed.</p>
+<div class="pt-5 pb-lg-5">
+    <div class="row g-5 align-items-center mb-5">
+      <div class="col-lg-7">
+        <div class="section-label mb-3">OVERVIEW</div>
+        <h2 class="h3 fw-bold mb-4">A research tool in your pocket.</h2>
+        <p class="text-muted lead mb-4">
+          The BirdNET mobile app lets you hold up your phone, record a few seconds of sound, and get instant identification suggestions. It uses the same core neural network models that power research-grade monitoring tools, simplified for everyday use.
+        </p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-mic text-primary"></i>
+              <div>
+                <div class="fw-bold small">Real-time Analysis</div>
+                <div class="smaller text-muted">Get immediate suggestions for birds as you hear them.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-graph-up text-primary"></i>
+              <div>
+                <div class="fw-bold small">Confidence Scores</div>
+                <div class="smaller text-muted">Understand the certainty of every identification.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-globe text-primary"></i>
+              <div>
+                <div class="fw-bold small">Global Coverage</div>
+                <div class="smaller text-muted">Identify over 6,000 species across all continents.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-person-check text-primary"></i>
+              <div>
+                <div class="fw-bold small">Citizen Science</div>
+                <div class="smaller text-muted">Contribute your observations to global research.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-2">Instant results</h3>
-            <p class="small text-muted mb-0">Top species suggestions with confidence help you learn local birds faster.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-2">Learning tools</h3>
-            <p class="small text-muted mb-0">Link detections to species info and improve recognition through repetition.</p>
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <img src="{{ '/img/birdnet_app_screenshots.png' | url }}"
+               alt="BirdNET app interface screenshots"
+               class="img-fluid">
+          <div class="card-body bg-white p-3 text-center border-top">
+             <span class="small text-muted">User Interface & Species Details</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- How it works -->
-    <div class="mb-5">
-      <h2 class="h5 section-title">How it works</h2>
+    <div class="mt-5 pt-lg-4">
+      <div class="text-center mb-5">
+        <div class="section-label mx-auto">WORKFLOW</div>
+        <h2 class="h3 fw-bold">Identification in four steps</h2>
+      </div>
       <div class="row g-4">
-        <div class="col-sm-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm card-feature p-2 text-center">
             <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">1. Record</h3>
-              <p class="small text-muted mb-0">Phone microphone captures ambient sound (short clip).</p>
+              <div class="icon-wrapper sm soft mx-auto mb-4">1</div>
+              <h3 class="h6 fw-bold">Record</h3>
+              <p class="small text-muted mb-0">Capture a high-quality audio snippet using your phone's built-in microphone.</p>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm card-feature p-2 text-center">
             <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">2. Analyze</h3>
-              <p class="small text-muted mb-0">Clip converted to a spectrogram; BirdNET model scores species.</p>
+              <div class="icon-wrapper sm soft mx-auto mb-4">2</div>
+              <h3 class="h6 fw-bold">Analyze</h3>
+              <p class="small text-muted mb-0">The app generates a spectrogram and processes it through the BirdNET model.</p>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm card-feature p-2 text-center">
             <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">3. Suggest</h3>
-              <p class="small text-muted mb-0">Top matches returned with confidence and alternate options.</p>
+              <div class="icon-wrapper sm soft mx-auto mb-4">3</div>
+              <h3 class="h6 fw-bold">Suggest</h3>
+              <p class="small text-muted mb-0">Receive a ranked list of species matches with associated confidence scores.</p>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm card-feature p-2 text-center">
             <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">4. Learn</h3>
-              <p class="small text-muted mb-0">Users explore species info, improving recognition over time.</p>
+              <div class="icon-wrapper sm soft mx-auto mb-4">4</div>
+              <h3 class="h6 fw-bold">Contribute</h3>
+              <p class="small text-muted mb-0">Optionally share your observation to help scientists monitor biodiversity.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
     <!-- Data & privacy -->
-    <div class="row g-4 mb-5">
+    <div class="row g-5 align-items-center mb-5 border-top pt-5">
       <div class="col-lg-6">
-        <h2 class="h5 section-title">Data & privacy</h2>
-        <p class="text-muted small mb-2">
-          Your recordings help improve BirdNET. Submissions are used for research (e.g., to train and evaluate models)
-          and are licensed under
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY‑SA 4.0</a>.
+        <div class="section-label mb-3">ETHICS & PRIVACY</div>
+        <h2 class="h3 fw-bold mb-4">Responsible citizen science.</h2>
+        <p class="text-muted mb-4">
+          Your recordings help improve BirdNET. Submissions are used for research and are licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY‑SA 4.0</a>.
         </p>
-        <ul class="small text-muted mb-3">
-          <li>Human speech is filtered; we do not publish clips containing speech. Published examples are anonymized.</li>
-          <li>Location is optional and user‑controlled; when provided, it helps track species diversity and change over time.</li>
-          <li>Data are stored securely to prevent unauthorized access.</li>
-          <li>Used for non‑commercial research and model development only.</li>
-        </ul>
-        <p class="small text-muted mb-0">
-          See the in‑app policy screen for additional details.
-        </p>
+        <div class="d-flex flex-column gap-3">
+          <div class="d-flex gap-3">
+            <i class="bi bi-shield-check text-success"></i>
+            <p class="small text-muted mb-0">Human speech is filtered; we do not publish clips containing speech. Published examples are anonymized.</p>
+          </div>
+          <div class="d-flex gap-3">
+            <i class="bi bi-geo text-primary"></i>
+            <p class="small text-muted mb-0">Location is optional and user‑controlled; when provided, it helps track species diversity and change over time.</p>
+          </div>
+          <div class="d-flex gap-3">
+            <i class="bi bi-lock text-primary"></i>
+            <p class="small text-muted mb-0">Data are stored securely to prevent unauthorized access.</p>
+          </div>
+          <div class="d-flex gap-3">
+            <i class="bi bi-mortarboard text-primary"></i>
+            <p class="small text-muted mb-0">Used for non‑commercial research and model development only.</p>
+          </div>
+        </div>
       </div>
       <div class="col-lg-6">
-        <h2 class="h5 section-title">Tips</h2>
-        <ul class="small text-muted mb-0">
-          <li>Move closer to the singing bird when possible.</li>
-          <li>Avoid handling noise (hold device steady while recording).</li>
-          <li>Limit overlapping sounds (traffic, voices) for better accuracy.</li>
-          <li>Try multiple short recordings if the first is uncertain.</li>
-        </ul>
+        <div class="card bg-dark text-white p-5 rounded-5 border-0 shadow-lg">
+          <h4 class="h5 fw-bold mb-3">Research Commitment</h4>
+          <p class="small text-white-50 mb-4">We are dedicated to open science and the protection of bird populations. Every data point shared through the BirdNET app contributes to a deeper understanding of our planet's biodiversity.</p>
+          <a href="{{ '/privacy/' | url }}" class="btn btn-outline-light px-4">Read Full Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-5">
+      <div class="col-lg-12">
+        <div class="card bg-light border-0 rounded-4 p-4 shadow-sm mb-5">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-8">
+              <h2 class="h5 fw-bold mb-2">Technical Tips</h2>
+              <p class="small text-muted mb-3">For best results, move closer to the singing bird when possible and hold your device steady to minimize handling noise. Avoiding traffic or other background sounds will significantly improve the model's accuracy.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-white text-muted border fw-normal">Minimize Noise</span>
+                <span class="badge bg-white text-muted border fw-normal">Steady Hold</span>
+                <span class="badge bg-white text-muted border fw-normal">High Quality Clipping</span>
+              </div>
+            </div>
+            <div class="col-md-4 text-md-end">
+              <i class="bi bi-lightbulb text-warning display-4"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- BirdNET Live (PWA) Promo -->
-    <div class="card shadow-sm border-primary mb-5">
-      <div class="card-body p-4">
+    <div class="card bg-dark text-white border-0 shadow-lg mb-5 rounded-4 overflow-hidden">
+      <div class="card-body p-5">
         <div class="row align-items-center">
           <div class="col-lg-8">
-            <h2 class="h5 text-primary mb-2">
-              BirdNET Live (Web App)
-            </h2>
-            <p class="mb-2">
-              Identify birds in real-time directly in your browser. <strong>BirdNET Live</strong> is a Progressive Web App (PWA) that processes sound locally on your device using TensorFlow.js.
-            </p>
-            <div class="row g-2 small text-muted mb-3">
+            <span class="section-label section-label-dark">BROWSER ID</span>
+            <h2 class="h3 fw-bold mb-3">BirdNET Live</h2>
+            <p class="mb-4 text-white text-opacity-75">Identify birds in real-time directly in your browser. <strong>BirdNET Live</strong> is a Progressive Web App (PWA) that processes sound locally on your device using TensorFlow.js—no audio ever leaves your phone.</p>
+            <div class="row g-3 small text-white text-opacity-50 mb-4">
               <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                  <li class="mb-1"><strong>Run offline:</strong> No audio uploaded, works without internet.</li>
-                  <li class="mb-1"><strong>Real-time:</strong> Instant spectrogram & predictions.</li>
-                </ul>
+                <div class="d-flex gap-2">
+                  <i class="bi bi-wifi-off"></i> <span>Works completely offline</span>
+                </div>
               </div>
               <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                  <li class="mb-1"><strong>Cross-platform:</strong> Desktop & mobile browsers.</li>
-                  <li class="mb-1"><strong>Location-aware:</strong> Filters by local species.</li>
-                </ul>
+                <div class="d-flex gap-2">
+                  <i class="bi bi-lightning-charge"></i> <span>Instant local inference</span>
+                </div>
               </div>
             </div>
-            <p class="small text-muted mb-0 fst-italic">
-              Note: This project is in active development. Features and performance may vary.
-            </p>
           </div>
-          <div class="col-lg-4 text-center text-lg-end mt-3 mt-lg-0">
-            <a href="https://birdnet-team.github.io/real-time-pwa/" class="btn btn-primary mb-2" target="_blank" rel="noopener">
-              Launch BirdNET Live ↗
+          <div class="col-lg-4 text-center text-lg-end">
+            <a href="https://birdnet-team.github.io/real-time-pwa/" class="btn btn-primary btn-lg px-4" target="_blank" rel="noopener">
+              Launch Web App
             </a>
-            <div class="small text-muted">
-              No install required.<br>Add to home screen for app-like experience.
-            </div>
           </div>
         </div>
       </div>
     </div>
-
 
     <!-- Support -->
-    <div class="row g-4 mb-4">
-      <div class="col-lg-8">
-        <h2 class="h5 section-title">Support & feedback</h2>
-        <p class="small text-muted mb-2">
-          If you encounter issues or have improvement suggestions, please use the feedback option in the app or contact the team.
+    <div class="row g-5 mb-5 pb-lg-4">
+      <div class="col-lg-7">
+        <div class="section-label mb-3">SUPPORT</div>
+        <h2 class="h3 fw-bold mb-4">Feedback & assistance</h2>
+        <p class="text-muted mb-4">
+          Encountering issues? Our team is active on GitHub and via email. Your feedback helps us improve the model and the application for everyone.
         </p>
-        <p class="small text-muted mb-0">
-          Email: <a href="mailto:ccb-birdnet@cornell.edu">ccb-birdnet@cornell.edu</a>
-        </p>
+        <a href="mailto:ccb-birdnet@cornell.edu" class="btn btn-outline-dark d-inline-flex align-items-center gap-2">
+          <i class="bi bi-envelope"></i> ccb-birdnet@cornell.edu
+        </a>
       </div>
-      <div class="col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-2">Get the app</h3>
-            <a href="https://play.google.com/store/apps/details?id=de.tu_chemnitz.mi.kahst.birdnet"
-               class="btn btn-dark btn-sm w-100 mb-2" target="_blank" rel="noopener">
-              Android ↗
-            </a>
-            <a href="https://apps.apple.com/us/app/birdnet/id1541842885"
-               class="btn btn-dark btn-sm w-100" target="_blank" rel="noopener">
-              iOS ↗
-            </a>
-            <p class="small text-muted mt-2 mb-0">Free download. Requires microphone access.</p>
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm rounded-4 h-100 p-4 bg-light bg-opacity-50">
+          <h3 class="h6 fw-bold mb-3">Download Latest Version</h3>
+          <div class="d-grid gap-2">
+             <a href="https://play.google.com/store/apps/details?id=de.tu_chemnitz.mi.kahst.birdnet" class="btn btn-dark text-start px-3 py-2 rounded-3" target="_blank">
+               <i class="bi bi-google-play me-2"></i> Android Release
+             </a>
+             <a href="https://apps.apple.com/us/app/birdnet/id1541842885" class="btn btn-dark text-start px-3 py-2 rounded-3" target="_blank">
+               <i class="bi bi-apple me-2"></i> iOS Release
+             </a>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 

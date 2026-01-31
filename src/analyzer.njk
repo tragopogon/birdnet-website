@@ -4,127 +4,150 @@ layout: layouts/base.njk
 permalink: "/analyzer/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">BirdNET-Analyzer</h1>
-    <p class="lead text-muted mb-0">
-      BirdNET-Analyzer is the workhorse tool for large-scale animal sound analysis, built for scientific workflows and
-      long-term monitoring.
+<div class="row align-items-center g-5 mb-5 pb-lg-4">
+  <div class="col-lg-6">
+    <span class="section-label">Research & Tools</span>
+    <h1 class="page-title mb-4">BirdNET-Analyzer</h1>
+    <p class="lead text-muted mb-5">
+      BirdNET-Analyzer is the workhorse tool for large-scale animal sound analysis, built for scientific workflows and long-term acoustic monitoring.
     </p>
-    <!-- BirdNET-Analyzer screenshot -->
-    <div class="mt-5 text-left">
+    <div class="d-flex flex-wrap gap-3">
+      <a href="https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest" target="_blank" class="btn btn-primary px-4 shadow-sm text-white">Download Release</a>
+      <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="btn btn-outline-dark px-4">Full Documentation</a>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="position-relative">
       <img
         src="{{ '/img/birdnet_analyzer_screenshot.png' | url }}"
         alt="BirdNET-Analyzer screenshot"
-        class="img-fluid rounded shadow-sm"
-        style="max-height: 400px; width: auto;">
+        class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+        style="width: 100%; object-fit: cover;">
     </div>
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row g-4">
+<div class="row g-5 pt-5">
       <div class="col-lg-7">
-        <h2 class="section-title h4">What it does</h2>
-        <p class="text-muted">
-          BirdNET-Analyzer applies BirdNET models to audio recordings to detect bird vocalizations and assign species
-          labels. It supports both interactive use and scripted batch processing, making it suitable for everything from
-          small pilot studies to multi-year monitoring projects.
+        <div class="section-label mb-3">OVERVIEW</div>
+        <h2 class="h3 fw-bold mb-4">Built for scale.</h2>
+        <p class="text-muted lead mb-4">
+          BirdNET-Analyzer applies state-of-the-art deep learning models to your audio recordings, transforming thousands of hours of sound into structured ecological data.
         </p>
-        <ul class="text-muted">
-          <li>Processes single files or entire directories of recordings.</li>
-          <li>Outputs detections with timestamps, species labels, and confidence scores.</li>
-          <li>Supports geographic and temporal constraints for more realistic species lists.</li>
-          <li>Provides a GUI and command-line workflows.</li>
-        </ul>
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Batch Processing</div>
+                <div class="smaller text-muted">Process entire directories of recordings automatically.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Confidence Scoring</div>
+                <div class="smaller text-muted">Precise probability estimates for every detection.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Spatial Filters</div>
+                <div class="smaller text-muted">Filter suggestions by location and date.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Multi-Format</div>
+                <div class="smaller text-muted">Support for MP3, WAV, FLAC, and more.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-5">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-2">Get BirdNET-Analyzer</h3>
-            <ul class="list-unstyled small mb-0">
-              <li class="mb-2">
-                <strong>Download:</strong><br>
-                <a href="https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest" target="_blank">
-                  BirdNET-Analyzer releases page
-                </a>
-              </li>
-              <li class="mb-2">
-                <strong>Documentation:</strong><br>
-                <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank">
-                  BirdNET-Analyzer documentation
-                </a>
-              </li>
-              <li class="mb-2">
-                <strong>Source code:</strong><br>
-                <a href="https://github.com/birdnet-team/BirdNET-Analyzer" target="_blank">
-                  github.com/birdnet-team/BirdNET-Analyzer
-                </a>
-              </li>
-              <li class="mb-2">
-                <strong>Python package:</strong><br>
-                <a href="https://pypi.org/project/birdnet-analyzer/" target="_blank">
-                  birdnet-analyzer on PyPI
-                </a>
-              </li>
-            </ul>
+        <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+          <div class="card-header bg-dark text-white p-4 border-0">
+            <h3 class="h6 text-uppercase mb-0 opacity-75">Quick Links</h3>
+          </div>
+          <div class="card-body p-4">
+            <div class="list-group list-group-flush">
+              <a href="https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Latest Releases</span>
+                <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+              <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Documentation</span>
+                <i class="bi bi-journal-text"></i>
+              </a>
+              <a href="https://github.com/birdnet-team/BirdNET-Analyzer" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Source Code</span>
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="https://pypi.org/project/birdnet-analyzer/" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>PyPI Package</span>
+                <i class="bi bi-box-seam"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <hr class="my-5">
-
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <h2 class="section-title h5">Key features</h2>
+    <!-- Features Section -->
+    <div class="row g-4 mt-5 pt-5 border-top">
+      <div class="col-lg-12">
+        <div class="section-label mb-3">FEATURES</div>
+        <h2 class="h3 fw-bold mb-5">Advanced capabilities.</h2>
       </div>
-      <div class="col-lg-8">
-        <div class="row row-cols-1 row-cols-md-2 g-3">
-          <div class="col">
-            <div class="card h-100 shadow-sm card-feature">
-              <div class="card-body">
-                <h3 class="h6">Large-scale processing</h3>
-                <p class="small text-muted mb-0">
-                  Designed to handle large deployments of passive acoustic recorders and thousands of hours of audio.
-                </p>
-              </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-speedometer2"></i>
             </div>
+            <h3 class="h6 fw-bold">Large-scale processing</h3>
+            <p class="small text-muted mb-0">
+              Designed to handle large deployments of passive acoustic recorders and thousands of hours of audio without manual intervention.
+            </p>
           </div>
+        </div>
+      </div>
 
-          <div class="col">
-            <div class="card h-100 shadow-sm card-feature">
-              <div class="card-body">
-                <h3 class="h6">Advanced models</h3>
-                <p class="small text-muted mb-0">
-                  Uses the latest BirdNET models, capable of recognizing thousands of bird species worldwide.
-                </p>
-              </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-cpu"></i>
             </div>
+            <h3 class="h6 fw-bold">State-of-the-Art Models</h3>
+            <p class="small text-muted mb-0">
+              Utilizes the latest BirdNET neural weights, optimized for high precision and recall across global species lists.
+            </p>
           </div>
+        </div>
+      </div>
 
-          <div class="col">
-            <div class="card h-100 shadow-sm card-feature">
-              <div class="card-body">
-                <h3 class="h6">Flexible outputs</h3>
-                <p class="small text-muted mb-0">
-                  Export detections as CSV or other formats for downstream analysis in R, Python, or GIS tools.
-                </p>
-              </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-terminal"></i>
             </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm card-feature">
-              <div class="card-body">
-                <h3 class="h6">Community workflows</h3>
-                <p class="small text-muted mb-0">
-                  A growing set of guides and scripts from the community show how to integrate BirdNET-Analyzer into
-                  existing monitoring pipelines.
-                </p>
-              </div>
-            </div>
+            <h3 class="h6 fw-bold">CLI & GUI Options</h3>
+            <p class="small text-muted mb-0">
+              Choose between a user-friendly graphical interface for manual verification or a robust CLI for server-side automation.
+            </p>
           </div>
         </div>
       </div>
@@ -212,5 +235,5 @@ permalink: "/analyzer/"
       </div>
     </div>
 
+    </div>
   </div>
-</section>

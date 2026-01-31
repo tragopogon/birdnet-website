@@ -4,23 +4,21 @@ layout: layouts/base.njk
 permalink: "/demo/"
 ---
 
-<!-- Page header -->
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">BirdNET Demo (Browser Inference)</h1>
+<div class="row mb-5 pb-lg-2">
+  <div class="col-lg-8">
+    <span class="section-label">LIVE INFERENCE</span>
+    <h1 class="page-title mb-4">BirdNET Demo</h1>
     <p class="lead text-muted mb-0">
-      Run BirdNET locally with TensorFlow.js. Optionally refine with geo (lat / lon).
+      Run BirdNET locally with TensorFlow.js. All audio is processed within your browser—nothing is uploaded.
     </p>
     <div class="text-muted small mt-4">
       Code adapted from
       <a href="https://github.com/georg95/birdnet-web" target="_blank" rel="noopener">georg95/birdnet-web</a>.
     </div>
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-
+<div class="pt-2 pb-5">
     <!-- Upload form / dropzone -->
     <form id="fileform" class="mb-4" enctype="multipart/form-data">
       <div id="dropzone" class="upload-dropzone text-center p-4 border border-dashed rounded bg-light">
@@ -129,7 +127,7 @@ permalink: "/demo/"
     </div>
 
   </div>
-</section>
+</div>
 
 <!-- Local JS vendor bundles -->
 <script src="{{ '/js/jquery-3.7.1.min.js' | url }}"></script>

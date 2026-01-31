@@ -4,32 +4,37 @@ layout: layouts/base.njk
 permalink: "/k12/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">K‑12</h1>
-    <p class="lead text-muted mb-0">
+<div class="row align-items-center g-5 mb-5 pb-lg-5">
+  <div class="col-lg-7">
+    <span class="section-label">Education</span>
+    <h1 class="page-title mb-4">K‑12 Resources</h1>
+    <p class="lead text-muted mb-4">
       Kid‑friendly projects that connect AI, birds, and curiosity — Schlaumeise (DE) and SmartFinch (EN).
     </p>
-    <!-- Schlaumeise logo -->
-    <div class="mt-3 text-left">
+    <p class="text-muted small">
+    For more information about our K‑12 initiatives, please contact:
+    <a href="mailto:raja-charlotte.seifert@informatik.tu-chemnitz.de">raja-charlotte.seifert@informatik.tu-chemnitz.de</a>
+    </p>
+  </div>
+  <div class="col-lg-5">
       <img
         src="{{ '/img/schlaumeise.png' | url }}"
         alt="Schlaumeise logo"
-        class="img-fluid"
-        style="max-width: 380px; height: auto;">
-    </div>
+        class="img-fluid rounded-4"
+        style="max-width: 100%; height: auto;">
   </div>
-</section>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <h2 class="section-title h5">What is this about?</h2>
-        <p class="text-muted">
-          Our K‑12 outreach introduces children and teens to nature, acoustics, and computing through hands‑on activities
-          powered by BirdNET. Projects range from simple listening exercises to building a low‑cost recording station.
-        </p>
+<div class="row g-5 pt-5">
+  <div class="col-lg-7">
+    <div class="section-label mb-3">OVERVIEW</div>
+    <h2 class="h3 fw-bold mb-4">What is this about?</h2>
+    <p class="text-muted lead mb-4">
+      Our K‑12 outreach introduces children and teens to nature, acoustics, and computing through hands‑on activities
+      powered by BirdNET. 
+    </p>
+    <div class="row g-4 mt-2">
+      <div class="col-md-12">
         <ul class="text-muted">
           <li>Learn about local birds, habitats, and sound.</li>
           <li>Explore how AI recognizes bird songs and calls.</li>
@@ -38,54 +43,48 @@ permalink: "/k12/"
         <p class="text-muted small mb-0">
           Note: Some materials are in active development and may change over time.
         </p>
-        <p class="text-muted small mt-3">
-        For more information about our K‑12 initiatives, please contact:
-        <a href="mailto:raja-charlotte.seifert@informatik.tu-chemnitz.de">raja-charlotte.seifert@informatik.tu-chemnitz.de</a>
-        </p>
-      </div>
-
-      <div class="col-lg-5">
-        <div class="card shadow-sm mb-3">
-          <div class="card-body">
-            <h3 class="h6 mb-1">Schlaumeise <span class="text-muted">(German)</span></h3>
-            <p class="small text-muted mb-3">
-              Interaktive Lernplattform mit Projekten rund um heimische Vögel, Akustik und KI — für Schule und Zuhause.
-            </p>
-            <a class="btn btn-outline-secondary btn-sm" href="https://rajsei.github.io/schlaumeise" target="_blank" rel="noopener">
-              Visit schlaumeise.org
-            </a>
-          </div>
-        </div>
-
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 mb-1">SmartFinch <span class="text-muted">(English)</span></h3>
-            <p class="small text-muted mb-3">
-              Kid‑friendly activities to explore birds, sound, and AI — from listening games to simple field devices.
-            </p>
-            <a class="btn btn-outline-secondary btn-sm" href="https://rajsei.github.io/schlaumeise" target="_blank" rel="noopener">
-              Visit smartfinch.org
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="my-5">
-
-    <div class="row g-4">
-      <div class="col-lg-6">
-        <h2 class="section-title h5">For classrooms</h2>
-        <p class="text-muted">
-          Ready‑to‑use activities for grades 1–12, plus background notes for educators.
-        </p>
-      </div>
-      <div class="col-lg-6">
-        <h2 class="section-title h5">For makers</h2>
-        <p class="text-muted">
-          Try a simple recorder build or analyze backyard soundscapes using BirdNET tools.
-        </p>
       </div>
     </div>
   </div>
-</section>
+
+  <div class="col-lg-5">
+    <div class="card shadow-sm mb-3 border-0 rounded-4">
+      <div class="card-body p-4">
+        <h3 class="h6 mb-2 text-uppercase text-muted">Schlaumeise <span class="text-muted small fw-normal">(German)</span></h3>
+        <p class="small text-muted mb-3">
+          Interaktive Lernplattform mit Projekten rund um heimische Vögel, Akustik und KI — für Schule und Zuhause.
+        </p>
+        <a class="btn btn-outline-primary btn-sm w-100" href="https://rajsei.github.io/schlaumeise" target="_blank" rel="noopener">
+          Visit schlaumeise.org
+        </a>
+      </div>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body p-4">
+        <h3 class="h6 mb-2 text-uppercase text-muted">SmartFinch <span class="text-muted small fw-normal">(English)</span></h3>
+        <p class="small text-muted mb-3">
+          Kid‑friendly activities to explore birds, sound, and AI — from listening games to simple field devices.
+        </p>
+        <a class="btn btn-outline-primary btn-sm w-100" href="https://rajsei.github.io/schlaumeise" target="_blank" rel="noopener">
+          Visit smartfinch.org
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-5 mt-5 pt-5 border-top pb-5">
+  <div class="col-lg-6">
+    <h2 class="section-title h5">For classrooms</h2>
+    <p class="text-muted">
+      Ready‑to‑use activities for grades 1–12, plus background notes for educators.
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <h2 class="section-title h5">For makers</h2>
+    <p class="text-muted">
+      Try a simple recorder build or analyze backyard soundscapes using BirdNET tools.
+    </p>
+  </div>
+</div>

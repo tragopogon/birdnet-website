@@ -4,63 +4,70 @@ layout: layouts/base.njk
 permalink: "/about/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">About BirdNET</h1>
+<div class="row align-items-center g-5 mb-5 pb-lg-4">
+  <div class="col-lg-7">
+    <span class="section-label">THE COLLABORATION</span>
+    <h1 class="page-title mb-4">About BirdNET</h1>
     <p class="lead text-muted mb-0">
-      BirdNET is a research collaboration that uses machine learning to recognize birds by sound and make acoustic
-      monitoring accessible to everyone.
+      BirdNET is a research collaboration using machine learning to monitor global biodiversity. We develop open-source tools that transform bioacoustics from a specialized field into a scalable solution for conservation.
     </p>
-    <!-- BirdNET about header -->
-    <div class="mt-5 text-left">
-      <img
-        src="{{ '/img/about_header.jpg' | url }}"
-        alt="BirdNET about header"
-        class="img-fluid rounded shadow-sm"
-        style="max-height: 400px; width: auto;">
-    </div>
   </div>
-</section>
+  <div class="col-lg-5">
+     <img
+      src="{{ '/img/about_header.jpg' | url }}"
+      alt="BirdNET about header"
+      class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+      style="width: 100%; object-fit: cover;">
+  </div>
+</div>
 
-<section class="py-5">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <h2 class="section-title h4">Mission</h2>
-        <p class="text-muted">
-          BirdNET aims to lower the barrier to using sound for biodiversity monitoring. By combining deep learning with
-          open tools and citizen science, we help track bird populations and support conservation decisions at local to
-          global scales.
-        </p>
-        <ul class="text-muted">
-          <li>Provide high-quality animal sound identification models.</li>
-          <li>Develop tools for large-scale passive acoustic monitoring.</li>
-          <li>Engage birders and the public through intuitive apps and web tools.</li>
-          <li>Support researchers with documented, reproducible workflows.</li>
-        </ul>
+<div class="row g-5 pt-5">
+  <div class="col-lg-7">
+    <div class="section-label mb-3">MISSION</div>
+    <h2 class="h3 fw-bold mb-4">Science-led conservation.</h2>
+    <p class="text-muted lead mb-4">
+      BirdNET aims to lower the barrier to using sound for biodiversity monitoring. By combining deep learning with open tools and citizen science, we help track bird populations and support conservation decisions at local to global scales.
+    </p>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <i class="bi bi-bullseye text-primary"></i>
+          <div>
+            <div class="fw-bold small">Precision Models</div>
+            <div class="smaller text-muted">High-quality animal sound identification for researchers.</div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-5">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h2 class="h6 text-uppercase text-muted mb-3">Collaboration</h2>
-            <p class="text-muted small mb-2">BirdNET is a joint effort between:</p>
-            <ul class="small text-muted">
-              <li>K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology</li>
-              <li>Chair of Media Informatics, Chemnitz University of Technology</li>
-            </ul>
-            <p class="text-muted small mb-0">
-              Supported by researchers, engineers, educators, and community contributors.
-            </p>
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <i class="bi bi-broadcast text-primary"></i>
+          <div>
+            <div class="fw-bold small">Scalable Monitoring</div>
+            <div class="smaller text-muted">Acoustic workflows for large-scale deployments.</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card shadow-sm h-100 border-0 rounded-4">
+      <div class="card-body p-4">
+        <h2 class="h6 text-uppercase text-muted mb-3">Collaboration</h2>
+        <p class="text-muted small mb-2">BirdNET is a joint effort between:</p>
+        <ul class="small text-muted">
+          <li>K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology</li>
+          <li>Chair of Media Informatics, Chemnitz University of Technology</li>
+        </ul>
+        <p class="text-muted small mb-0">
+          Supported by researchers, engineers, educators, and community contributors.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <hr class="my-5">
-
-    <!-- Why acoustic monitoring -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-6">
+<div class="row g-5 mt-5 pt-5 border-top">
+  <div class="col-lg-6">
         <h2 class="section-title h5">Why acoustic monitoring?</h2>
         <p class="text-muted">
           Many bird species are more easily detected by sound than sight—especially in dense vegetation, at night, or
@@ -203,10 +210,8 @@ permalink: "/about/"
       </div>
     </div>
 
-    <hr class="my-5">
-
     <!-- Funding -->
-    <div class="row g-4 mb-5">
+    <div class="row g-4 mt-5 pt-5 border-top">
       <div class="col-lg-8">
         <h2 class="section-title h5">Funding</h2>
         <p class="text-muted">
@@ -255,9 +260,7 @@ permalink: "/about/"
       </div>
     </div>
 
-    <hr class="my-5">
-
-    <div class="row g-4">
+    <div class="row g-4 mt-5 pt-5 border-top pb-5">
       <div class="col-lg-6">
         <h2 class="section-title h5">Contact</h2>
         <p class="text-muted">Questions about BirdNET research, tools, or collaborations:</p>
@@ -267,5 +270,3 @@ permalink: "/about/"
         </p>
       </div>
     </div>
-  </div>
-</section>
