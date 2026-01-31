@@ -159,8 +159,8 @@ section {
 .section-label {
   display: inline-block;
   padding: 0.2rem 0.6rem;
-  background: #f1f5f9;
-  color: #64748b;
+  background: rgba(26, 95, 180, 0.08);
+  color: var(--primary-color);
   font-weight: 600;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -235,15 +235,15 @@ section {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background: var(--primary-gradient);
   border: none;
-  box-shadow: 0 4px 6px rgba(26, 95, 180, 0.2);
+  box-shadow: 0 4px 12px rgba(26, 95, 180, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  background-color: #1c68c6;
-  box-shadow: 0 6px 12px rgba(26, 95, 180, 0.3);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 16px rgba(26, 95, 180, 0.4);
 }
 
 .btn-lg {
@@ -442,16 +442,18 @@ footer ul li a:hover {
   justify-content: center;
   width: 52px;
   height: 52px;
-  background: var(--primary-color);
+  background: var(--primary-gradient);
   color: #fff;
   border-radius: 0.75rem;
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
   transition: var(--transition-smooth);
+  box-shadow: 0 4px 10px rgba(26, 95, 180, 0.2);
 }
 
 .card:hover .icon-wrapper {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(26, 95, 180, 0.35);
 }
 
 .icon-wrapper.soft {
@@ -461,7 +463,7 @@ footer ul li a:hover {
 }
 
 .card:hover .icon-wrapper.soft {
-  background: var(--primary-color);
+  background: var(--primary-gradient);
   color: #fff;
 }
 
