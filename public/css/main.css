@@ -46,12 +46,7 @@ section.bg-dark, .bg-dark {
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-/* Increase global container width */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1500px;
-  }
-}
+/* Header & Navigation */
 
 .navbar {
   backdrop-filter: blur(8px);
@@ -161,10 +156,9 @@ section {
 }
 
 .page-header {
-  padding-top: 5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: #f8fafc;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  background-color: #ffffff;
 }
 
 .page-title {

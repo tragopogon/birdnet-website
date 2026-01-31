@@ -4,28 +4,30 @@ layout: layouts/base.njk
 permalink: "/publications/"
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1 class="page-title">Publications</h1>
+<div class="row mb-5">
+  <div class="col-lg-8">
+    <span class="section-label">SCIENTIFIC IMPACT</span>
+    <h1 class="page-title mb-4">Publications</h1>
     <p class="lead text-muted mb-0">
-      Selected peer-reviewed publications by our team and our collaborators that use BirdNET, BirdNET-derived embeddings, or BirdNET-based workflows.
+      Peer-reviewed research and conference proceedings that leverage BirdNET for large-scale ecological monitoring, machine learning development, and community-driven data collection.
     </p>
   </div>
-</section>
-
-<section class="py-5">
-  <div class="container">
+</div>
 
     {# Filter bar: clickable tag pills #}
-    <div class="mb-4" id="tagFilterControls">
-      <p class="small text-muted mb-4">
-        Click one or more tags to filter publications. Click again to deselect. Use Clear to reset.
-      </p>
-      <div class="d-flex flex-wrap align-items-center gap-2">
-        <div id="tagToggleBar" class="d-flex flex-wrap gap-2"></div>
-        <button type="button" id="clearTagFilter" class="btn btn-sm btn-secondary">Clear</button>
+    <div class="mb-5 p-4 bg-light rounded-4 border border-light-subtle" id="tagFilterControls">
+      <div class="row align-items-center">
+        <div class="col-lg-2">
+          <div class="fw-bold small mb-2 mb-lg-0">Filter by Topic:</div>
+        </div>
+        <div class="col-lg-10">
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <div id="tagToggleBar" class="d-flex flex-wrap gap-2"></div>
+            <button type="button" id="clearTagFilter" class="btn btn-sm btn-outline-secondary rounded-pill px-3">Clear Filters</button>
+          </div>
+        </div>
       </div>
-      <div id="activeTagChips" class="d-flex flex-wrap gap-1 mt-2"></div>
+      <div id="activeTagChips" class="d-flex flex-wrap gap-2 mt-3"></div>
     </div>
 
     {# Badge class helper for tags #}
@@ -45,9 +47,12 @@ permalink: "/publications/"
 
     {# Loop over groups by year #}
     {% for group in publications.byYear %}
-      <div class="mb-4 pub-year-group">
-        <h2 class="h5 text-uppercase text-muted mb-3">{{ group.year }}</h2>
-        <div class="row g-3">
+      <div class="mb-5 pub-year-group">
+        <h2 class="h5 fw-bold text-dark border-bottom pb-3 mb-4 d-flex align-items-center gap-3">
+          {{ group.year }}
+          <span class="badge bg-light text-muted fw-normal" style="font-size: 0.7rem;">{{ group.items | length }} Papers</span>
+        </h2>
+        <div class="row g-4">
           {% for p in group.items %}
             <div class="col-12">
               <div
