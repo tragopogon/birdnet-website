@@ -97,24 +97,34 @@ section.bg-dark, .bg-dark {
   padding: 8rem 2rem;
   color: #fff;
   background-size: cover;
-  background-position: center;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
+  background-position: center right;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
   .hero-landing {
     padding: 4rem 1rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    background-position: center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hero-landing {
+    padding: 0;
+    /* Matches original aspect ratio of blue_jay_1.jpg */
+    aspect-ratio: 3891 / 1783;
+    min-height: 450px;
   }
 }
 
 
 .hero-landing {
   background-image: url("../img/blue_jay_1.jpg");
+  background-repeat: no-repeat;
+  background-color: #020617;
 }
 
 .hero-overlay {
