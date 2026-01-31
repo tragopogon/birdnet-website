@@ -146,52 +146,63 @@ containerClass: container
 </section>
 
 <!-- How it works -->
-<section class="py-5 bg-dark text-white overflow-hidden">
+<section class="py-5">
   <div class="container py-lg-4">
-    <div class="row mb-5 justify-content-center text-center">
-      <div class="col-lg-7">
-        <span class="section-label mx-auto">Architecture</span>
-        <h2 class="display-6 fw-bold mb-3">How BirdNET works</h2>
-        <p class="text-white text-opacity-75">Our system uses artificial neural networks to identify bird species by their sounds.</p>
-      </div>
-    </div>
-    <div class="row g-4 align-items-stretch">
-      <div class="col-md-3">
-        <div class="h-100 p-4 border border-secondary border-opacity-25 rounded-4 bg-white bg-opacity-5">
-          <div class="icon-wrapper mb-4">
-            <i class="bi bi-mic"></i>
+    <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-4">
+      <div class="card-body p-4 p-lg-5 position-relative" style="z-index: 2;">
+        <div class="row mb-5 justify-content-center text-center">
+          <div class="col-lg-8">
+            <span class="section-label section-label-dark mx-auto">Architecture</span>
+            <h2 class="display-6 fw-bold mb-3">How BirdNET works</h2>
+            <p class="text-white text-opacity-75">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
           </div>
-          <h3 class="h5 fw-bold mb-3">Audio Input</h3>
-          <p class="small text-white text-opacity-50 mb-0">Recordings are captured via smartphone apps or passive acoustic recorders (PAM) in the field.</p>
+        </div>
+        <div class="row g-4 align-items-stretch">
+          <div class="col-md-3">
+            <div class="h-100 p-4 card-glass">
+              <div class="icon-wrapper mb-4">
+                <i class="bi bi-mic"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3">Signal Extraction</h3>
+              <p class="small text-white text-opacity-50 mb-0">Audio is resampled and segmented into 3-second windows, capturing the temporal structure of most avian vocalizations.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="h-100 p-4 card-glass">
+              <div class="icon-wrapper mb-4">
+                <i class="bi bi-soundwave"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3">Spectrogram Mapping</h3>
+              <p class="small text-white text-opacity-50 mb-0">Raw acoustic signals are transformed into log-scaled Mel-spectrograms, highlighting frequency patterns for neural processing.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="h-100 p-4 card-glass">
+              <div class="icon-wrapper mb-4">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3">Neural Inference</h3>
+              <p class="small text-white text-opacity-50 mb-0">A deep ResNet model analyzes spectrogram features, trained on millions of expert-vetted bird recordings from around the globe.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="h-100 p-4 card-glass">
+              <div class="icon-wrapper mb-4">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3">Contextual Filters</h3>
+              <p class="small text-white text-opacity-50 mb-0">Machine learning results are refined using location and date metadata—incorporating <strong>biogeographical priors</strong> to maximize precision.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <p class="small text-white text-opacity-50 mb-0">
+            Read the technical details in our <a href="https://doi.org/10.1016/j.ecoinf.2021.101236" target="_blank" class="text-white text-decoration-underline">primary publication</a> or explore the <a href="{{ '/about/' | url }}" class="text-white text-decoration-underline">recognition workflow</a>.
+          </p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="h-100 p-4 border border-secondary border-opacity-25 rounded-4 bg-white bg-opacity-5">
-          <div class="icon-wrapper mb-4">
-            <i class="bi bi-soundwave"></i>
-          </div>
-          <h3 class="h5 fw-bold mb-3">Spectrograms</h3>
-          <p class="small text-white text-opacity-50 mb-0">Raw audio is converted into visual representations of frequency over time (spectrogram blocks).</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="h-100 p-4 border border-secondary border-opacity-25 rounded-4 bg-white bg-opacity-5">
-          <div class="icon-wrapper mb-4">
-            <i class="bi bi-cpu"></i>
-          </div>
-          <h3 class="h5 fw-bold mb-3">Deep Learning</h3>
-          <p class="small text-white text-opacity-50 mb-0">Convolutional neural networks analyze the visual patterns to match them with species vocalizations.</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="h-100 p-4 border border-secondary border-opacity-25 rounded-4 bg-white bg-opacity-5">
-          <div class="icon-wrapper mb-4">
-            <i class="bi bi-check2-square"></i>
-          </div>
-          <h3 class="h5 fw-bold mb-3">Identification</h3>
-          <p class="small text-white text-opacity-50 mb-0">The system outputs species labels with confidence scores, allowing for automated sorting and validation.</p>
-        </div>
-      </div>
+      <!-- Background glow effect -->
+      <div class="position-absolute top-50 start-50 translate-middle" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(26, 95, 180, 0.15) 0%, transparent 75%); filter: blur(80px); z-index: 1;"></div>
     </div>
   </div>
 </section>
@@ -208,18 +219,25 @@ containerClass: container
         <div class="mb-5">
           <div class="d-flex gap-3 mb-3">
             <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Batch Processing:</strong> optimized for long-term monitoring data.</div>
+            <div><strong>Scalable Batch Processing:</strong> optimized for multi-terabyte passive acoustic datasets.</div>
           </div>
           <div class="d-flex gap-3 mb-3">
             <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Metadata Integration:</strong> filters results by location, date, and week.</div>
+            <div><strong>Intelligent Filtering:</strong> incorporate species occurrence data via biogeographical priors.</div>
+          </div>
+          <div class="d-flex gap-3 mb-3">
+            <i class="bi bi-check-circle-fill text-primary"></i>
+            <div><strong>Export & Integration:</strong> standardized CSV and JSON outputs for R, Python, and Raven Pro pipelines.</div>
           </div>
           <div class="d-flex gap-3">
             <i class="bi bi-check-circle-fill text-primary"></i>
-            <div><strong>Data Export:</strong> generates CSV and JSON for R and Python analysis.</div>
+            <div><strong>Local Privacy:</strong> perform analysis locally without uploading sensitive ecological data to the cloud.</div>
           </div>
         </div>
-        <a href="{{ '/analyzer/' | url }}" class="btn btn-primary btn-lg px-5">Get Started with Analyzer</a>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="{{ '/analyzer/' | url }}" class="btn btn-primary btn-lg px-5">Get Started with Analyzer</a>
+          <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="btn btn-outline-dark btn-lg px-4">Read Documentation</a>
+        </div>
       </div>
       <div class="col-lg-6">
         <div class="position-relative">
