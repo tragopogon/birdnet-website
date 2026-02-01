@@ -801,16 +801,25 @@ footer ul li a:hover {
   overflow: hidden;
 }
 
-.workflow-steps {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 2rem 1.5rem;
   position: relative;
   z-index: 2;
 }
 
+.workflow-step-group {
+  display: contents;
+}
+
+/* Desktop row alignment */
+.workflow-grid .step-item { grid-row: 1; }
+.workflow-grid .viz-panel { grid-row: 2; }
+.workflow-grid .step-desc { grid-row: 3; }
+
 .step-item {
-  flex: 1;
   text-align: center;
   position: relative;
   opacity: 0.4;
@@ -820,13 +829,12 @@ footer ul li a:hover {
 
 .step-item .smaller {
   display: inline-block;
-  background: #212529; /* Darker background matching the card to mask the line */
   padding: 0 10px;
 }
 
 .step-item.active {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .step-item.active .icon-wrapper {
@@ -836,9 +844,9 @@ footer ul li a:hover {
 
 .workflow-progress-track {
   position: absolute;
-  top: 74px;
-  left: 0;
-  right: 0;
+  top: 100px;
+  left: 3rem;
+  right: 3rem;
   height: 2px;
   background: rgba(255, 255, 255, 0.1);
   z-index: 1;
@@ -855,17 +863,8 @@ footer ul li a:hover {
   transition: width 0.3s ease;
 }
 
-.viz-canvas-wrap {
-  height: 120px;
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
 .viz-panel {
-  flex: 1;
-  height: 100%;
+  height: 120px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 1rem;
   padding: 1rem;
@@ -887,11 +886,53 @@ footer ul li a:hover {
 .step-desc {
   transition: opacity 0.3s ease, color 0.3s ease;
   opacity: 0.5;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .step-desc.active {
   opacity: 1 !important;
   color: #fff !important;
+}
+
+/* Mobile stacking */
+@media (max-width: 991.98px) {
+  .workflow-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  .workflow-step-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  /* On mobile, each group is a column, so classes don't need grid-row overrides */
+  .workflow-grid .step-item, 
+  .workflow-grid .viz-panel, 
+  .workflow-grid .step-desc { 
+    grid-row: auto; 
+  }
+  
+  .step-item {
+    opacity: 1;
+    transform: none !important;
+    flex: none;
+    width: 100%;
+  }
+  .viz-panel {
+    width: 100%;
+    max-width: 450px;
+    height: 140px;
+  }
+  .step-desc {
+    opacity: 0.7;
+    max-width: 500px;
+  }
+  .step-desc.active {
+    opacity: 1;
+  }
 }
 
 .viz-panel canvas {
@@ -946,17 +987,3 @@ footer ul li a:hover {
   r: 4;
 }
 
-.pulse-node {
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 74px;
-  left: 0;
-  transform: translate(-50%, -50%);
-  filter: blur(1px);
-  box-shadow: 0 0 10px #fff;
-  z-index: 3;
-  display: none;
-}

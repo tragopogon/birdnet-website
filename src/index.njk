@@ -193,90 +193,84 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <!-- Workflow Visualization -->
-        <div class="workflow-viz-container d-none d-lg-block mb-5">
-            <div class="workflow-steps">
-                <div class="step-item active" data-step="1">
-                    <div class="icon-wrapper mx-auto mb-2">
-                        <i class="bi bi-mic"></i>
-                    </div>
-                    <div class="smaller fw-bold">1. Capture</div>
-                </div>
-                <div class="step-item" data-step="2">
-                    <div class="icon-wrapper mx-auto mb-2">
-                        <i class="bi bi-soundwave"></i>
-                    </div>
-                    <div class="smaller fw-bold">2. Spectrogram</div>
-                </div>
-                <div class="step-item" data-step="3">
-                    <div class="icon-wrapper mx-auto mb-2">
-                        <i class="bi bi-cpu"></i>
-                    </div>
-                    <div class="smaller fw-bold">3. Neural Net</div>
-                </div>
-                <div class="step-item" data-step="4">
-                    <div class="icon-wrapper mx-auto mb-2">
-                        <i class="bi bi-check2-circle"></i>
-                    </div>
-                    <div class="smaller fw-bold">4. Result</div>
-                </div>
-                
-                <div class="workflow-progress-track">
-                    <div class="workflow-progress-bar" id="viz-progress"></div>
-                </div>
-                <div class="pulse-node" id="viz-pulse"></div>
+        <div class="workflow-viz-container mb-5">
+            <div class="workflow-progress-track d-none d-lg-block">
+                <div class="workflow-progress-bar" id="viz-progress"></div>
             </div>
 
-            <div class="viz-canvas-wrap">
-                <div class="viz-panel" id="panel-1">
-                    <!-- Prerendered Waveform from JSON -->
-                    <svg viewBox="0 0 200 60" width="100%" height="100%" preserveAspectRatio="none">
-                        {% set d = "M0,30" %}
-                        {% for peak in bluejay.peaks %}
-                            {% set x = loop.index0 %}
-                            {% set y = 30 - (peak * 150) %}
-                            {% set d = d + " L" + x + "," + y %}
-                        {% endfor %}
-                        {% for peak in bluejay.peaks | reverse %}
-                            {% set x = 199 - loop.index0 %}
-                            {% set y = 30 + (peak * 150) %}
-                            {% set d = d + " L" + x + "," + y %}
-                        {% endfor %}
-                        <path d="{{ d }} Z" fill="rgba(255,255,255,0.9)" stroke="none" />
-                    </svg>
+            <div class="workflow-grid">
+                <!-- Step 1 -->
+                <div class="workflow-step-group">
+                    <div class="step-item active" data-step="1">
+                        <div class="icon-wrapper mx-auto mb-2">
+                            <i class="bi bi-mic"></i>
+                        </div>
+                        <div class="smaller fw-bold">1. Capture</div>
+                    </div>
+                    <div class="viz-panel active" id="panel-1">
+                        <!-- Prerendered Waveform from JSON -->
+                        <svg viewBox="0 0 200 60" width="100%" height="100%" preserveAspectRatio="none">
+                            {% set d = "M0,30" %}
+                            {% for peak in bluejay.peaks %}
+                                {% set x = loop.index0 %}
+                                {% set y = 30 - (peak * 28) %}
+                                {% set d = d + " L" + x + "," + y %}
+                            {% endfor %}
+                            {% for peak in bluejay.peaks | reverse %}
+                                {% set x = 199 - loop.index0 %}
+                                {% set y = 30 + (peak * 28) %}
+                                {% set d = d + " L" + x + "," + y %}
+                            {% endfor %}
+                            <path d="{{ d }} Z" fill="rgba(255,255,255,0.9)" stroke="none" />
+                        </svg>
+                    </div>
+                    <p class="small text-white-50 mb-0 step-desc text-center">Audio is captured at 48 kHz and divided into 3-second segments, optimizing the balance between model input size and the natural duration of avian vocalizations.</p>
                 </div>
-                <div class="viz-panel" id="panel-2">
-                    <!-- Prerendered Spectrogram -->
-                    <canvas id="canvas-spectrogram-static" width="200" height="60" style="width:100%; height:100%;"></canvas>
+
+                <!-- Step 2 -->
+                <div class="workflow-step-group">
+                    <div class="step-item" data-step="2">
+                        <div class="icon-wrapper mx-auto mb-2">
+                            <i class="bi bi-soundwave"></i>
+                        </div>
+                        <div class="smaller fw-bold">2. Spectrogram</div>
+                    </div>
+                    <div class="viz-panel" id="panel-2">
+                        <!-- Prerendered Spectrogram -->
+                        <canvas id="canvas-spectrogram-static" width="200" height="60" style="width:100%; height:100%;"></canvas>
+                    </div>
+                    <p class="small text-white-50 mb-0 step-desc text-center">Signals are processed into two log-scaled Mel-spectrograms, visualizing frequency patterns from 0 to 3 kHz and 150 Hz to 15 kHz for detailed analysis.</p>
                 </div>
-                <div class="viz-panel" id="panel-3">
-                    <svg id="nn-svg" class="nn-svg" viewBox="0 0 200 80" preserveAspectRatio="xMidYMid meet"></svg>
+
+                <!-- Step 3 -->
+                <div class="workflow-step-group">
+                    <div class="step-item" data-step="3">
+                        <div class="icon-wrapper mx-auto mb-2">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <div class="smaller fw-bold">3. Neural Net</div>
+                    </div>
+                    <div class="viz-panel" id="panel-3">
+                        <svg id="nn-svg" class="nn-svg" viewBox="0 0 200 80" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                    <p class="small text-white-50 mb-0 step-desc text-center">A Convolutional Neural Network (CNN) scans these visuals, utilizing millions of trained weights to detect species-specific patterns.</p>
                 </div>
-                <div class="viz-panel" id="panel-4">
-                    <canvas id="canvas-results"></canvas>
+
+                <!-- Step 4 -->
+                <div class="workflow-step-group">
+                    <div class="step-item" data-step="4">
+                        <div class="icon-wrapper mx-auto mb-2">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="smaller fw-bold">4. Result</div>
+                    </div>
+                    <div class="viz-panel" id="panel-4">
+                        <canvas id="canvas-results"></canvas>
+                    </div>
+                    <p class="small text-white-50 mb-0 step-desc text-center">Initial predictions are cross-referenced with local metadata (location and date) to produce high-confidence species probabilities.</p>
                 </div>
             </div>
-
-            <div class="row g-4 mt-3">
-              <div class="col-lg-3 text-center">
-                <p class="small text-white-50 mb-0 step-desc">Audio is captured at 48kHz and divided into 3-second segments, optimizing the balance between model input size and the natural duration of avian vocalizations.</p>
-              </div>
-              <div class="col-lg-3 text-center">
-                <p class="small text-white-50 mb-0 step-desc">Signals are processed into dual log-scaled Mel-spectrograms, visualizing frequency patterns from 0 to 15 kHz for detailed analysis.</p>
-              </div>
-              <div class="col-lg-3 text-center">
-                <p class="small text-white-50 mb-0 step-desc">A Convolutional Neural Network (CNN) scans these visuals, utilizing millions of trained weights to detect specific avian vocalizations.</p>
-              </div>
-              <div class="col-lg-3 text-center">
-                <p class="small text-white-50 mb-0 step-desc">Initial predictions are cross-referenced with local metadata (location and date) to produce high-confidence species probabilities.</p>
-              </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-5">
-          <p class="small text-white mb-0">
-            Read the technical details in our <a href="https://doi.org/10.1016/j.ecoinf.2021.101236" target="_blank" class="text-white text-decoration-underline">primary publication</a> or explore the <a href="{{ '/about/' | url }}" class="text-white text-decoration-underline">recognition workflow</a>.
-          </p>
-        </div>
+        </div>   
       </div>
       <!-- Background glow effect -->
       <div class="position-absolute top-50 start-50 translate-middle" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(26, 95, 180, 0.15) 0%, transparent 75%); filter: blur(80px); z-index: 1;"></div>
@@ -284,12 +278,20 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
+<!-- Data injection for workflow animation -->
+<div id="workflow-data" 
+     data-peaks='{{ bluejay.peaks | dump | safe }}'
+     data-spectrogram='{{ bluejay.spectrogram | dump | safe }}'
+     style="display: none;">
+</div>
+
 <script src="{{ '/js/chart.umd-4.4.1.min.js' | url }}"></script>
 <script>
-    // Inject data for the workflow animation
+    // Extract data from hidden element to avoid JS syntax errors in templates
+    const dataEl = document.getElementById('workflow-data');
     window.BIRDNET_DATA = {
-        peaks: {{ bluejay.peaks | dump | safe }},
-        spectrogram: {{ bluejay.spectrogram | dump | safe }}
+        peaks: JSON.parse(dataEl.dataset.peaks),
+        spectrogram: JSON.parse(dataEl.dataset.spectrogram)
     };
 </script>
 <script src="{{ '/js/workflow-animation.js' | url }}"></script>
