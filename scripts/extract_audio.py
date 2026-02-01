@@ -3,7 +3,7 @@ import numpy as np
 import librosa
 import os
 
-def extract_audio_data(file_path, output_json, n_peaks=400, spec_shape=(20, 200)):
+def extract_audio_data(file_path, output_json, n_peaks=400, spec_shape=(50, 300)):
     """
     Extracts waveform peaks and a simplified spectrogram from an audio file.
     Requires: librosa, numpy
@@ -23,6 +23,11 @@ def extract_audio_data(file_path, output_json, n_peaks=400, spec_shape=(20, 200)
             peaks.append(float(np.max(np.abs(chunk))))
         else:
             peaks.append(0.0)
+
+    # Normalize peaks to 0-1 range
+    max_peak = max(peaks) if peaks else 1
+    if max_peak > 0:
+        peaks = [p / max_peak for p in peaks]
     
     # Calculate spectrogram
     S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
