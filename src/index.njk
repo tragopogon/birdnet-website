@@ -188,47 +188,94 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="col-lg-8">
             <span class="section-label section-label-dark mx-auto">Architecture</span>
             <h2 class="display-6 fw-bold mb-3">How BirdNET works</h2>
-            <p class="text-white text-opacity-75">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
+            <p class="text-white text-opacity-75 mb-5">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
           </div>
         </div>
-        <div class="row g-4 align-items-stretch">
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-mic"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Signal Extraction</h3>
-              <p class="small text-white text-opacity-50 mb-0">Audio is resampled and segmented into 3-second windows, capturing the temporal structure of most avian vocalizations.</p>
+
+        <!-- Workflow Visualization -->
+        <div class="workflow-viz-container d-none d-lg-block mb-5">
+            <div class="workflow-steps">
+                <div class="step-item active" data-step="1">
+                    <div class="icon-wrapper mx-auto mb-2">
+                        <i class="bi bi-mic"></i>
+                    </div>
+                    <div class="smaller fw-bold">1. Capture</div>
+                </div>
+                <div class="step-item" data-step="2">
+                    <div class="icon-wrapper mx-auto mb-2">
+                        <i class="bi bi-soundwave"></i>
+                    </div>
+                    <div class="smaller fw-bold">2. Spectrogram</div>
+                </div>
+                <div class="step-item" data-step="3">
+                    <div class="icon-wrapper mx-auto mb-2">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                    <div class="smaller fw-bold">3. Neural Net</div>
+                </div>
+                <div class="step-item" data-step="4">
+                    <div class="icon-wrapper mx-auto mb-2">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+                    <div class="smaller fw-bold">4. Result</div>
+                </div>
+                
+                <div class="workflow-progress-track">
+                    <div class="workflow-progress-bar" id="viz-progress"></div>
+                </div>
+                <div class="pulse-node" id="viz-pulse"></div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-soundwave"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Spectrogram Mapping</h3>
-              <p class="small text-white text-opacity-50 mb-0">Raw acoustic signals are transformed into log-scaled Mel-spectrograms, highlighting frequency patterns for neural processing.</p>
+
+            <div class="viz-canvas-wrap">
+                <div class="viz-panel" id="panel-1">
+                    <!-- Prerendered Waveform from JSON -->
+                    <svg viewBox="0 0 200 60" width="100%" height="100%" preserveAspectRatio="none">
+                        {% set d = "M0,30" %}
+                        {% for peak in bluejay.peaks %}
+                            {% set x = loop.index0 %}
+                            {% set y = 30 - (peak * 25) %}
+                            {% set d = d + " L" + x + "," + y %}
+                        {% endfor %}
+                        {% for peak in bluejay.peaks | reverse %}
+                            {% set x = 199 - loop.index0 %}
+                            {% set y = 30 + (peak * 25) %}
+                            {% set d = d + " L" + x + "," + y %}
+                        {% endfor %}
+                        <path d="{{ d }} Z" fill="rgba(255,255,255,0.4)" stroke="none" />
+                        <rect id="waveform-progress" x="0" y="0" width="0" height="60" fill="rgba(255,255,255,0.15)" />
+                    </svg>
+                </div>
+                <div class="viz-panel" id="panel-2">
+                    <!-- Prerendered Spectrogram -->
+                    <canvas id="canvas-spectrogram-static" width="200" height="60" style="width:100%; height:100%; opacity: 0.8;"></canvas>
+                    <div class="spec-overlay" id="spec-progress"></div>
+                </div>
+                <div class="viz-panel" id="panel-3">
+                    <div class="nn-grid" id="nn-nodes">
+                        <!-- Nodes generated by JS -->
+                    </div>
+                </div>
+                <div class="viz-panel" id="panel-4">
+                    <canvas id="canvas-results"></canvas>
+                </div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-cpu"></i>
+
+            <div class="row g-4 mt-3">
+              <div class="col-lg-3 text-center">
+                <p class="small text-white text-opacity-50 mb-0">Audio is resampled and segmented into 5-second windows for analysis.</p>
               </div>
-              <h3 class="h5 fw-bold mb-3">Neural Inference</h3>
-              <p class="small text-white text-opacity-50 mb-0">A deep ResNet model analyzes spectrogram features, trained on millions of expert-vetted bird recordings from around the globe.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-geo-alt"></i>
+              <div class="col-lg-3 text-center">
+                <p class="small text-white text-opacity-50 mb-0">Raw acoustic signals are transformed into log-scaled Mel-spectrograms.</p>
               </div>
-              <h3 class="h5 fw-bold mb-3">Contextual Filters</h3>
-              <p class="small text-white text-opacity-50 mb-0">Machine learning results are refined using location and date metadata—incorporating <strong>biogeographical priors</strong> to maximize precision.</p>
+              <div class="col-lg-3 text-center">
+                <p class="small text-white text-opacity-50 mb-0">A deep ResNet model analyzes features across millions of recordings.</p>
+              </div>
+              <div class="col-lg-3 text-center">
+                <p class="small text-white text-opacity-50 mb-0">Results are filtered using precise location and date metadata.</p>
+              </div>
             </div>
-          </div>
         </div>
+
         <div class="text-center mt-5">
           <p class="small text-white text-opacity-50 mb-0">
             Read the technical details in our <a href="https://doi.org/10.1016/j.ecoinf.2021.101236" target="_blank" class="text-white text-decoration-underline">primary publication</a> or explore the <a href="{{ '/about/' | url }}" class="text-white text-decoration-underline">recognition workflow</a>.
@@ -240,6 +287,158 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </section>
+
+<script src="{{ '/js/chart.umd-4.4.1.min.js' | url }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Initialize Neural Nodes
+    const nnContainer = document.getElementById('nn-nodes');
+    if (nnContainer) {
+        for (let i = 0; i < 24; i++) {
+            const node = document.createElement('div');
+            node.className = 'nn-node';
+            nnContainer.appendChild(node);
+        }
+    }
+
+    // 2. Initialize Chart.js for Results
+    const canvasResults = document.getElementById('canvas-results');
+    let resultsChart = null;
+
+    // Prerender Spectrogram Data onto Canvas
+    const specData = {{ bluejay.spectrogram | dump | safe }};
+    const specCanvas = document.getElementById('canvas-spectrogram-static');
+    if (specCanvas && specData) {
+        const ctx = specCanvas.getContext('2d');
+        const rows = specData.length;
+        const cols = specData[0].length;
+        const cellW = specCanvas.width / cols;
+        const cellH = specCanvas.height / rows;
+
+        specData.forEach((row, r) => {
+            row.forEach((val, c) => {
+                if (val > 0.05) {
+                    // Magma-style coloring: purple -> orange -> yellow
+                    const rV = Math.floor(255 * Math.min(1, val * 1.5));
+                    const gV = Math.floor(255 * Math.pow(val, 2));
+                    const bV = Math.floor(255 * Math.pow(1 - val, 3));
+                    
+                    ctx.fillStyle = `rgba(${rV}, ${gV}, ${bV}, ${val})`;
+                    // Flip Y: low frequencies (index 0) at the bottom
+                    ctx.fillRect(c * cellW, (rows - 1 - r) * cellH, cellW + 0.5, cellH + 0.5);
+                }
+            });
+        });
+    }
+
+    if (canvasResults) {
+        resultsChart = new Chart(canvasResults.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Cyanocitta cristata', 'Turdus migratorius', 'Passer domesticus'],
+                datasets: [{
+                    data: [0, 0, 0],
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    borderRadius: 4,
+                    barThickness: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false, max: 1, min: 0 },
+                    y: { 
+                        ticks: { color: 'rgba(255,255,255,0.7)', font: { size: 9, family: 'monospace' } }, 
+                        grid: { display: false },
+                        border: { display: false }
+                    }
+                }
+            }
+        });
+    }
+
+    // 3. Animation State
+    const steps = document.querySelectorAll('.step-item');
+    const progressBar = document.getElementById('viz-progress');
+    const waveformProgress = document.getElementById('waveform-progress');
+    const specProgress = document.getElementById('spec-progress');
+    let currentStep = 0;
+
+    function animateProgress(el, duration, callback) {
+        if (!el) return;
+        el.style.transition = 'none';
+        el.style.width = '0%';
+        setTimeout(() => {
+            el.style.transition = `width ${duration}ms linear`;
+            el.style.width = '100%';
+        }, 50);
+    }
+
+    function flashNodes() {
+        const nodes = document.querySelectorAll('.nn-node');
+        if (!nodes.length) return;
+        const interval = setInterval(() => {
+            if (currentStep !== 3) {
+                clearInterval(interval);
+                nodes.forEach(n => n.classList.remove('flash'));
+                return;
+            }
+            nodes.forEach(n => {
+                n.classList.toggle('flash', Math.random() > 0.7);
+            });
+        }, 150);
+    }
+
+    function updateChart() {
+        if (!resultsChart) return;
+        const interval = setInterval(() => {
+            if (currentStep !== 4) {
+                clearInterval(interval);
+                resultsChart.data.datasets[0].data = [0, 0, 0];
+                resultsChart.update('none');
+                return;
+            }
+            resultsChart.data.datasets[0].data = [
+                0.94 + Math.random() * 0.04,
+                0.04 + Math.random() * 0.02,
+                0.01 + Math.random() * 0.01
+            ];
+            resultsChart.update('none');
+        }, 200);
+    }
+
+    function runCycle() {
+        currentStep = (currentStep % 4) + 1;
+        
+        steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step) === currentStep));
+        if (progressBar) progressBar.style.width = ((currentStep - 1) * 33.3) + '%';
+        
+        // Reset and animate local progress indicators
+        if (waveformProgress) waveformProgress.style.width = '0%';
+        if (specProgress) specProgress.style.width = '0%';
+
+        if (currentStep === 1) animateProgress(waveformProgress, 5000);
+        if (currentStep === 2) animateProgress(specProgress, 5000);
+        if (currentStep === 3) flashNodes();
+        if (currentStep === 4) updateChart();
+        
+        setTimeout(runCycle, 5000);
+    }
+
+    // Start cycle if in view
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && currentStep === 0) {
+            runCycle();
+        }
+    }, { threshold: 0.5 });
+
+    const container = document.querySelector('.workflow-viz-container');
+    if (container) observer.observe(container);
+});
+</script>
 
 <section class="py-5 bg-light">
   <div class="container">
