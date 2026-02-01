@@ -18,6 +18,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "node_modules/bootstrap-icons/font/fonts": "vendor/bootstrap-icons/fonts",
   });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fortawesome/fontawesome-free/css/all.min.css": "vendor/fontawesome/css/all.min.css",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fortawesome/fontawesome-free/webfonts": "vendor/fontawesome/webfonts",
+  });
 
   // Shortcode for current year
   eleventyConfig.addShortcode("year", () => new Date().getFullYear());

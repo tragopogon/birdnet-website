@@ -618,3 +618,125 @@ footer ul li a:hover {
 .hover-lift:hover {
     transform: translateY(-5px);
 }
+
+/* Projects Map Styles */
+#projects-map {
+    height: 700px;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+.map-popup .leaflet-popup-content-wrapper {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.85rem;
+}
+.map-popup .leaflet-popup-content {
+    margin: 0;
+    width: 280px !important;
+}
+.popup-header {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff;
+}
+.popup-image-container {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+}
+.popup-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.popup-header-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+.popup-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+    color: #1a1e21;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.popup-org {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.popup-body {
+    padding: 0 1rem 1rem 1rem;
+}
+.popup-meta-item {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    color: #495057;
+}
+.popup-meta-item i {
+    font-size: 0.85rem;
+    color: var(--bs-primary);
+}
+.popup-links {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f3f5;
+    display: flex;
+    gap: 0.5rem;
+}
+.popup-links .btn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 0.4rem;
+    flex: 1;
+    text-align: center;
+}
+.marker-cluster-small {
+    background-color: rgba(67, 97, 238, 0.4);
+}
+.marker-cluster-small div {
+    background-color: rgba(67, 97, 238, 0.8);
+    color: white;
+}
+.custom-marker {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid var(--bs-primary);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 30px !important;
+    height: 30px !important;
+}
+.custom-marker i {
+    color: var(--bs-primary);
+    font-size: 1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
