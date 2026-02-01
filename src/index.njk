@@ -305,32 +305,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvasResults = document.getElementById('canvas-results');
     let resultsChart = null;
 
-    // Prerender Spectrogram Data onto Canvas
-    const specData = {{ bluejay.spectrogram | dump | safe }};
-    const specCanvas = document.getElementById('canvas-spectrogram-static');
-    if (specCanvas && specData) {
-        const ctx = specCanvas.getContext('2d');
-        const rows = specData.length;
-        const cols = specData[0].length;
-        const cellW = specCanvas.width / cols;
-        const cellH = specCanvas.height / rows;
-
-        specData.forEach((row, r) => {
-            row.forEach((val, c) => {
-                if (val > 0.05) {
-                    // Magma-style coloring: purple -> orange -> yellow
-                    const rV = Math.floor(255 * Math.min(1, val * 1.5));
-                    const gV = Math.floor(255 * Math.pow(val, 2));
-                    const bV = Math.floor(255 * Math.pow(1 - val, 3));
-                    
-                    ctx.fillStyle = `rgba(${rV}, ${gV}, ${bV}, ${val})`;
-                    // Flip Y: low frequencies (index 0) at the bottom
-                    ctx.fillRect(c * cellW, (rows - 1 - r) * cellH, cellW + 0.5, cellH + 0.5);
-                }
-            });
-        });
-    }
-
     if (canvasResults) {
         resultsChart = new Chart(canvasResults.getContext('2d'), {
             type: 'bar',
@@ -347,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false, // Smoothness
                 plugins: { legend: { display: false } },
                 scales: {
                     x: { display: false, max: 1, min: 0 },
@@ -363,77 +338,126 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. Animation State
     const steps = document.querySelectorAll('.step-item');
     const progressBar = document.getElementById('viz-progress');
-    const waveformProgress = document.getElementById('waveform-progress');
-    const specProgress = document.getElementById('spec-progress');
+    const waveformPath = document.querySelector('#panel-1 svg path');
+    const specCanvas = document.getElementById('canvas-spectrogram-static');
+    
     let currentStep = 0;
+    const CYCLE_TIME = 3000;
+    const DATA_DURATION = 7.0;
+    const WINDOW_DURATION = 3.0;
+    
+    const peaks = {{ bluejay.peaks | dump | safe }};
+    const specData = {{ bluejay.spectrogram | dump | safe }};
 
-    function animateProgress(el, duration, callback) {
-        if (!el) return;
-        el.style.transition = 'none';
-        el.style.width = '0%';
-        setTimeout(() => {
-            el.style.transition = `width ${duration}ms linear`;
-            el.style.width = '100%';
-        }, 50);
+    function updateWaveform(timeOffset) {
+        if (!waveformPath) return;
+        const totalPeaks = peaks.length;
+        const windowSize = Math.floor(totalPeaks * (WINDOW_DURATION / DATA_DURATION));
+        const startIdx = Math.floor(totalPeaks * (timeOffset / DATA_DURATION)) % totalPeaks;
+        
+        let d = "M0,30";
+        for (let i = 0; i < windowSize; i++) {
+            const idx = (startIdx + i) % totalPeaks;
+            const x = (i / windowSize) * 200;
+            const y = 30 - (peaks[idx] * 25);
+            d += ` L${x.toFixed(1)},${y.toFixed(1)}`;
+        }
+        for (let i = windowSize - 1; i >= 0; i--) {
+            const idx = (startIdx + i) % totalPeaks;
+            const x = (i / windowSize) * 200;
+            const y = 30 + (peaks[idx] * 25);
+            d += ` L${x.toFixed(1)},${y.toFixed(1)}`;
+        }
+        waveformPath.setAttribute('d', d + " Z");
+    }
+
+    function updateSpectrogram(timeOffset) {
+        if (!specCanvas || !specData) return;
+        const ctx = specCanvas.getContext('2d');
+        const rows = specData.length;
+        const totalCols = specData[0].length;
+        const windowCols = Math.floor(totalCols * (WINDOW_DURATION / DATA_DURATION));
+        const startCol = Math.floor(totalCols * (timeOffset / DATA_DURATION)) % totalCols;
+
+        ctx.clearRect(0, 0, specCanvas.width, specCanvas.height);
+        const cellW = specCanvas.width / windowCols;
+        const cellH = specCanvas.height / rows;
+
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < windowCols; c++) {
+                const colIdx = (startCol + c) % totalCols;
+                const val = specData[r][colIdx];
+                if (val > 0.05) {
+                    const rV = Math.floor(255 * Math.min(1, val * 1.5));
+                    const gV = Math.floor(255 * Math.pow(val, 2));
+                    const bV = Math.floor(255 * Math.pow(1 - val, 3));
+                    ctx.fillStyle = `rgba(${rV}, ${gV}, ${bV}, ${val})`;
+                    ctx.fillRect(c * cellW, (rows - 1 - r) * cellH, cellW + 0.5, cellH + 0.5);
+                }
+            }
+        }
     }
 
     function flashNodes() {
         const nodes = document.querySelectorAll('.nn-node');
-        if (!nodes.length) return;
-        const interval = setInterval(() => {
-            if (currentStep !== 3) {
-                clearInterval(interval);
-                nodes.forEach(n => n.classList.remove('flash'));
-                return;
+        nodes.forEach(n => {
+            if (Math.random() > 0.9) {
+                n.classList.add('flash');
+                setTimeout(() => n.classList.remove('flash'), 100);
             }
-            nodes.forEach(n => {
-                n.classList.toggle('flash', Math.random() > 0.7);
-            });
-        }, 150);
+        });
     }
 
     function updateChart() {
         if (!resultsChart) return;
-        const interval = setInterval(() => {
-            if (currentStep !== 4) {
-                clearInterval(interval);
-                resultsChart.data.datasets[0].data = [0, 0, 0];
-                resultsChart.update('none');
-                return;
-            }
-            resultsChart.data.datasets[0].data = [
-                0.94 + Math.random() * 0.04,
-                0.04 + Math.random() * 0.02,
-                0.01 + Math.random() * 0.01
-            ];
-            resultsChart.update('none');
-        }, 200);
+        resultsChart.data.datasets[0].data = [
+            0.94 + Math.random() * 0.04,
+            0.04 + Math.random() * 0.02,
+            0.01 + Math.random() * 0.01
+        ];
+        resultsChart.update('none');
     }
 
-    function runCycle() {
-        currentStep = (currentStep % 4) + 1;
-        
-        steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step) === currentStep));
-        if (progressBar) progressBar.style.width = (12.5 + (currentStep - 1) * 25) + '%';
-        
-        // Reset and animate local progress indicators
-        if (waveformProgress) waveformProgress.style.width = '0%';
-        if (specProgress) specProgress.style.width = '0%';
+    let startTime = null;
+    let lastChartUpdate = 0;
+    let lastFlashUpdate = 0;
 
-        if (currentStep === 1) animateProgress(waveformProgress, 5000);
-        if (currentStep === 2) animateProgress(specProgress, 5000);
-        if (currentStep === 3) flashNodes();
-        if (currentStep === 4) updateChart();
+    function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const timeOffset = (elapsed / 1000) % DATA_DURATION;
         
-        setTimeout(runCycle, 5000);
-    }
-
-    // Start cycle if in view
-    const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && currentStep === 0) {
-            runCycle();
+        updateWaveform(timeOffset);
+        updateSpectrogram(timeOffset);
+        
+        // Throttle Node flashing to ~10fps
+        if (timestamp - lastFlashUpdate > 100) {
+            flashNodes();
+            lastFlashUpdate = timestamp;
         }
-    }, { threshold: 0.5 });
+
+        // Throttle Chart updating to ~5fps for readability
+        if (timestamp - lastChartUpdate > 200) {
+            updateChart();
+            lastChartUpdate = timestamp;
+        }
+
+        const totalCycle = CYCLE_TIME * 4;
+        const stepIndex = Math.floor((elapsed % totalCycle) / CYCLE_TIME);
+        if (stepIndex !== currentStep - 1) {
+            currentStep = stepIndex + 1;
+            steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step) === currentStep));
+            if (progressBar) progressBar.style.width = (12.5 + (currentStep - 1) * 25) + '%';
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !startTime) {
+            requestAnimationFrame(animate);
+        }
+    }, { threshold: 0.1 });
 
     const container = document.querySelector('.workflow-viz-container');
     if (container) observer.observe(container);
