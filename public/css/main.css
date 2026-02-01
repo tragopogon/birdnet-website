@@ -140,7 +140,7 @@ section.bg-dark, .bg-dark {
   background-size: cover;
   background-position: center right;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   background-image: url("../img/blue_jay_1.jpg");
@@ -255,14 +255,14 @@ section {
 .card-feature {
   border-radius: var(--card-radius);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
   background: #ffffff;
   transition: var(--transition-smooth);
 }
 
 .card-feature:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 15px -4px rgba(0, 0, 0, 0.08);
   border-color: var(--primary-color);
 }
 
@@ -298,13 +298,13 @@ section {
 .card-publication {
   border-radius: var(--card-radius);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   background: #fff;
 }
 
 .card-publication:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 15px -4px rgba(0, 0, 0, 0.08);
   transition: var(--transition-smooth);
   border-color: var(--primary-color);
 }
@@ -320,13 +320,13 @@ section {
 .btn-primary {
   background: var(--primary-gradient);
   border: none;
-  box-shadow: 0 4px 12px rgba(26, 95, 180, 0.25);
+  box-shadow: 0 2px 6px rgba(26, 95, 180, 0.15);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
-  box-shadow: 0 8px 16px rgba(26, 95, 180, 0.4);
+  box-shadow: 0 4px 10px rgba(26, 95, 180, 0.25);
 }
 
 .btn-lg {
@@ -340,11 +340,16 @@ section {
   transition: all 0.3s ease;
 }
 
+.btn-outline-dark:hover,
+.btn-outline-primary:hover,
+.btn-outline-light:hover {
+  box-shadow: 0 5px 12px -3px rgba(15, 23, 42, 0.15);
+}
+
 .btn-outline-dark:hover {
   background-color: #0f172a;
   border-color: #0f172a;
   color: #fff !important;
-  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.2);
 }
 
 .btn-outline-dark:hover .text-dark,
@@ -550,11 +555,15 @@ footer ul li a:hover {
 }
 
 .shadow-sm {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
 }
 
 .shadow {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
 }
 
 .icon-wrapper {
@@ -569,12 +578,12 @@ footer ul li a:hover {
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 10px rgba(26, 95, 180, 0.2);
+  box-shadow: 0 2px 4px rgba(26, 95, 180, 0.1);
 }
 
 .card:hover .icon-wrapper {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(26, 95, 180, 0.35);
+  box-shadow: 0 3px 8px rgba(26, 95, 180, 0.15);
 }
 
 .icon-wrapper.soft {
@@ -624,7 +633,7 @@ footer ul li a:hover {
     height: 700px;
     width: 100%;
     border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
     z-index: 1;
 }
 .map-popup .leaflet-popup-content-wrapper {
@@ -721,7 +730,7 @@ footer ul li a:hover {
     background: white;
     border: 2px solid var(--bs-primary);
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 30px !important;
     height: 30px !important;
 }
