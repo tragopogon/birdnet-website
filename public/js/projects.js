@@ -1,4 +1,5 @@
-// Global marker storage
+// Global map and marker storage
+let projectMap = null;
 let projectMarkers = [];
 
 function focusProject(index) {
@@ -10,15 +11,18 @@ function focusProject(index) {
         mapDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
         setTimeout(() => {
-            marker.map.setView(marker.getLatLng(), 10);
+            projectMap.setView(marker.getLatLng(), 10);
             marker.openPopup();
         }, 300);
     }
 }
 
 function initProjectsMap(projects) {
+    // Prevent multiple initializations
+    if (projectMap !== null) return;
+
     // Initialize map
-    const map = L.map('projects-map', {
+    projectMap = L.map('projects-map', {
         scrollWheelZoom: false,
         zoomSnap: 0.5,
         minZoom: 2
@@ -29,7 +33,7 @@ function initProjectsMap(projects) {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 20
-    }).addTo(map);
+    }).addTo(projectMap);
 
     const iconMap = {
         'feather': 'fa-solid fa-feather-pointed',
@@ -88,10 +92,13 @@ function initProjectsMap(projects) {
 
         const marker = L.marker([project.Latitude, project.Longitude], { icon: customIcon })
             .bindPopup(popupHtml)
-            .addTo(map);
+            .addTo(projectMap);
         
-        // Save marker for jumping to it
-        marker.map = map;
         projectMarkers[index] = marker;
     });
+
+    // Invalidate size once to fix initialization issues in hidden containers
+    setTimeout(() => {
+        projectMap.invalidateSize();
+    }, 100);
 }

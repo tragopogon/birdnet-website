@@ -759,3 +759,8 @@ footer ul li a:hover {
     background-color: var(--bs-light);
     color: var(--bs-dark);
 }
+
+/* Map overlay transition */
+#map-consent-overlay {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
