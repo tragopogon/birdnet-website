@@ -13,15 +13,14 @@ permalink: "/projects/map/"
         <p class="text-muted small mb-3">
             Explore how BirdNET is being used by researchers around the world. Select a project to locate it on the map.
         </p>
-        <div class="w-100" style="max-width: 400px;">
-            <select class="form-select border-0 shadow-sm bg-light rounded-3" id="projectSelector" onchange="focusProject(this.value)">
-                <option value="">Jump to a project...</option>
-                {% for project in projects %}
-                    {% if project.Latitude != null %}
-                    <option value="{{ loop.index0 }}">{{ project['Project name'] }} ({{ project['Country'] }})</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
+        <div class="dropdown" style="max-width: 400px;">
+            <button class="btn btn-light border-0 shadow-sm rounded-3 w-100 text-start d-flex justify-content-between align-items-center" type="button" id="projectSelectorBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Jump to a project (sorted A-Z)...</span>
+                <i class="fa-solid fa-chevron-down small text-muted"></i>
+            </button>
+            <ul class="dropdown-menu shadow border-0 rounded-3 w-100 scrollable-menu" style="max-height: 400px; overflow-y: auto;" id="projectSelectorMenu">
+                <!-- Populated via JS -->
+            </ul>
         </div>
     </div>
     <div class="col-lg-5">
@@ -100,9 +99,57 @@ permalink: "/projects/map/"
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const dataContainer = document.getElementById('project-data');
-    if (dataContainer) {
-      const projectData = JSON.parse(dataContainer.textContent);
+    const menu = document.getElementById('projectSelectorMenu');
+    
+    if (dataContainer && menu) {
+      // Parse data and filter for valid coordinates
+      let projectData = JSON.parse(dataContainer.textContent)
+        .filter(p => p.Latitude != null && p.Longitude != null);
+      
+      // Sort alphabetically by Project name
+      projectData.sort((a, b) => a['Project name'].localeCompare(b['Project name']));
+      
+      // Initialize map with sorted data
       initProjectsMap(projectData);
+      
+      // Font Awesome mapping
+      const iconMap = {
+          'feather': 'fa-solid fa-feather-pointed',
+          'paw': 'fa-solid fa-paw',
+          'frog': 'fa-solid fa-frog',
+          'water': 'fa-solid fa-droplet',
+          'bug': 'fa-solid fa-bug',
+          'fish': 'fa-solid fa-fish',
+          'leaf': 'fa-solid fa-leaf',
+          'cog': 'fa-solid fa-gear'
+      };
+      
+      // Populate dropdown menu
+      projectData.forEach((project, index) => {
+          const li = document.createElement('li');
+          const iconClass = iconMap[project['Species Icon']] || 'fa-solid fa-location-dot';
+          const countrySuffix = project.Country ? ` <small class="text-muted">(${project.Country})</small>` : '';
+          
+          li.innerHTML = `
+              <button class="dropdown-item d-flex align-items-center gap-3 py-2" type="button" onclick="focusAndClose(${index}, '${project['Project name']}')">
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 28px; height: 28px; flex-shrink: 0;">
+                      <i class="${iconClass} text-primary" style="font-size: 0.85rem;"></i>
+                  </div>
+                  <div class="text-truncate">
+                      <span class="d-block text-truncate small fw-medium">${project['Project name']}</span>
+                      <span class="d-block x-small text-muted">${project.Country || 'Global'}</span>
+                  </div>
+              </button>
+          `;
+          menu.appendChild(li);
+      });
+
+      // Helper to handle click and update button text
+      window.focusAndClose = function(index, name) {
+          focusProject(index);
+          const btnSpan = document.getElementById('projectSelectorBtn').querySelector('span');
+          btnSpan.textContent = name;
+      };
     }
   });
 </script>
