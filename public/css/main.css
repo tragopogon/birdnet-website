@@ -594,7 +594,7 @@ footer ul li a:hover {
 
 .card:hover .icon-wrapper.soft {
   background: var(--primary-gradient);
-  color: #fff;
+  color: #fff !important;
 }
 
 .icon-wrapper.sm {
