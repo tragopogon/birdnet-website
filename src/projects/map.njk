@@ -1,0 +1,250 @@
+---
+title: Projects Map
+layout: layouts/base.njk
+permalink: "/projects/map/"
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<style>
+  #projects-map {
+    height: 700px;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  .map-popup .leaflet-popup-content-wrapper {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.85rem;
+  }
+  .map-popup .leaflet-popup-content {
+    margin: 0;
+    width: 280px !important;
+  }
+  .popup-header {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff;
+  }
+  .popup-image-container {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+  }
+  .popup-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .popup-header-info {
+    flex-grow: 1;
+    min-width: 0;
+  }
+  .popup-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+    color: #1a1e21;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .popup-org {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .popup-body {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .popup-meta-item {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    color: #495057;
+  }
+  .popup-meta-item i {
+    font-size: 0.85rem;
+    color: var(--bs-primary);
+  }
+  .popup-links {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f3f5;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .popup-links .btn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 0.4rem;
+    flex: 1;
+    text-align: center;
+  }
+  .marker-cluster-small {
+    background-color: rgba(67, 97, 238, 0.4);
+  }
+  .marker-cluster-small div {
+    background-color: rgba(67, 97, 238, 0.8);
+    color: white;
+  }
+  .custom-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid var(--bs-primary);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .custom-marker i {
+    color: var(--bs-primary);
+    font-size: 1rem;
+  }
+</style>
+
+<div class="row mb-5">
+  <div class="col-lg-8">
+    <span class="section-label">Global Impact</span>
+    <h1 class="display-5 fw-bold mb-3">Projects Map</h1>
+    <p class="lead text-muted">
+      Discover how researchers and citizen scientists around the world are using BirdNET for biodiversity monitoring and ecological research.
+    </p>
+  </div>
+</div>
+
+<div class="card border-0 bg-transparent mb-5">
+  <div id="projects-map"></div>
+</div>
+
+<div class="row g-4 mt-4 mb-5">
+    <div class="col-md-4">
+        <div class="d-flex gap-3 align-items-center p-4 bg-light rounded-4">
+            <div class="icon-wrapper sm bg-white shadow-sm">
+                <i class="bi bi-geo-alt text-primary"></i>
+            </div>
+            <div>
+                <div class="h3 fw-bold mb-0" id="project-count">{{ projects.length }}</div>
+                <div class="small text-muted text-uppercase fw-semibold ls-1">Active Projects</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex gap-3 align-items-center p-4 bg-light rounded-4">
+            <div class="icon-wrapper sm bg-white shadow-sm">
+                <i class="bi bi-globe text-primary"></i>
+            </div>
+            <div>
+                <div class="h3 fw-bold mb-0">6 Continents</div>
+                <div class="small text-muted text-uppercase fw-semibold ls-1">Global Coverage</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex gap-3 align-items-center p-4 bg-light rounded-4">
+            <div class="icon-wrapper sm bg-white shadow-sm">
+                <i class="bi bi-shield-check text-primary"></i>
+            </div>
+            <div>
+                <div class="h3 fw-bold mb-0">Verified Data</div>
+                <div class="small text-muted text-uppercase fw-semibold ls-1">Scientific Integrity</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const projects = {{ projects | dump | safe }};
+    
+    // Filter projects with valid coordinates
+    const validProjects = projects.filter(p => p.Latitude != null && p.Longitude != null);
+    
+    // Initialize map
+    const map = L.map('projects-map', {
+        scrollWheelZoom: false,
+        zoomSnap: 0.5,
+        minZoom: 2
+    }).setView([20, 0], 2);
+
+    // Add CartoDB Voyager Tile Layer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    const iconMap = {
+        'feather': 'bi-feather',
+        'paw': 'bi-paw',
+        'frog': 'bi-bug', // Note: using bug for frog if bi-frog doesn't exist, checking BI reference
+        'water': 'bi-droplet',
+        'bug': 'bi-bug',
+        'fish': 'bi-fish',
+        'leaf': 'bi-leaf',
+        'cog': 'bi-gear'
+    };
+
+    validProjects.forEach(project => {
+        const iconClass = iconMap[project['Species Icon']] || 'bi-geo-alt-fill';
+        
+        // Use provided image or a pretty placeholder based on target species
+        const imageUrl = project['Species Image'] || `https://placehold.co/600x400/e9ecef/495057?text=${encodeURIComponent(project['Target species'] || 'BirdNET Project')}`;
+
+        const customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<i class="bi ${iconClass}"></i>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+        });
+
+        let popupHtml = `
+            <div class="map-popup">
+                <div class="popup-header">
+                    <div class="popup-image-container">
+                        <img src="${imageUrl}" class="popup-image" alt="${project['Project name']}">
+                    </div>
+                    <div class="popup-header-info">
+                        <div class="popup-title" title="${project['Project name']}">${project['Project name']}</div>
+                        <div class="popup-org" title="${project['Organization/Project lead'] || project['Country']}">${project['Organization/Project lead'] || project['Country']}</div>
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <div class="popup-meta-item">
+                        <i class="bi bi-tag"></i>
+                        <span>${project['Target species']}</span>
+                    </div>
+                    <div class="popup-meta-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>${project['Region/Location']}, ${project['Country']}</span>
+                    </div>
+                    <div class="popup-links">
+                        ${project['Website'] ? `<a href="${project['Website']}" target="_blank" class="btn btn-primary text-white">Website</a>` : ''}
+                        ${project['Paper'] ? `<a href="${project['Paper']}" target="_blank" class="btn btn-outline-dark">Paper</a>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        L.marker([project.Latitude, project.Longitude], { icon: customIcon })
+            .bindPopup(popupHtml)
+            .addTo(map);
+    });
+
+    // Optional: Add simple marker clustering if results are many
+    // For now, simple markers are fine for a few dozen.
+  });
+</script>
