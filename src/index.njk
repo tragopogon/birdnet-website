@@ -33,7 +33,41 @@ containerClass: ""
       </div>
     </div>
   </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="heroScrollIndicator">
+    <i class="bi bi-chevron-down h3 mb-0"></i>
+  </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const hero = document.querySelector('.hero-landing');
+  const indicator = document.getElementById('heroScrollIndicator');
+  
+  function updateIndicator() {
+    if (!hero || !indicator) return;
+    
+    const heroHeight = hero.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPos = window.scrollY;
+    
+    // Show if hero is taller than viewport (approx 1.1x) AND we are still near the top
+    if (heroHeight > (windowHeight * 1.05) && scrollPos < 50) {
+      indicator.classList.add('visible');
+    } else {
+      indicator.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('resize', updateIndicator);
+  window.addEventListener('scroll', updateIndicator);
+  
+  // Initial check after everything is loaded
+  window.addEventListener('load', updateIndicator);
+  updateIndicator();
+});
+</script>
 
 <!-- Solutions Section -->
 
