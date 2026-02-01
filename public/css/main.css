@@ -918,26 +918,32 @@ footer ul li a:hover {
 
 /* Removed .spec-overlay */
 
-.nn-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
+.nn-svg {
   width: 100%;
-  max-width: 120px;
+  height: 100%;
+  overflow: visible;
+}
+
+.nn-weight {
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 0.5;
+  transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.nn-weight.active {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1;
 }
 
 .nn-node {
-  width: 6px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
+  fill: rgba(255, 255, 255, 0.2);
   transition: all 0.2s ease;
 }
 
 .nn-node.flash {
-  background: #fff;
-  box-shadow: 0 0 10px #fff;
-  transform: scale(1.5);
+  fill: #fff;
+  filter: drop-shadow(0 0 5px #fff);
+  r: 4;
 }
 
 .pulse-node {
