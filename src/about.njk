@@ -4,7 +4,7 @@ layout: layouts/base.njk
 permalink: "/about/"
 ---
 
-<div class="row align-items-center g-5 mb-5 pb-lg-4">
+<div class="row align-items-center g-5 mb-5 pb-lg-5">
   <div class="col-lg-7">
     <span class="section-label">THE COLLABORATION</span>
     <h1 class="page-title mb-4">About BirdNET</h1>
@@ -13,7 +13,7 @@ permalink: "/about/"
     </p>
   </div>
   <div class="col-lg-5">
-     <img
+    <img
       src="{{ '/img/about_header.jpg' | url }}"
       alt="BirdNET about header"
       class="img-fluid rounded-4 shadow-sm border border-light-subtle"
@@ -21,7 +21,7 @@ permalink: "/about/"
   </div>
 </div>
 
-<div class="row g-5 pt-5">
+<div class="row g-5 pt-5 mb-5">
   <div class="col-lg-7">
     <div class="section-label mb-3">MISSION</div>
     <h2 class="h3 fw-bold mb-4">Science-led conservation.</h2>
@@ -50,11 +50,11 @@ permalink: "/about/"
     </div>
   </div>
   <div class="col-lg-5">
-    <div class="card shadow-sm h-100 border-0 rounded-4">
+    <div class="card shadow-sm h-100 border-0 rounded-4 bg-light">
       <div class="card-body p-4">
-        <h2 class="h6 text-uppercase text-muted mb-3">Collaboration</h2>
+        <div class="section-label mb-3">COLLABORATION</div>
         <p class="text-muted small mb-2">BirdNET is a joint effort between:</p>
-        <ul class="small text-muted">
+        <ul class="small text-muted mb-3">
           <li>K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology</li>
           <li>Chair of Media Informatics, Chemnitz University of Technology</li>
         </ul>
@@ -66,207 +66,217 @@ permalink: "/about/"
   </div>
 </div>
 
-<div class="row g-5 mt-5 pt-5 border-top">
-  <div class="col-lg-6">
-        <h2 class="section-title h5">Why acoustic monitoring?</h2>
-        <p class="text-muted">
-          Many bird species are more easily detected by sound than sight—especially in dense vegetation, at night, or
-          during migration. Passive acoustic monitoring:
-        </p>
-        <ul class="text-muted">
-          <li>Captures presence and activity without human disturbance.</li>
-          <li>Scales across seasons and remote habitats.</li>
-          <li>Creates archives for long-term change detection.</li>
-          <li>Enables multi-species monitoring from a single sensor.</li>
-        </ul>
-      </div>
-      <div class="col-lg-6">
-        <h2 class="section-title h5">Why AI can help</h2>
-        <p class="text-muted">
-          Manual review of thousands of hours of audio is not feasible. Machine learning:
-        </p>
-        <ul class="text-muted">
-          <li>Automates species identification at scale.</li>
-          <li>Extracts consistent features from noisy soundscapes.</li>
-          <li>Speeds up survey workflows and reduces cost.</li>
-          <li>Allows rapid iteration as new training data become available.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- BirdNET role -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-7">
-        <h2 class="section-title h5">BirdNET’s role in acoustic biodiversity monitoring</h2>
-        <p class="text-muted">
-          BirdNET provides models and open tools that turn audio into species presence information. It is used in
-          backyard stations, migration studies, protected area assessments, and citizen science challenges.
-        </p>
-        <ul class="text-muted">
-          <li>Core models powering apps and edge devices.</li>
-          <li>Embeddings reused for new classification tasks.</li>
-          <li>Integration with pipelines for large-scale soundscape analysis.</li>
-          <li>Open source components for transparency and reproducibility.</li>
-        </ul>
-      </div>
-      <div class="col-lg-5">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-3">Key design ideas</h3>
-            <ul class="small text-muted mb-0">
-              <li>Robust to background noise and overlapping calls.</li>
-              <li>Optimized for real-time (mobile / edge) and batch (server) use.</li>
-              <li>Embeddings enable downstream filtering and custom models.</li>
-              <li>Continuous updates as new labeled data are curated.</li>
-            </ul>
-          </div>
+<div class="row g-4 mt-5 pt-4">
+  <div class="col-lg-4">
+    <div class="card h-100 border-0 shadow-sm rounded-4">
+      <div class="card-body p-4">
+        <div class="icon-wrapper mb-3">
+          <i class="bi bi-mic"></i>
         </div>
-      </div>
-    </div>
-
-    <!-- Training data & model -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-6">
-        <h2 class="section-title h5">Training data</h2>
-        <p class="text-muted">
-          BirdNET models are trained on curated bird vocalizations from multiple public and partner collections,
-          filtered for quality and species consistency. Preparation includes:
-        </p>
-        <ul class="text-muted">
-          <li>Segmenting recordings into short windows.</li>
-          <li>Removing excessive noise or human speech.</li>
-          <li>Balancing classes to reduce dominance of common species.</li>
-          <li>Augmenting audio (mixing, shifting, filtering) to improve robustness.</li>
-        </ul>
-      </div>
-      <div class="col-lg-6">
-        <h2 class="section-title h5">Model architecture (simplified)</h2>
-        <p class="text-muted">
-          Audio windows are converted to spectrogram features and fed into a deep neural network (convolutional and
-          residual layers) producing:
-        </p>
-        <ul class="text-muted">
-          <li>Embeddings: compact numeric representation of the sound.</li>
-          <li>Class scores: per-species confidence estimates.</li>
-        </ul>
-        <p class="text-muted mb-0">
-          Models are exported to formats (e.g. TensorFlow Lite) suitable for mobile, edge, and server environments.
+        <h2 class="h6 fw-bold mb-3">Acoustic Monitoring</h2>
+        <p class="text-muted smaller">
+          Many bird species are more easily detected by sound than sight. Passive monitoring captures activity without human disturbance across remote habitats and seasons.
         </p>
       </div>
     </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card h-100 border-0 shadow-sm rounded-4 text-white bg-primary">
+      <div class="card-body p-4">
+        <div class="icon-wrapper mb-3" style="background: rgba(255,255,255,0.2); color: #fff;">
+          <i class="bi bi-cpu"></i>
+        </div>
+        <h2 class="h6 fw-bold mb-3 text-white">Machine Learning</h2>
+        <p class="text-white text-opacity-75 smaller">
+          Manual review of audio is not feasible. AI automates species identification at scale, extracting features from noisy soundscapes with consistent precision.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card h-100 border-0 shadow-sm rounded-4">
+      <div class="card-body p-4">
+        <div class="icon-wrapper mb-3">
+          <i class="bi bi-layers"></i>
+        </div>
+        <h2 class="h6 fw-bold mb-3">Open Ecosystem</h2>
+        <p class="text-muted smaller">
+          BirdNET provides core models for edge devices and reusable embeddings, supporting a global community of researchers and conservationists.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Workflow -->
-    <div class="mb-5">
-      <h2 class="section-title h5">Recognition workflow</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">1. Capture</h3>
-              <p class="small text-muted mb-0">Microphones or recorders collect continuous audio (e.g. WAV). Time and (optionally) location metadata are stored.</p>
-            </div>
-          </div>
+<div class="row g-5 mt-5 align-items-center">
+  <div class="col-lg-7">
+    <div class="section-label mb-3">PROCESS & DATA</div>
+    <h2 class="h4 fw-bold mb-4">From soundscapes to insights</h2>
+    <p class="text-muted small mb-4">
+      The BirdNET model is trained on thousands of hours of curated bird vocalizations. It is optimized to be robust against background noise while remaining efficient enough for real-time mobile use.
+    </p>
+    <div class="row g-3">
+      <div class="col-sm-6">
+        <div class="p-3 bg-white border border-light-subtle rounded-3 shadow-sm">
+          <div class="fw-bold smaller mb-1 text-primary">Training Data</div>
+          <div class="smaller text-muted">Curated audio segmented into windows, noise-filtered, and augmented for robustness.</div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">2. Preprocess</h3>
-              <p class="small text-muted mb-0">Audio is normalized, split into short windows (e.g. 3 s), converted to spectrograms, and passed through noise filtering.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">3. Infer</h3>
-              <p class="small text-muted mb-0">Each window is fed into the BirdNET model → embeddings → species confidence scores and timestamps.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">4. Filter</h3>
-              <p class="small text-muted mb-0">Apply thresholds, region or season filters, and optional overlap merging to reduce false positives.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">5. Aggregate</h3>
-              <p class="small text-muted mb-0">Summarize detections: species lists, daily activity curves, occupancy tallies, migration timing indicators.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="h6 text-muted text-uppercase mb-2">6. Interpret</h3>
-              <p class="small text-muted mb-0">Use outputs for trend analysis, site comparison, conservation planning, or community engagement dashboards.</p>
-            </div>
-          </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="p-3 bg-white border border-light-subtle rounded-3 shadow-sm">
+          <div class="fw-bold smaller mb-1 text-primary">Architecture</div>
+          <div class="smaller text-muted">Deep neural networks producing embeddings and per-species confidence scores.</div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="bg-light p-4 rounded-4 border border-light-subtle">
+      <h3 class="h6 text-uppercase text-muted mb-3 small fw-bold">Design Priorities</h3>
+      <ul class="smaller text-muted mb-0 list-unstyled">
+        <li class="d-flex gap-2 mb-2">
+          <i class="bi bi-check2 text-primary"></i> Noise robustness
+        </li>
+        <li class="d-flex gap-2 mb-2">
+          <i class="bi bi-check2 text-primary"></i> Real-time & Batch optimization
+        </li>
+        <li class="d-flex gap-2 mb-2">
+          <i class="bi bi-check2 text-primary"></i> High species coverage (6k+)
+        </li>
+        <li class="d-flex gap-2">
+          <i class="bi bi-check2 text-primary"></i> Continuous data-driven updates
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-    <!-- Funding -->
-    <div class="row g-4 mt-5 pt-5 border-top">
-      <div class="col-lg-8">
-        <h2 class="section-title h5">Funding</h2>
-        <p class="text-muted">
-          Work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of
-          K. Lisa Yang supporting innovative conservation technologies.
-        </p>
-        <p class="text-muted">
-          Development of BirdNET is supported by the German Federal Ministry of Research, Technology and Space (FKZ 01|S22072),
-          the German Federal Ministry for the Environment, Climate Action, Nature Conservation and Nuclear Safety (FKZ 67KI31040E),
-          the German Federal Ministry of Economic Affairs and Energy (FKZ 16KN095550),
-          the Deutsche Bundesstiftung Umwelt (project 39263/01) and the European Social Fund.
-        </p>
+<div class="mt-5 pt-5 border-top">
+  <div class="section-label mb-4 text-center">RECOGNITION WORKFLOW</div>
+  <div class="bg-white p-4 p-xl-5 rounded-4 border border-light-subtle shadow-sm">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">01</span>
+          <div>
+            <div class="fw-bold small mb-1">Capture</div>
+            <div class="smaller text-muted">Field recordings collected as high-quality audio files.</div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-uppercase text-muted mb-3">Acknowledgments</h3>
-            <p class="small text-muted mb-0">
-              We acknowledge all supporters enabling open, global acoustic biodiversity monitoring through BirdNET.
-            </p>
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">02</span>
+          <div>
+            <div class="fw-bold small mb-1">Preprocess</div>
+            <div class="smaller text-muted">Noise filtering and window segmentation.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">03</span>
+          <div>
+            <div class="fw-bold small mb-1">Infer</div>
+            <div class="smaller text-muted">Model generates species confidence scores.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">04</span>
+          <div>
+            <div class="fw-bold small mb-1">Filter</div>
+            <div class="smaller text-muted">Spatial and seasonal thresholding of detections.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">05</span>
+          <div>
+            <div class="fw-bold small mb-1">Aggregate</div>
+            <div class="smaller text-muted">Activity Patterns and occupancy tallies.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <span class="h4 fw-bold text-primary opacity-25">06</span>
+          <div>
+            <div class="fw-bold small mb-1">Interpret</div>
+            <div class="smaller text-muted">Biological insights for conservation planning.</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Partners -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-6">
-        <h2 class="section-title h5">Partners</h2>
-        <p class="text-muted">
-          BirdNET is a joint effort of partners from academia and industry. Without these partnerships, this project would not be possible.
-        </p>
+<div class="mt-5 pt-5 border-top">
+  <div class="row g-5">
+    <div class="col-lg-12">
+      <div class="section-label mb-4">FUNDING & PARTNERS</div>
+      <h2 class="h4 fw-bold mb-5">Supported by a global network</h2>
+    </div>
+  </div>
+  
+  <div class="row g-4 mb-5">
+    <div class="col-lg-6">
+      <div class="card h-100 border-0 shadow-sm rounded-4 bg-light">
+        <div class="card-body p-4 p-xl-5">
+          <h3 class="h6 fw-bold text-uppercase text-muted mb-4 small">Institutional Support</h3>
+          <p class="text-muted small mb-4">
+            Work at the <strong>K. Lisa Yang Center for Conservation Bioacoustics</strong> is made possible by the generosity of K. Lisa Yang, supporting innovative conservation technologies that scale global biodiversity monitoring.
+          </p>
+          <div class="pt-4 border-top">
+            <h4 class="smaller fw-bold text-dark mb-3">Project Funding</h4>
+            <div class="smaller text-muted">
+              Development of BirdNET is supported by:
+              <ul class="mt-2 mb-0 ps-3">
+                <li class="mb-1">German Federal Ministry of Research, Technology and Space (FKZ 01|S22072)</li>
+                <li class="mb-1">German Federal Ministry for the Environment (FKZ 67KI31040E)</li>
+                <li class="mb-1">German Federal Ministry of Economic Affairs and Energy (FKZ 16KN095550)</li>
+                <li class="mb-1">Deutsche Bundesstiftung Umwelt (39263/01)</li>
+                <li>European Social Fund</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body d-flex flex-column">
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="card h-100 border-0 shadow-sm rounded-4">
+        <div class="card-body p-4 p-xl-5">
+          <h3 class="h6 fw-bold text-uppercase text-muted mb-4 small">Research Collaboration</h3>
+          <p class="text-muted small mb-4">
+            BirdNET is a joint effort of partners from academia and industry. This multidisciplinary collaboration enables us to bridge the gap between AI research and practical field ecology.
+          </p>
+          <div class="bg-white rounded-4 p-4 p-xl-5 text-center mt-auto border border-light-subtle shadow-sm">
             <img
               src="https://tuc.cloud/index.php/s/KSdWfX5CnSRpRgQ/download/box_logos.png"
               alt="Logos of BirdNET partner organizations"
-              class="img-fluid mb-2">
-            <p class="small text-muted mb-0">
-              Representative partner logos. See publications and tools pages for additional collaborators.
+              class="img-fluid mb-4"
+              style="width: 100%; max-width: 480px; height: auto;">
+            <p class="smaller text-muted mb-0">
+              Representative partner logos. See <a href="{{ '/publications/' | url }}" class="fw-bold">publications</a> and <a href="{{ '/tools/' | url }}" class="fw-bold">tools</a> for additional collaborators.
             </p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="row g-4 mt-5 pt-5 border-top pb-5">
-      <div class="col-lg-6">
-        <h2 class="section-title h5">Contact</h2>
-        <p class="text-muted">Questions about BirdNET research, tools, or collaborations:</p>
-        <p class="text-muted">
-          <strong>Email:</strong><br>
-          <a href="mailto:ccb-birdnet@cornell.edu">ccb-birdnet@cornell.edu</a>
-        </p>
-      </div>
-    </div>
+<div class="row g-5 mt-5 pt-5 border-top pb-5">
+  <div class="col-lg-12">
+    <h2 class="h5 fw-bold mb-3">Contact</h2>
+    <p class="text-muted small">Questions about BirdNET research, tools, or collaborations:</p>
+    <p class="text-muted mb-0">
+      <a href="mailto:ccb-birdnet@cornell.edu" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm text-white small">
+        <i class="bi bi-envelope-fill me-2"></i>ccb-birdnet@cornell.edu
+      </a>
+    </p>
+  </div>
+</div>
