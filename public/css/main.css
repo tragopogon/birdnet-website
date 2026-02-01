@@ -181,6 +181,15 @@ section.bg-dark, .bg-dark {
   z-index: 1;
 }
 
+.partner-logo-link {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.partner-logo-link:hover {
+  transform: scale(1.08);
+  opacity: 1 !important;
+}
+
 .scroll-indicator {
   position: fixed;
   bottom: 2.5rem;
