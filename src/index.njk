@@ -14,7 +14,7 @@ containerClass: ""
           AI-powered bioacoustics, at scale.
         </h1>
         <p class="hero-subtitle mb-5 mx-auto mx-lg-0">
-          BirdNET uses deep learning to recognize over 6,000 species globally. A joint research project for large-scale biodiversity monitoring and citizen science.
+          BirdNET uses deep learning to recognize over 6,000 species globally. Our open-source tools provide robust workflows for large-scale biodiversity monitoring and citizen science.
         </p>
         <div class="d-flex flex-wrap gap-3 mb-5 justify-content-center justify-content-lg-start">
           <a class="btn btn-primary btn-lg" href="{{ '/analyzer/' | url }}">
@@ -27,22 +27,72 @@ containerClass: ""
             Download the App
           </a>
         </div>
-        <p class="mb-5 mt-3 small text-light text-opacity-75 col-lg-8 mx-auto mx-lg-0">
-          A collaboration between the <a href="https://www.birds.cornell.edu/ccb" target="_blank" rel="noopener" class="text-white text-decoration-underline">K. Lisa Yang Center for Conservation Bioacoustics</a> and <a href="https://www.tu-chemnitz.de/index.html.en" target="_blank" rel="noopener" class="text-white text-decoration-underline">Chemnitz University of Technology</a>.
+        <p class="mb-4 mt-3 small text-light text-opacity-75 col-lg-8 mx-auto mx-lg-0">
+          A joint effort by:
         </p>
+        <div class="d-flex flex-column flex-lg-row align-items-center gap-4 justify-content-center justify-content-lg-start mb-5 opacity-75">
+          <a href="https://www.birds.cornell.edu/ccb" target="_blank" rel="noopener" class="partner-logo-link">
+            <img src="{{ '/img/yang_logo_white.png' | url }}" alt="Cornell Lab Logo" style="height: 40px; width: auto;">
+          </a>
+          <a href="https://www.tu-chemnitz.de/index.html.en" target="_blank" rel="noopener" class="partner-logo-link">
+            <img src="{{ '/img/tuc_logo_white.png' | url }}" alt="TUC Logo" style="height: 65px; width: auto;">
+          </a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="heroScrollIndicator">
+    <i class="bi bi-chevron-down h3 mb-0"></i>
+  </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const hero = document.querySelector('.hero-landing');
+  const indicator = document.getElementById('heroScrollIndicator');
+  
+  function updateIndicator() {
+    if (!hero || !indicator) return;
+    
+    const heroHeight = hero.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPos = window.scrollY;
+    
+    // Show if we are still near the top of the page
+    if (scrollPos < 50) {
+      indicator.classList.add('visible');
+    } else {
+      indicator.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('resize', updateIndicator);
+  window.addEventListener('scroll', updateIndicator);
+  
+  // Initial check after everything is loaded
+  window.addEventListener('load', updateIndicator);
+  updateIndicator();
+
+  // Scroll to next section on click
+  indicator.addEventListener('click', function() {
+    const nextSection = hero.nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
 
 <!-- Solutions Section -->
 
-<section class="py-5">
+<section class="py-5 border-bottom">
   <div class="container">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
         <span class="section-label">Research & Tools</span>
-        <h2 class="display-5 fw-bold mb-4">A toolkit for conservation.</h2>
+        <h2 class="display-5 fw-bold mb-4">The AI toolkit for conservation.</h2>
         <p class="lead text-muted mb-4">
           Open-source models and interfaces designed to scale from individual observations to continental monitoring programs.
         </p>
@@ -146,60 +196,19 @@ containerClass: ""
 </section>
 
 <!-- How it works -->
-<section class="py-5">
-  <div class="container py-lg-4">
-    <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-4">
-      <div class="card-body p-4 p-lg-5 position-relative" style="z-index: 2;">
-        <div class="row mb-5 justify-content-center text-center">
+<section class="py-4">
+  <div class="container py-lg-1">
+    <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden position-relative rounded-4">
+      <div class="card-body p-4 position-relative" style="z-index: 2;">
+        <div class="row mb-3 justify-content-center text-center">
           <div class="col-lg-8">
             <span class="section-label section-label-dark mx-auto">Architecture</span>
             <h2 class="display-6 fw-bold mb-3">How BirdNET works</h2>
-            <p class="text-white text-opacity-75">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
+            <p class="text-white text-opacity-75 mb-3">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
           </div>
         </div>
-        <div class="row g-4 align-items-stretch">
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-mic"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Signal Extraction</h3>
-              <p class="small text-white text-opacity-50 mb-0">Audio is resampled and segmented into 3-second windows, capturing the temporal structure of most avian vocalizations.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-soundwave"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Spectrogram Mapping</h3>
-              <p class="small text-white text-opacity-50 mb-0">Raw acoustic signals are transformed into log-scaled Mel-spectrograms, highlighting frequency patterns for neural processing.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-cpu"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Neural Inference</h3>
-              <p class="small text-white text-opacity-50 mb-0">A deep ResNet model analyzes spectrogram features, trained on millions of expert-vetted bird recordings from around the globe.</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="h-100 p-4 card-glass">
-              <div class="icon-wrapper mb-4">
-                <i class="bi bi-geo-alt"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-3">Contextual Filters</h3>
-              <p class="small text-white text-opacity-50 mb-0">Machine learning results are refined using location and date metadata—incorporating <strong>biogeographical priors</strong> to maximize precision.</p>
-            </div>
-          </div>
-        </div>
-        <div class="text-center mt-5">
-          <p class="small text-white text-opacity-50 mb-0">
-            Read the technical details in our <a href="https://doi.org/10.1016/j.ecoinf.2021.101236" target="_blank" class="text-white text-decoration-underline">primary publication</a> or explore the <a href="{{ '/about/' | url }}" class="text-white text-decoration-underline">recognition workflow</a>.
-          </p>
-        </div>
+
+        {% include "partials/workflow-viz.njk" %}
       </div>
       <!-- Background glow effect -->
       <div class="position-absolute top-50 start-50 translate-middle" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(26, 95, 180, 0.15) 0%, transparent 75%); filter: blur(80px); z-index: 1;"></div>
@@ -252,7 +261,7 @@ containerClass: ""
       </div>
       <div class="col-lg-6">
         <div class="position-relative">
-          <div class="bg-dark rounded-4 shadow-lg p-5 text-light overflow-hidden border border-secondary border-opacity-25" style="background-color: #1a1a1a !important;">
+          <div class="bg-dark rounded-4 shadow-sm p-5 text-light overflow-hidden border border-secondary border-opacity-25" style="background-color: #1a1a1a !important;">
              <div class="font-monospace small mb-4">
                <div class="text-white-50 mb-3"># Python Integration</div>
                <div><span class="text-info">import</span> birdnet</div>
@@ -362,7 +371,7 @@ containerClass: ""
 </section>
 
 <!-- Scientific Impact -->
-<section class="py-5 bg-white border-top">
+<section class="py-5 bg-white border-top border-bottom">
   <div class="container py-lg-5">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
@@ -430,7 +439,7 @@ containerClass: ""
 <!-- Join the effort CTA -->
 <section class="pb-5 bg-white">
   <div class="container pb-lg-5">
-    <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);">
+    <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden position-relative rounded-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);">
       <div class="card-body p-5 text-center position-relative" style="z-index: 2;">
         <h2 class="display-5 fw-bold mb-4">Support the Future of Bioacoustics</h2>
         <p class="lead text-white-50 mb-5 mx-auto" style="max-width: 700px;">

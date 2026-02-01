@@ -12,7 +12,7 @@ permalink: "/analyzer/"
       BirdNET-Analyzer is the workhorse tool for large-scale animal sound analysis, built for scientific workflows and long-term acoustic monitoring.
     </p>
     <div class="d-flex flex-wrap gap-3">
-      <a href="https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest" target="_blank" class="btn btn-primary px-4 shadow-sm text-white">Download Release</a>
+      <a href="https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest" target="_blank" class="btn btn-primary px-4 shadow-sm text-white">Download installer</a>
       <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="btn btn-outline-dark px-4">Full Documentation</a>
     </div>
   </div>
@@ -21,7 +21,7 @@ permalink: "/analyzer/"
       <img
         src="{{ '/img/birdnet_analyzer_screenshot.png' | url }}"
         alt="BirdNET-Analyzer screenshot"
-        class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+        class="img-fluid rounded-4 shadow-sm border border-light-subtle"
         style="width: 100%; object-fit: cover;">
     </div>
   </div>
@@ -71,6 +71,24 @@ permalink: "/analyzer/"
               </div>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Custom Lists</div>
+                <div class="smaller text-muted">Restrict analysis to specific species of interest.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+              <div>
+                <div class="fw-bold small">Raven Support</div>
+                <div class="smaller text-muted">Direct export to Raven Pro and Audacity.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-5">
@@ -96,6 +114,26 @@ permalink: "/analyzer/"
                 <span>PyPI Package</span>
                 <i class="bi bi-box-seam"></i>
               </a>
+              <a href="https://birdnet-team.github.io/birdnetR/" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>birdnetR (R Package)</span>
+                <i class="bi bi-browser-safari"></i>
+              </a>
+              <a href="https://colab.research.google.com/github/kahst/BirdNET-Analyzer/blob/main/BirdNET_Analyzer_Colab.ipynb" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Google Colab</span>
+                <i class="bi bi-code-slash"></i>
+              </a>
+              <a href="{{ '/projects/map/' | url }}" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Projects Map</span>
+                <i class="bi bi-map"></i>
+              </a>              
+              <a href="https://github.com/birdnet-team/BirdNET-Analyzer/discussions" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Discussions</span>
+                <i class="bi bi-chat-dots"></i>
+              </a>
+              <a href="https://zenodo.org/records/15050749" target="_blank" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center">
+                <span>Model Weights</span>
+                <i class="bi bi-database"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -116,9 +154,9 @@ permalink: "/analyzer/"
             <div class="icon-wrapper sm soft mb-4">
               <i class="bi bi-speedometer2"></i>
             </div>
-            <h3 class="h6 fw-bold">Large-scale processing</h3>
+            <h3 class="h6 fw-bold">High Throughput Pipelines</h3>
             <p class="small text-muted mb-0">
-              Designed to handle large deployments of passive acoustic recorders and thousands of hours of audio without manual intervention.
+              Process massive datasets using the CLI with multithreading and batch support. Host your own analysis API with the integrated server for distributed workflows.
             </p>
           </div>
         </div>
@@ -130,9 +168,51 @@ permalink: "/analyzer/"
             <div class="icon-wrapper sm soft mb-4">
               <i class="bi bi-cpu"></i>
             </div>
-            <h3 class="h6 fw-bold">State-of-the-Art Models</h3>
+            <h3 class="h6 fw-bold">Custom Model Training</h3>
             <p class="small text-muted mb-0">
-              Utilizes the latest BirdNET neural weights, optimized for high precision and recall across global species lists.
+              Train custom classifiers on top of BirdNET embeddings to identify new species or sounds. Supports append/replace modes and automatic hyperparameter tuning.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-search"></i>
+            </div>
+            <h3 class="h6 fw-bold">Embeddings & Similarity</h3>
+            <p class="small text-muted mb-0">
+              Extract high-dimensional feature vectors (embeddings) to search for similar sounds, perform clustering, or identify acoustic patterns in unlabeled data.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-patch-check"></i>
+            </div>
+            <h3 class="h6 fw-bold">Performance Evaluation</h3>
+            <p class="small text-muted mb-0">
+              Assess model accuracy using ground-truth annotations. Compute detailed metrics including F1, Precision, Recall, AUROC, and Confusion Matrices.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm card-feature p-2">
+          <div class="card-body">
+            <div class="icon-wrapper sm soft mb-4">
+              <i class="bi bi-scissors"></i>
+            </div>
+            <h3 class="h6 fw-bold">Segment Review Tool</h3>
+            <p class="small text-muted mb-0">
+              Extract species-specific audio clips (segments) for manual validation. Use the Review Tab to systematically confirm detections and exported labeled data.
             </p>
           </div>
         </div>
@@ -144,81 +224,145 @@ permalink: "/analyzer/"
             <div class="icon-wrapper sm soft mb-4">
               <i class="bi bi-terminal"></i>
             </div>
-            <h3 class="h6 fw-bold">CLI & GUI Options</h3>
+            <h3 class="h6 fw-bold">Developer Tooling</h3>
             <p class="small text-muted mb-0">
-              Choose between a user-friendly graphical interface for manual verification or a robust CLI for server-side automation.
+              Extensive command-line interface and Python module support for seamless integration into custom R or Python research pipelines.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row g-4 mt-5">
-      <div class="col-lg-4">
-        <h2 class="section-title h5">Contributing & Support</h2>
-      </div>
-      <div class="col-lg-8">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h3 class="h6 text-muted text-uppercase mb-3">Get help / Improve BirdNET-Analyzer</h3>
-            <div class="row small">
-              <div class="col-md-6 mb-3">
-                <strong>Report bugs / request features</strong>
-                <ul class="mb-2 mt-1 ps-3">
-                  <li>
-                    Open an <a href="https://github.com/birdnet-team/BirdNET-Analyzer/issues" target="_blank" rel="noopener">GitHub Issue</a>
-                    (search existing first).
-                  </li>
-                  <li>
-                    Use clear title, steps to reproduce, expected vs actual, logs/error messages.
-                  </li>
-                  <li>
-                    Add environment details (OS, Python version, BirdNET-Analyzer version).
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-6 mb-3">
-                <strong>Submit improvements</strong>
-                <ul class="mb-2 mt-1 ps-3">
-                  <li>
-                    Fork and create a feature branch, then open a <a href="https://github.com/birdnet-team/BirdNET-Analyzer/pulls" target="_blank" rel="noopener">Pull Request</a>.
-                  </li>
-                  <li>
-                    Keep changes focused; update docs if behavior changes.
-                  </li>
-                  <li>
-                    Reference related Issue (e.g. “Closes #123”).
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-6 mb-3">
-                <strong>Ask questions / discuss ideas</strong>
-                <ul class="mb-2 mt-1 ps-3">
-                  <li>
-                    Use <a href="https://github.com/birdnet-team/BirdNET-Analyzer/discussions" target="_blank" rel="noopener">GitHub Discussions</a> for Q&amp;A and ideas.
-                  </li>
-                  <li>
-                    Tag threads (Help, Ideas, Show & Tell) appropriately.
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-6 mb-3">
-                <strong>Community</strong>
-                <ul class="mb-2 mt-1 ps-3">
-                  <li>
-                    Join the Reddit community: <a href="https://www.reddit.com/r/BirdNET_Analyzer" target="_blank" rel="noopener">r/BirdNET_Analyzer</a>.
-                  </li>
-                  <li>
-                    Share workflows, troubleshooting tips, and results.
-                  </li>
-                </ul>
+    <!-- Technical Details Section -->
+    <div class="row g-5 mt-5">
+      <div class="col-lg-12">
+        <div class="card border-0 shadow-sm overflow-hidden rounded-4">
+          <div class="row g-0">
+            <div class="col-lg-4 bg-dark text-white p-5 d-flex flex-column justify-content-center">
+              <h2 class="h4 fw-bold mb-4">Scientific Workflow</h2>
+              <p class="small opacity-75 mb-4">
+                BirdNET-Analyzer provides a complete end-to-end framework for bioacoustic research, from raw data to validated ecological insights.
+              </p>
+              <div class="list-group list-group-flush bg-transparent">
+                <div class="list-group-item bg-transparent text-white border-white border-opacity-10 px-0 d-flex gap-3">
+                  <span class="badge bg-primary rounded-circle" style="width: 24px; height: 24px;">1</span>
+                  <span class="small">Extract & search embeddings</span>
+                </div>
+                <div class="list-group-item bg-transparent text-white border-white border-opacity-10 px-0 d-flex gap-3">
+                  <span class="badge bg-primary rounded-circle" style="width: 24px; height: 24px;">2</span>
+                  <span class="small">Train custom classifiers</span>
+                </div>
+                <div class="list-group-item bg-transparent text-white border-white border-opacity-10 px-0 d-flex gap-3">
+                  <span class="badge bg-primary rounded-circle" style="width: 24px; height: 24px;">3</span>
+                  <span class="small">Analyze with spatial filters</span>
+                </div>
+                <div class="list-group-item bg-transparent text-white border-white border-opacity-10 px-0 d-flex gap-3">
+                  <span class="badge bg-primary rounded-circle" style="width: 24px; height: 24px;">4</span>
+                  <span class="small">Evaluate & review performance</span>
+                </div>
               </div>
             </div>
-            <div class="border-top pt-3 small text-muted">
-              Security issues: please do not open a public issue; email the maintainers via the contact information in the repository README.
+            <div class="col-lg-8 p-5 bg-white">
+              <div class="row g-4">
+                <div class="col-md-6 text">
+                   <h3 class="h6 fw-bold"><i class="bi bi-graph-up me-2 text-primary"></i>Precision at Scale</h3>
+                   <p class="smaller text-muted">Leverage multithreaded CLI analysis to process terabytes of data. Use the --batch_size argument to optimize for your CPU or GPU hardware.</p>
+                </div>
+                <div class="col-md-6">
+                   <h3 class="h6 fw-bold"><i class="bi bi-diagram-3 me-2 text-primary"></i>Adaptive Learning</h3>
+                   <p class="smaller text-muted">Train classifiers using "Append" mode to add unique local species without losing the 6,000+ base species already in BirdNET.</p>
+                </div>
+                <div class="col-md-6">
+                   <h3 class="h6 fw-bold"><i class="bi bi-funnel me-2 text-primary"></i>Intelligent Filtering</h3>
+                   <p class="smaller text-muted">Utilize the species range model (eBird-data powered) to automatically filter detections based on latitude, longitude, and week of the year.</p>
+                </div>
+                <div class="col-md-6">
+                   <h3 class="h6 fw-bold"><i class="bi bi-code-square me-2 text-primary"></i>Embeddings Search</h3>
+                   <p class="smaller text-muted">Generate sqlite-based scalar databases of 1024-dimensional feature vectors for rapid query-by-example sound searching.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-5 pt-5 border-top">
+      <div class="col-lg-12">
+        <div class="section-label mb-3">COMMUNITY & SUPPORT</div>
+        <h2 class="h3 fw-bold mb-5">Get involved.</h2>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-wrapper sm soft me-3">
+              <i class="bi bi-bug"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Issues & Feedback</h3>
+          </div>
+          <p class="small text-muted mb-4">Found a bug or have a feature request? Our GitHub tracker is the best place to report issues. Please include your OS and Python version.</p>
+          <div class="mt-auto">
+            <a href="https://github.com/birdnet-team/BirdNET-Analyzer/issues" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">Open an issue</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-wrapper sm soft me-3">
+              <i class="bi bi-git"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Code Contributions</h3>
+          </div>
+          <p class="small text-muted mb-4">We welcome pull requests for performance optimizations, new features, or documentation improvements. Check out our contribution guide.</p>
+          <div class="mt-auto">
+            <a href="https://github.com/birdnet-team" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">View repositories</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-wrapper sm soft me-3">
+              <i class="bi bi-chat-dots"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Discussions</h3>
+          </div>
+          <p class="small text-muted mb-4">Have questions about analysis parameters or want to share your workflow? Join the conversation on GitHub Discussions.</p>
+          <div class="mt-auto">
+            <a href="https://github.com/birdnet-team/BirdNET-Analyzer/discussions" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">Start a discussion</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-wrapper sm soft me-3">
+              <i class="bi bi-reddit"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Reddit Community</h3>
+          </div>
+          <p class="small text-muted mb-4">Connect with other BirdNET users, share your backyard monitoring setups, and troubleshoot with the community on r/BirdNET_Analyzer.</p>
+          <div class="mt-auto">
+            <a href="https://www.reddit.com/r/BirdNET_Analyzer" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">Visit r/BirdNET_Analyzer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 p-5 bg-dark text-white rounded-5 text-center shadow">
+      <h2 class="h4 mb-3">Found a security issue?</h2>
+      <p class="text-white text-opacity-75 mb-4 max-width-600 mx-auto small">
+        Please do not open a public issue for security-related items. Email the maintainers directly via the contact information provided in the repository's README.
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="mailto:stefan.kahl@cornell.edu" class="btn btn-primary px-4">Contact maintainers</a>
       </div>
     </div>
 

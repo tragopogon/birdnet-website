@@ -12,6 +12,7 @@
     {% set donateUrl = '/donate/' | url %}
     {% set contributeUrl = '/contribute/' | url %}
     {% set appUrl = '/app/' | url %}
+    {% set projectsMapUrl = '/map/' | url %}
 
     <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="{{ homeUrl }}">
       <img src="{{ '/img/logo-birdnet-circle.png' | url }}"
@@ -54,6 +55,11 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
             <li>
+              <a class="dropdown-item{% if page.url == projectsMapUrl %} active{% endif %}" href="{{ projectsMapUrl }}">
+                Projects map
+              </a>
+            </li>
+            <li>
               <a class="dropdown-item" href="https://birdnet.cornell.edu/swamp" target="_blank" rel="noopener">
                 SWAMP  <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
               </a>
@@ -61,11 +67,6 @@
             <li>
               <a class="dropdown-item" href="https://birdnet.cornell.edu/amic" target="_blank" rel="noopener">
                 AMiC  <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="https://birdnet-team.github.io/BirdNET-Analyzer/projects.html" target="_blank" rel="noopener">
-                Projects map  <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
