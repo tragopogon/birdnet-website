@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const windowHeight = window.innerHeight;
     const scrollPos = window.scrollY;
     
-    // Show if hero is taller than viewport (approx 1.1x) AND we are still near the top
-    if (heroHeight > (windowHeight * 1.05) && scrollPos < 50) {
+    // Show if we are still near the top of the page
+    if (scrollPos < 50) {
       indicator.classList.add('visible');
     } else {
       indicator.classList.remove('visible');
@@ -66,6 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial check after everything is loaded
   window.addEventListener('load', updateIndicator);
   updateIndicator();
+
+  // Scroll to next section on click
+  indicator.addEventListener('click', function() {
+    const nextSection = hero.nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
 </script>
 
@@ -76,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
         <span class="section-label">Research & Tools</span>
-        <h2 class="display-5 fw-bold mb-4">A toolkit for conservation.</h2>
+        <h2 class="display-5 fw-bold mb-4">The AI toolkit for conservation.</h2>
         <p class="lead text-muted mb-4">
           Open-source models and interfaces designed to scale from individual observations to continental monitoring programs.
         </p>
