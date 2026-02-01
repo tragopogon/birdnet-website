@@ -157,63 +157,12 @@ permalink: "/about/"
 
 <div class="mt-5 pt-5 border-top">
   <div class="section-label mb-4 text-center">RECOGNITION WORKFLOW</div>
-  <div class="bg-white p-4 p-xl-5 rounded-4 border border-light-subtle shadow-sm">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">01</span>
-          <div>
-            <div class="fw-bold small mb-1">Capture</div>
-            <div class="smaller text-muted">Field recordings collected as high-quality audio files.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">02</span>
-          <div>
-            <div class="fw-bold small mb-1">Preprocess</div>
-            <div class="smaller text-muted">Noise filtering and window segmentation.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">03</span>
-          <div>
-            <div class="fw-bold small mb-1">Infer</div>
-            <div class="smaller text-muted">Model generates species confidence scores.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">04</span>
-          <div>
-            <div class="fw-bold small mb-1">Filter</div>
-            <div class="smaller text-muted">Spatial and seasonal thresholding of detections.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">05</span>
-          <div>
-            <div class="fw-bold small mb-1">Aggregate</div>
-            <div class="smaller text-muted">Activity Patterns and occupancy tallies.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="d-flex gap-3">
-          <span class="h4 fw-bold text-primary opacity-25">06</span>
-          <div>
-            <div class="fw-bold small mb-1">Interpret</div>
-            <div class="smaller text-muted">Biological insights for conservation planning.</div>
-          </div>
-        </div>
-      </div>
+  <div class="card bg-dark text-white border-0 shadow-lg overflow-hidden position-relative rounded-4">
+    <div class="card-body p-4 p-xl-5 position-relative" style="z-index: 2;">
+        {% include "partials/workflow-viz.njk" %}
     </div>
+    <!-- Background glow effect -->
+    <div class="position-absolute top-50 start-50 translate-middle" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(26, 95, 180, 0.1) 0%, transparent 75%); filter: blur(80px); z-index: 1;"></div>
   </div>
 </div>
 
