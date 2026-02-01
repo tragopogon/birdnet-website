@@ -260,22 +260,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <div class="row g-4 mt-3">
               <div class="col-lg-3 text-center">
-                <p class="small text-white text-opacity-50 mb-0">Audio is resampled to 48kHz and segmented into 3-second windows for analysis.</p>
+                <p class="small text-white-50 mb-0 step-desc">Audio is resampled to 48kHz and segmented into 3-second windows for analysis.</p>
               </div>
               <div class="col-lg-3 text-center">
-                <p class="small text-white text-opacity-50 mb-0">Raw acoustic signals are transformed into log-scaled Mel-spectrograms.</p>
+                <p class="small text-white-50 mb-0 step-desc">Raw acoustic signals are transformed into log-scaled Mel-spectrograms.</p>
               </div>
               <div class="col-lg-3 text-center">
-                <p class="small text-white text-opacity-50 mb-0">A deep ResNet model analyzes features across millions of recordings.</p>
+                <p class="small text-white-50 mb-0 step-desc">A deep ResNet model analyzes features across millions of recordings.</p>
               </div>
               <div class="col-lg-3 text-center">
-                <p class="small text-white text-opacity-50 mb-0">Results are filtered using precise location and date metadata.</p>
+                <p class="small text-white-50 mb-0 step-desc">Results are filtered using precise location and date metadata.</p>
               </div>
             </div>
         </div>
 
         <div class="text-center mt-5">
-          <p class="small text-white text-opacity-50 mb-0">
+          <p class="small text-white mb-0">
             Read the technical details in our <a href="https://doi.org/10.1016/j.ecoinf.2021.101236" target="_blank" class="text-white text-decoration-underline">primary publication</a> or explore the <a href="{{ '/about/' | url }}" class="text-white text-decoration-underline">recognition workflow</a>.
           </p>
         </div>
@@ -335,6 +335,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 3. Animation State
     const steps = document.querySelectorAll('.step-item');
+    const panels = document.querySelectorAll('.viz-panel');
+    const descriptions = document.querySelectorAll('.step-desc');
     const progressBar = document.getElementById('viz-progress');
     const waveformPath = document.querySelector('#panel-1 svg path');
     const specCanvas = document.getElementById('canvas-spectrogram-static');
@@ -445,6 +447,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (stepIndex !== currentStep - 1) {
             currentStep = stepIndex + 1;
             steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step) === currentStep));
+            panels.forEach((p, idx) => p.classList.toggle('active', idx === stepIndex));
+            descriptions.forEach((d, idx) => d.classList.toggle('active', idx === stepIndex));
             if (progressBar) progressBar.style.width = (12.5 + (currentStep - 1) * 25) + '%';
         }
 
