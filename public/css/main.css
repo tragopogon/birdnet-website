@@ -898,16 +898,7 @@ footer ul li a:hover {
   border-radius: 50%;
 }
 
-.spec-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  border-right: 2px solid #fff;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
+/* Removed .spec-overlay */
 
 .nn-grid {
   display: grid;
@@ -920,7 +911,7 @@ footer ul li a:hover {
 .nn-node {
   width: 6px;
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   transition: all 0.2s ease;
 }
