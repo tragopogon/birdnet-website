@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentStep = (currentStep % 4) + 1;
         
         steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step) === currentStep));
-        if (progressBar) progressBar.style.width = ((currentStep - 1) * 33.3) + '%';
+        if (progressBar) progressBar.style.width = (12.5 + (currentStep - 1) * 25) + '%';
         
         // Reset and animate local progress indicators
         if (waveformProgress) waveformProgress.style.width = '0%';
