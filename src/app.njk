@@ -75,7 +75,54 @@ permalink: "/app/"
           </div>
         </div>
       </div>
-      <div id="stats-updated" class="small text-muted mt-4 text-center opacity-50">Updating network stats…</div>
+      
+      <div class="row g-4 mt-2">
+        <div class="col-lg-12">
+          <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                  <h3 class="h6 fw-bold mb-0" data-i18n="app.stats.topSpecies">Most active species (24h)</h3>
+                  <p class="small text-muted mb-0" data-i18n="app.stats.topSpeciesDesc">Click on a species to see more details.</p>
+                </div>
+                <span class="badge bg-light text-muted fw-normal" data-i18n="app.stats.liveData">Live Data</span>
+              </div>
+              
+              <!-- Species Grid -->
+              <div id="top-species-grid" class="row g-3">
+                <div class="col-12 text-center py-5 text-primary small">—</div>
+              </div>
+
+              <!-- Detail view (hidden by default) -->
+              <div id="species-detail-view" class="mt-5 pt-4 border-top d-none">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="d-flex align-items-center gap-3">
+                      <img id="detail-species-img" src="" class="rounded-4 shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+                      <div>
+                        <h4 id="detail-species-name" class="h5 fw-bold mb-1"></h4>
+                        <p id="detail-species-scientific" class="small text-muted italic mb-0"></p>
+                        <div class="badge bg-primary-subtle text-primary mt-2">
+                          <span id="detail-species-count"></span> <span data-i18n="app.stats.detections">detections</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div style="height: 150px; position: relative;">
+                      <canvas id="activity-trend-chart"></canvas>
+                    </div>
+                    <div class="text-center mt-2">
+                      <span class="smaller text-muted" data-i18n="app.stats.activityTrend">Activity trend (last 24 hours)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="stats-updated" class="small text-muted mt-4 text-center opacity-50" data-i18n="app.stats.updated">Updating network stats…</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -303,14 +350,54 @@ permalink: "/app/"
 </section>
 
 <!-- Stats fetch script (moved to very end, after all DOM elements) -->
+<style>
+  .hover-bg-light:hover { background-color: rgba(0,0,0,0.025); }
+  .transition-all { transition: all 0.2s ease-in-out; }
+  .species-card { border: 1px solid rgba(0,0,0,0.05); cursor: pointer; }
+  .species-card:hover { border-color: var(--primary-color); background-color: rgba(26, 95, 180, 0.02); }
+  .species-card.active { border-color: var(--primary-color); background-color: rgba(26, 95, 180, 0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
+  .italic { font-style: italic; }
+  .ls-1 { letter-spacing: 0.05em; }
+</style>
+<script src="{{ '/js/chart.umd-4.4.1.min.js' | url }}"></script>
 <script>
 (function(){
   const STATS_URL = 'https://birdnet.cornell.edu/api2/requeststats';
   const REFRESH_MS = 5 * 60 * 1000;
   let refreshTimer = null;
+  let activityChart = null;
+  let globalData = null;
+  let labelMap = new Map();
+
+  async function fetchLabels() {
+    const lang = window.i18n ? window.i18n.getCurrentLang() : 'en';
+    const langMap = {
+      'en': 'en_us', 'de': 'de', 'es': 'es', 'fr': 'fr', 'it': 'it',
+      'pt-BR': 'pt', 'pt': 'pt', 'pl': 'pl', 'cs': 'cs', 'tlh': 'en_us'
+    };
+    const fileName = langMap[lang] || 'en_us';
+    try {
+      const res = await fetch(`/models/birdnet/labels/${fileName}.txt`);
+      if (res.ok) {
+        const text = await res.text();
+        labelMap.clear();
+        text.split('\n').forEach(line => {
+          const parts = line.trim().split('_');
+          if (parts.length >= 2) labelMap.set(parts[0], parts[1]);
+        });
+      }
+    } catch (e) {
+      console.error('Labels fetch failed', e);
+    }
+  }
 
   function fmtInt(v){
     return (typeof v === 'number' && isFinite(v)) ? v.toLocaleString('en-US') : '0';
+  }
+
+  function getBirdImage(scientificName){
+    if(!scientificName) return '{{ "/img/placeholder_bird.jpg" | url }}';
+    return `https://birdnet.cornell.edu/api2/bird/${encodeURIComponent(scientificName)}.webp`;
   }
 
   async function fetchStats(){
@@ -320,7 +407,9 @@ permalink: "/app/"
         throw new Error('HTTP '+res.status+' '+res.statusText);
       }
       const data = await res.json();
+      globalData = data;
       processStats(data);
+      updateVisualizations(data);
     } catch (e){
       console.error('Stats fetch failed:', e);
       const el = document.getElementById('stats-updated');
@@ -330,18 +419,14 @@ permalink: "/app/"
 
   function processStats(data){
     const observationsRaw = Array.isArray(data.observations) ? data.observations : [];
-    const observationsSorted = observationsRaw.slice().sort((a,b)=>(+b.ts)-(+a.ts));
-    const now = Date.now();
-    const dayAgo = now - 24*3600*1000;
-    const obs24h = observationsSorted.filter(o => +o.ts >= dayAgo);
     const statsObj = (data.stats && typeof data.stats === 'object') ? data.stats : {};
 
-    const totalObservations = statsObj.total_observations ?? observationsSorted.length;
-    const observations24h = statsObj.observations ?? obs24h.length;
+    const totalObservations = statsObj.total_observations ?? observationsRaw.length;
+    const observations24h = statsObj.observations ?? observationsRaw.length;
     const users24h = statsObj.users ?? 0;
 
     const speciesSet = new Set();
-    for (const o of obs24h){
+    for (const o of observationsRaw){
       if(typeof o.species === 'string'){
         const common = o.species.split(';')[0] || o.species;
         speciesSet.add(common);
@@ -349,7 +434,6 @@ permalink: "/app/"
     }
     const species24h = speciesSet.size;
 
-    // Guard each update in case IDs were reordered/removed
     const setText = (id,val)=> {
       const el = document.getElementById(id);
       if(el) el.textContent = val;
@@ -358,13 +442,133 @@ permalink: "/app/"
     setText('stat-observations-24h', fmtInt(observations24h));
     setText('stat-species-24h', fmtInt(species24h));
     setText('stat-users-24h', fmtInt(users24h));
-    setText('stats-updated', 'Updated ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    const updatedLabel = (window.i18n ? i18n.t('app.stats.updated') : 'Updated');
+    setText('stats-updated', updatedLabel + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
     clearTimeout(refreshTimer);
     refreshTimer = setTimeout(fetchStats, REFRESH_MS);
   }
 
-  function init(){
+  function updateVisualizations(data) {
+    const obs = Array.isArray(data.observations) ? data.observations : [];
+    const counts = {};
+    
+    obs.forEach(o => {
+      const parts = o.species.split(';');
+      const scientific = parts[1] || parts[0];
+      counts[scientific] = (counts[scientific] || 0) + 1;
+    });
+
+    const top8 = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8);
+    
+    const container = document.getElementById('top-species-grid');
+    if (container) {
+      if (top8.length === 0) {
+        container.innerHTML = '<div class="col-12 text-center py-5 text-primary small">—</div>';
+      } else {
+        container.innerHTML = top8.map(([scientific, count]) => {
+          const common = labelMap.get(scientific) || scientific.split('_')[1] || scientific;
+          const display = common.length > 20 ? common.substring(0, 18) + '...' : common;
+          return `
+            <div class="col-6 col-md-3">
+              <div class="card h-100 species-card border-0 rounded-4 shadow-sm transition-all p-2" 
+                   data-species="${scientific}"
+                   onclick="showSpeciesDetail('${scientific.replace(/'/g, "\\'")}', ${count})">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="${getBirdImage(scientific)}" 
+                       class="rounded-3 shadow-sm" 
+                       style="width: 50px; height: 50px; object-fit: cover;"
+                       onerror="this.src='{{ '/img/placeholder_bird.jpg' | url }}'; this.onerror=null;">
+                  <div class="min-w-0">
+                    <div class="fw-bold smaller text-truncate" title="${common}">${display}</div>
+                    <div class="smaller text-primary fw-bold" style="font-size: 0.7rem;">${fmtInt(count)} <span data-i18n="app.stats.ids">IDs</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        
+        // Auto-select first one if none selected
+        if (top8.length > 0 && document.getElementById('species-detail-view').classList.contains('d-none')) {
+          showSpeciesDetail(top8[0][0], top8[0][1]);
+        }
+        
+        if (window.i18n) i18n.translatePage();
+      }
+    }
+  }
+
+  window.showSpeciesDetail = function(scientific, count) {
+    const detailView = document.getElementById('species-detail-view');
+    detailView.classList.remove('d-none');
+    
+    const common = labelMap.get(scientific) || scientific.split('_')[1] || scientific;
+    
+    // Update headers
+    document.getElementById('detail-species-img').src = getBirdImage(scientific);
+    document.getElementById('detail-species-name').textContent = common;
+    document.getElementById('detail-species-scientific').textContent = scientific;
+    document.getElementById('detail-species-count').textContent = fmtInt(count);
+
+    // Filter active cards
+    document.querySelectorAll('.species-card').forEach(c => {
+      c.classList.toggle('active', c.getAttribute('data-species') === scientific);
+    });
+
+    // Generate temporal data
+    const buckets = Array(24).fill(0);
+    const labels = Array.from({length: 24}, (_, i) => i + ':00');
+
+    if (globalData && globalData.observations) {
+      globalData.observations.forEach(o => {
+        const parts = o.species.split(';');
+        const s = parts[1] || parts[0];
+        if (s === scientific) {
+          const hour = new Date(o.ts).getHours();
+          if (hour >= 0 && hour < 24) buckets[hour]++;
+        }
+      });
+    }
+
+    // Update Chart
+    const ctx = document.getElementById('activity-trend-chart');
+    if (activityChart) {
+      activityChart.data.datasets[0].data = buckets;
+      activityChart.update();
+    } else {
+      activityChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: buckets,
+            borderColor: '#1a5fb4',
+            backgroundColor: 'rgba(26, 95, 180, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8, font: { size: 10 } } },
+            y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { display: false } }
+          }
+        }
+      });
+    }
+    
+    detailView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+
+  async function init(){
+    await fetchLabels();
     fetchStats();
   }
 
