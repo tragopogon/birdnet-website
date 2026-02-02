@@ -22,18 +22,43 @@ permalink: "/demo/"
     <!-- Upload form / dropzone -->
     <form id="fileform" class="mb-4" enctype="multipart/form-data">
       <div id="dropzone" class="upload-dropzone text-center p-4 border border-dashed rounded bg-light">
-        <i class="bi bi-cloud-arrow-up fs-1 text-muted mb-2 d-block"></i>
-        <p class="mb-2 small text-muted">Drag & drop audio or choose a file (48 kHz preferred, WAV/MP3)</p>
-        <input id="fileupload" name="file" type="file" accept="audio/*" hidden>
-        <div class="d-flex gap-2 justify-content-center flex-wrap">
-          <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">
-            <i class="bi bi-folder2-open me-1"></i>Choose file
-          </button>
-          <button type="button" id="loadSampleBtn" class="btn btn-sm btn-outline-primary">
-            <i class="bi bi-music-note-beamed me-1"></i>Try sample audio
-          </button>
+        <div id="dropzoneDefault">
+          <i class="bi bi-cloud-arrow-up fs-1 text-muted mb-2 d-block"></i>
+          <p class="mb-2 small text-muted">Drag & drop audio or choose a file (48 kHz preferred, WAV/MP3)</p>
+          <input id="fileupload" name="file" type="file" accept="audio/*" hidden>
+          <div class="d-flex gap-2 justify-content-center flex-wrap">
+            <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">
+              <i class="bi bi-folder2-open me-1"></i>Choose file
+            </button>
+            <button type="button" id="loadSampleBtn" class="btn btn-sm btn-outline-primary">
+              <i class="bi bi-music-note-beamed me-1"></i>Try sample audio
+            </button>
+            <button type="button" id="recordBtn" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-mic me-1"></i>Record from mic
+            </button>
+          </div>
+          <div class="small mt-2 text-muted" id="fileInfo"></div>
         </div>
-        <div class="small mt-2 text-muted" id="fileInfo"></div>
+        
+        <!-- Recording UI (hidden by default) -->
+        <div id="recordingUI" class="d-none">
+          <div class="recording-indicator mb-3">
+            <span class="recording-dot"></span>
+            <span class="fs-5 fw-medium text-danger">Recording...</span>
+          </div>
+          <div id="recordingTimer" class="fs-2 fw-bold mb-3">0:00</div>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" id="stopRecordBtn" class="btn btn-danger">
+              <i class="bi bi-stop-fill me-1"></i>Stop Recording
+            </button>
+            <button type="button" id="cancelRecordBtn" class="btn btn-outline-secondary">
+              <i class="bi bi-x-lg me-1"></i>Cancel
+            </button>
+          </div>
+          <div class="small mt-3 text-muted">
+            <i class="bi bi-info-circle me-1"></i>Recording at 48 kHz for best results. Max 5 minutes.
+          </div>
+        </div>
       </div>
     </form>
 
@@ -662,6 +687,153 @@ $('#chooseBtn').on('click', () => $('#fileupload').trigger('click'));
 
 $('#loadSampleBtn').on('click', loadSampleAudio);
 
+/* -----------------------------
+   Microphone Recording
+----------------------------- */
+let mediaRecorder = null;
+let audioChunks = [];
+let recordingStartTime = null;
+let recordingTimerInterval = null;
+const MAX_RECORDING_SECONDS = 300; // 5 minutes max
+
+function formatRecordingTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return mins + ':' + String(secs).padStart(2, '0');
+}
+
+function updateRecordingTimer() {
+  if (!recordingStartTime) return;
+  const elapsed = (Date.now() - recordingStartTime) / 1000;
+  $('#recordingTimer').text(formatRecordingTime(elapsed));
+  
+  // Auto-stop at max duration
+  if (elapsed >= MAX_RECORDING_SECONDS) {
+    stopRecording();
+  }
+}
+
+function showRecordingUI() {
+  $('#dropzoneDefault').addClass('d-none');
+  $('#recordingUI').removeClass('d-none');
+  $('#recordingTimer').text('0:00');
+}
+
+function hideRecordingUI() {
+  $('#recordingUI').addClass('d-none');
+  $('#dropzoneDefault').removeClass('d-none');
+}
+
+async function startRecording() {
+  try {
+    // Request microphone access with 48kHz sample rate for best BirdNET compatibility
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        sampleRate: 48000,
+        channelCount: 1,
+        echoCancellation: false,
+        noiseSuppression: false,
+        autoGainControl: false
+      }
+    });
+    
+    audioChunks = [];
+    
+    // Use audio/webm for better compatibility; we'll decode it to PCM later
+    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') 
+      ? 'audio/webm;codecs=opus' 
+      : 'audio/webm';
+    
+    mediaRecorder = new MediaRecorder(stream, { mimeType });
+    
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data.size > 0) {
+        audioChunks.push(e.data);
+      }
+    };
+    
+    mediaRecorder.onstop = async () => {
+      // Stop all tracks
+      stream.getTracks().forEach(track => track.stop());
+      
+      // Clear timer
+      if (recordingTimerInterval) {
+        clearInterval(recordingTimerInterval);
+        recordingTimerInterval = null;
+      }
+      
+      // Only process if we have audio data (not cancelled)
+      if (audioChunks.length > 0) {
+        const blob = new Blob(audioChunks, { type: mimeType });
+        const file = new File([blob], 'microphone_recording.webm', { type: mimeType });
+        hideRecordingUI();
+        await loadAudioFile(file);
+      } else {
+        hideRecordingUI();
+      }
+    };
+    
+    mediaRecorder.onerror = (e) => {
+      console.error('MediaRecorder error:', e);
+      $('#statusLine').html('<span class="text-danger"><i class="bi bi-exclamation-circle me-1"></i>Recording error: ' + (e.error?.message || 'Unknown error') + '</span>');
+      cancelRecording();
+    };
+    
+    // Start recording
+    mediaRecorder.start(1000); // Collect data every second
+    recordingStartTime = Date.now();
+    showRecordingUI();
+    
+    // Update timer every second
+    recordingTimerInterval = setInterval(updateRecordingTimer, 1000);
+    
+    $('#statusLine').html('<i class="bi bi-mic-fill text-danger me-1"></i>Recording... Speak or play bird sounds near your microphone.');
+    
+  } catch (err) {
+    console.error('Microphone access error:', err);
+    let msg = 'Could not access microphone';
+    if (err.name === 'NotAllowedError') {
+      msg = 'Microphone access denied. Please allow microphone access in your browser settings.';
+    } else if (err.name === 'NotFoundError') {
+      msg = 'No microphone found. Please connect a microphone and try again.';
+    } else if (err.name === 'NotReadableError') {
+      msg = 'Microphone is in use by another application.';
+    }
+    $('#statusLine').html('<span class="text-warning"><i class="bi bi-exclamation-circle me-1"></i>' + msg + '</span>');
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
+}
+
+function cancelRecording() {
+  audioChunks = []; // Clear chunks so onstop doesn't process them
+  
+  if (recordingTimerInterval) {
+    clearInterval(recordingTimerInterval);
+    recordingTimerInterval = null;
+  }
+  
+  if (mediaRecorder) {
+    if (mediaRecorder.state !== 'inactive') {
+      // Stop the media recorder (which will also stop the stream in onstop)
+      mediaRecorder.stream.getTracks().forEach(track => track.stop());
+      mediaRecorder.stop();
+    }
+    mediaRecorder = null;
+  }
+  
+  hideRecordingUI();
+  $('#statusLine').html('Recording cancelled.');
+}
+
+$('#recordBtn').on('click', startRecording);
+$('#stopRecordBtn').on('click', stopRecording);
+$('#cancelRecordBtn').on('click', cancelRecording);
+
 $('#fileupload').on('change', async e => {
   const file = e.currentTarget.files[0];
   if (!file) return;
@@ -842,6 +1014,27 @@ $('#downloadCsvBtn').on('click', () => {
 .species-card:hover {
   border-color: var(--primary-color);
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Recording indicator styles */
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.recording-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  animation: pulse-recording 1s ease-in-out infinite;
+}
+
+@keyframes pulse-recording {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
 }
 
 .species-image-wrapper {
