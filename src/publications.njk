@@ -15,19 +15,14 @@ permalink: "/publications/"
 </div>
 
     {# Filter bar: clickable tag pills #}
-    <div class="mb-5 p-4 bg-light rounded-4 border border-light-subtle" id="tagFilterControls">
-      <div class="row align-items-center">
-        <div class="col-lg-2">
-          <div class="fw-bold small mb-2 mb-lg-0">Filter by Topic:</div>
-        </div>
-        <div class="col-lg-10">
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            <div id="tagToggleBar" class="d-flex flex-wrap gap-2"></div>
-            <button type="button" id="clearTagFilter" class="btn btn-sm btn-outline-secondary rounded-pill px-3">Clear Filters</button>
-          </div>
-        </div>
+    <div class="mb-5" id="tagFilterControls">
+      <p class="small text-muted fw-bold text-uppercase mb-3" style="letter-spacing: 0.05em;">Filter by research topic:</p>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <div id="tagToggleBar" class="d-flex flex-wrap gap-2"></div>
+        <button type="button" id="clearTagFilter" class="btn btn-link link-secondary text-decoration-none small p-0 d-none">
+          <i class="bi bi-x-circle me-1"></i>Clear all filters
+        </button>
       </div>
-      <div id="activeTagChips" class="d-flex flex-wrap gap-2 mt-3"></div>
     </div>
 
     {# Badge class helper for tags #}
@@ -138,15 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
     tags.forEach(t => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'btn btn-sm btn-outline-primary tag-pill';
+      btn.className = 'btn btn-tag tag-pill';
       btn.textContent = t;
       btn.dataset.tag = t;
       btn.setAttribute('aria-pressed', 'false');
       btn.addEventListener('click', () => {
         const active = btn.getAttribute('aria-pressed') === 'true';
         btn.setAttribute('aria-pressed', active ? 'false' : 'true');
-        btn.classList.toggle('btn-primary', !active);
-        btn.classList.toggle('btn-outline-primary', active);
+        btn.classList.toggle('active', !active);
         applyFilter();
       });
       toggleBar.appendChild(btn);
@@ -158,18 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(b => b.dataset.tag);
   }
 
-  function updateChips(selected) {
-    chipsEl.innerHTML = '';
-    if (!selected.length) return;
-    selected.forEach(t => {
-      const chip = document.createElement('span');
-      chip.className = 'badge bg-secondary';
-      chip.textContent = t;
-      chipsEl.appendChild(chip);
-    });
+  function applyFilter() {
+    clearBtn.classList.toggle('d-none', getSelectedTags().length === 0);
+    updateVisibility();
   }
 
-  function applyFilter() {
+  function updateVisibility() {
     const selected = getSelectedTags();
     cards.forEach(card => {
       const ct = (card.dataset.tags || '')
@@ -184,14 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const anyVisible = g.querySelector('.col-12:not([style*="display: none"])');
       g.style.display = anyVisible ? '' : 'none';
     });
-    updateChips(selected);
   }
 
   clearBtn.addEventListener('click', () => {
     document.querySelectorAll('.tag-pill').forEach(b => {
       b.setAttribute('aria-pressed','false');
-      b.classList.remove('btn-primary');
-      b.classList.add('btn-outline-primary');
+      b.classList.remove('active');
     });
     applyFilter();
   });
