@@ -22,9 +22,17 @@ permalink: "/demo/"
     <!-- Upload form / dropzone -->
     <form id="fileform" class="mb-4" enctype="multipart/form-data">
       <div id="dropzone" class="upload-dropzone text-center p-4 border border-dashed rounded bg-light">
+        <i class="bi bi-cloud-arrow-up fs-1 text-muted mb-2 d-block"></i>
         <p class="mb-2 small text-muted">Drag & drop audio or choose a file (48 kHz preferred, WAV/MP3)</p>
         <input id="fileupload" name="file" type="file" accept="audio/*" hidden>
-        <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">Choose file</button>
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+          <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-folder2-open me-1"></i>Choose file
+          </button>
+          <button type="button" id="loadSampleBtn" class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-music-note-beamed me-1"></i>Try sample audio
+          </button>
+        </div>
         <div class="small mt-2 text-muted" id="fileInfo"></div>
       </div>
     </form>
@@ -45,71 +53,122 @@ permalink: "/demo/"
     </div>
 
     <!-- Settings panel (hidden until audio loads) -->
-    <div id="settingsPanel" class="card card-body mb-3 d-none">
-      <div class="row g-2 align-items-end">
-        <!-- Language selection -->
-        <div class="col-12 col-md-4">
-          <label for="langSelect" class="form-label small mb-1">Labels language</label>
-          <select id="langSelect" class="form-select form-select-sm">
-            <option value="auto" selected>Auto (browser)</option>
-            <option value="en_us">English (US)</option>
-            <option value="en_uk">English (UK)</option>
-            <option value="de">Deutsch</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-            <option value="it">Italiano</option>
-            <option value="nl">Nederlands</option>
-            <option value="pt">Português</option>
-            <option value="fi">Suomi</option>
-            <option value="sv">Svenska</option>
-            <option value="da">Dansk</option>
-            <option value="no">Norsk</option>
-            <option value="pl">Polski</option>
-            <option value="cs">Čeština</option>
-            <option value="sk">Slovenčina</option>
-            <option value="ro">Română</option>
-            <option value="sl">Slovenščina</option>
-            <option value="hu">Magyar</option>
-            <option value="ru">Русский</option>
-            <option value="uk">Українська</option>
-            <option value="tr">Türkçe</option>
-            <option value="ar">العربية</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="th">ไทย</option>
-            <option value="zh">中文</option>
-          </select>
+    <div id="settingsPanel" class="card mb-3 d-none">
+      <div class="card-body">
+        <!-- Main controls row -->
+        <div class="row g-3">
+          <!-- Language selection -->
+          <div class="col-12 col-md-4">
+            <label for="langSelect" class="form-label small fw-medium mb-1">
+              <i class="bi bi-translate me-1 text-muted"></i>Species labels
+            </label>
+            <select id="langSelect" class="form-select form-select-sm">
+              <option value="auto" selected>Auto (browser language)</option>
+              <option value="en_us">English (US)</option>
+              <option value="en_uk">English (UK)</option>
+              <option value="de">Deutsch</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="it">Italiano</option>
+              <option value="nl">Nederlands</option>
+              <option value="pt">Português</option>
+              <option value="fi">Suomi</option>
+              <option value="sv">Svenska</option>
+              <option value="da">Dansk</option>
+              <option value="no">Norsk</option>
+              <option value="pl">Polski</option>
+              <option value="cs">Čeština</option>
+              <option value="sk">Slovenčina</option>
+              <option value="ro">Română</option>
+              <option value="sl">Slovenščina</option>
+              <option value="hu">Magyar</option>
+              <option value="ru">Русский</option>
+              <option value="uk">Українська</option>
+              <option value="tr">Türkçe</option>
+              <option value="ar">العربية</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+              <option value="th">ไทย</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+          
+          <!-- Overlap selection -->
+          <div class="col-6 col-md-2">
+            <label for="overlapSelect" class="form-label small fw-medium mb-1">
+              <i class="bi bi-layers me-1 text-muted"></i>Overlap
+            </label>
+            <select id="overlapSelect" class="form-select form-select-sm">
+              <option value="0.0" selected>0.0 s</option>
+              <option value="0.5">0.5 s</option>
+              <option value="1.0">1.0 s</option>
+              <option value="1.5">1.5 s</option>
+              <option value="2.0">2.0 s</option>
+              <option value="2.5">2.5 s</option>
+            </select>
+          </div>
+          
+          <!-- Confidence threshold -->
+          <div class="col-6 col-md-3">
+            <label for="confidenceThreshold" class="form-label small fw-medium mb-1">
+              <i class="bi bi-sliders me-1 text-muted"></i>Min. confidence: <span id="confidenceValue" class="text-primary">10%</span>
+            </label>
+            <input type="range" class="form-range" id="confidenceThreshold" min="0.01" max="0.99" step="0.01" value="0.10">
+          </div>
+          
+          <!-- Run button -->
+          <div class="col-12 col-md-3 d-flex align-items-end">
+            <button type="button" id="runBtn" class="btn btn-primary w-100">
+              <i class="bi bi-play-fill me-1"></i>Run Analysis
+            </button>
+          </div>
         </div>
-        <!-- Geo inputs -->
-        <div class="col-6 col-md-3">
-          <label for="latInput" class="form-label small mb-1">Latitude</label>
-          <input type="number" step="0.0001" id="latInput" class="form-control form-control-sm" placeholder="e.g. 40.7812">
-        </div>
-        <div class="col-6 col-md-3">
-          <label for="lonInput" class="form-label small mb-1">Longitude</label>
-          <input type="number" step="0.0001" id="lonInput" class="form-control form-control-sm" placeholder="-73.9665">
-        </div>
-        <!-- Overlap selection -->
-        <div class="col-6 col-md-2">
-          <label for="overlapSelect" class="form-label small mb-1">Overlap (s)</label>
-          <select id="overlapSelect" class="form-select form-select-sm">
-            <option value="0.0" selected>0.0</option>
-            <option value="0.5">0.5</option>
-            <option value="1.0">1.0</option>
-            <option value="1.5">1.5</option>
-            <option value="2.0">2.0</option>
-            <option value="2.5">2.5</option>
-          </select>
-        </div>
-        <!-- Run button -->
-        <div class="col-12 col-md-2 d-grid">
-          <label class="form-label small mb-1 invisible">.</label>
-          <button type="button" id="runBtn" class="btn btn-sm btn-primary">Run analysis</button>
+        
+        <!-- Location filter section -->
+        <div class="mt-3 pt-3 border-top">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <label class="form-label small fw-medium mb-0">
+              <i class="bi bi-geo-alt me-1 text-muted"></i>Location filter
+              <span id="locationStatus" class="badge bg-secondary ms-2">Off</span>
+            </label>
+            <div class="form-check form-switch mb-0">
+              <input class="form-check-input" type="checkbox" id="useLocationFilter" role="switch">
+              <label class="form-check-label small text-muted" for="useLocationFilter">Enable</label>
+            </div>
+          </div>
+          
+          <div id="locationInputs" class="row g-2 align-items-end" style="display: none;">
+            <div class="col">
+              <input type="number" step="0.0001" id="latInput" class="form-control form-control-sm" placeholder="Latitude (e.g. 40.7812)">
+            </div>
+            <div class="col">
+              <input type="number" step="0.0001" id="lonInput" class="form-control form-control-sm" placeholder="Longitude (e.g. -73.9665)">
+            </div>
+            <div class="col-auto">
+              <button type="button" id="geolocateBtn" class="btn btn-sm btn-outline-primary" title="Use my current location">
+                <i class="bi bi-crosshair me-1"></i>Detect
+              </button>
+            </div>
+          </div>
+          
+          <div id="locationHelp" class="small text-muted mt-2" style="display: none;">
+            <i class="bi bi-info-circle me-1"></i>
+            When enabled, results are filtered to species likely found at this location. 
+            Click "Detect" to use your browser's location, or enter coordinates manually.
+          </div>
         </div>
       </div>
-      <div class="small text-muted mt-2">
-        Pooling: mean exponential (smooth-max). Overlap controls hop size of 3s windows.
-        Species with geo score ≤ 0.05 are hidden (set to 0).
+      
+      <!-- Progress section (inside card, initially hidden) -->
+      <div id="progressSection" class="card-footer bg-light d-none">
+        <div class="d-flex align-items-center gap-3">
+          <div class="flex-grow-1">
+            <div class="progress" style="height: 8px;">
+              <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+            </div>
+          </div>
+          <div id="progressText" class="small text-muted" style="min-width: 120px;">Initializing...</div>
+        </div>
       </div>
     </div>
 
@@ -118,12 +177,14 @@ permalink: "/demo/"
       <div id="statusLine" class="small text-muted">Waiting for audio…</div>
     </div>
 
-    <!-- Results: chart canvas injected dynamically -->
+    <!-- Results: interactive species list -->
     <div id="results" class="mb-3"></div>
 
-    <!-- Download button (hidden until segment data + chart available) -->
+    <!-- Download button (hidden until segment data available) -->
     <div class="mb-4">
-      <button id="downloadCsvBtn" class="btn btn-sm btn-outline-secondary d-none" disabled>Download per-segment results</button>
+      <button id="downloadCsvBtn" class="btn btn-sm btn-outline-secondary d-none" disabled>
+        <i class="bi bi-download me-1"></i>Download CSV results
+      </button>
     </div>
 
   </div>
@@ -131,54 +192,83 @@ permalink: "/demo/"
 
 <!-- Local JS vendor bundles -->
 <script src="{{ '/js/jquery-3.7.1.min.js' | url }}"></script>
-<script src="{{ '/js/chart.umd-4.4.1.min.js' | url }}"></script>
 <script src="{{ '/js/wavesurfer-7.min.js' | url }}"></script>
 <script src="{{ '/js/wavesurfer.spectrogram.min.js' | url }}"></script>
 <script src="{{ '/js/wavesurfer.minimap.min.js' | url }}"></script>
 
-<!-- App logic (no functional changes, only formatting / comments) -->
+<!-- App logic -->
 <script type="module">
 /* -----------------------------
    Global state / configuration
 ----------------------------- */
 const workerBase = '{{ "/js/birdnet-worker.js" | url }}';
 const modelsRoot = '{{ "/models" | url }}';
+const sampleAudioUrl = '{{ "/audio/XC1059662_Blue_Jay.mp3" | url }}';
+const speciesImageBase = 'https://birdnet.cornell.edu/api2/bird/';
+
 let worker = null;
 let workerLoaded = false;
 let resolveWhenLoaded = null;
 let currentWorkerLang = null;
 let ws = null;
-let chart = null;
 let areaModelLoaded = false;
 let lastPCM = null;
 let segmentPredictions = null;
+let pooledResults = null;
+let currentFileName = 'audio';
 
 const WINDOW_SAMPLES = 144000; // 3s @ 48 kHz
+const GEO_THRESH = 0.05;
 
 /* -----------------------------
-   Chart value label plugin
+   Progress helpers
 ----------------------------- */
-const ValueLabelPlugin = {
-  id: 'valueLabel',
-  afterDatasetsDraw(chart) {
-    const { ctx, scales } = chart;
-    const meta = chart.getDatasetMeta(0);
-    const data = chart.data.datasets[0].data;
-    ctx.save();
-    ctx.font = '12px system-ui,-apple-system,Segoe UI,Roboto,Arial';
-    ctx.fillStyle = '#444';
-    ctx.textBaseline = 'middle';
-    meta.data.forEach((bar, i) => {
-      const val = data[i];
-      if (val == null) return;
-      const label = val.toFixed(3);
-      const x = Math.min(bar.x + 24, scales.x.getPixelForValue(1) - 4);
-      ctx.fillText(label, x, bar.y);
-    });
-    ctx.restore();
+function showProgress(percent, text) {
+  $('#progressSection').removeClass('d-none');
+  $('#progressBar').css('width', percent + '%');
+  if (text) $('#progressText').text(text);
+}
+
+function hideProgress() {
+  $('#progressSection').addClass('d-none');
+  $('#progressBar').css('width', '0%');
+}
+
+function setRunButtonLoading(loading) {
+  const btn = $('#runBtn');
+  if (loading) {
+    btn.prop('disabled', true).html('<i class="bi bi-arrow-repeat spin me-1"></i>Analyzing...');
+  } else {
+    btn.prop('disabled', false).html('<i class="bi bi-play-fill me-1"></i>Run Analysis');
   }
-};
-Chart.register(ValueLabelPlugin);
+}
+
+/* -----------------------------
+   Location filter helpers
+----------------------------- */
+function isLocationFilterEnabled() {
+  return $('#useLocationFilter').is(':checked');
+}
+
+function hasValidLocation() {
+  const lat = parseFloat($('#latInput').val());
+  const lon = parseFloat($('#lonInput').val());
+  return !Number.isNaN(lat) && !Number.isNaN(lon);
+}
+
+function updateLocationStatus() {
+  const enabled = isLocationFilterEnabled();
+  const hasCoords = hasValidLocation();
+  const badge = $('#locationStatus');
+  
+  if (!enabled) {
+    badge.removeClass('bg-success bg-warning').addClass('bg-secondary').text('Off');
+  } else if (hasCoords) {
+    badge.removeClass('bg-secondary bg-warning').addClass('bg-success').text('Active');
+  } else {
+    badge.removeClass('bg-secondary bg-success').addClass('bg-warning').text('No coordinates');
+  }
+}
 
 /* -----------------------------
    Worker URL builder
@@ -196,11 +286,17 @@ function makeWorkerUrl(selectedLang) {
 function attachWorker() {
   worker.onmessage = ({ data }) => {
     if(['load_model','warmup','load_geomodel','load_labels'].includes(data.message)){
-      $('#statusLine').text('Loading model... '+(data.progress ?? '')+'%');
+      const progress = data.progress ?? 0;
+      let stepText = 'Loading model...';
+      if (data.message === 'load_model') stepText = 'Loading neural network...';
+      if (data.message === 'warmup') stepText = 'Warming up model...';
+      if (data.message === 'load_geomodel') stepText = 'Loading geo model...';
+      if (data.message === 'load_labels') stepText = 'Loading species labels...';
+      showProgress(Math.min(progress * 0.4, 40), stepText);
     }
     if(data.message === 'loaded'){
       workerLoaded = true;
-      $('#statusLine').text('Model ready.');
+      showProgress(45, 'Model ready');
       if (resolveWhenLoaded) { resolveWhenLoaded(); resolveWhenLoaded = null; }
     }
     if(data.message === 'predict_debug'){
@@ -214,27 +310,31 @@ function attachWorker() {
     }
     if(data.message === 'segments'){
       segmentPredictions = data.segments;
+      showProgress(90, 'Processing results...');
       $('#downloadCsvBtn').prop('disabled', false).removeClass('d-none');
     }
     if(data.message === 'pooled'){
-      const useGeo = areaModelLoaded;
-      const GEO_THRESH = 0.05;
-      const items = data.pooled
-        .map(x => {
-          const filtered = useGeo ? (x.geoscore > GEO_THRESH ? x.confidence : 0) : x.confidence;
-          return { ...x, filtered };
-        })
-        .sort((a,b) => b.filtered - a.filtered)
-        .slice(0, 10);
-      drawChart(items, useGeo ? 'filtered' : 'confidence');
-      $('#statusLine').text('Top 10 results');
+      showProgress(100, 'Complete!');
+      setTimeout(() => {
+        hideProgress();
+        setRunButtonLoading(false);
+      }, 400);
+      
+      const useGeo = areaModelLoaded && isLocationFilterEnabled();
+      pooledResults = data.pooled.map(x => {
+        const filtered = useGeo ? (x.geoscore > GEO_THRESH ? x.confidence : 0) : x.confidence;
+        return { ...x, filtered };
+      }).sort((a,b) => b.filtered - a.filtered);
+      renderResults();
+      $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Analysis complete. Click a species to see detections.');
     }
     if(data.message === 'area-scores'){
       areaModelLoaded = true;
-      $('#statusLine').text('Geo scores applied');
+      showProgress(55, 'Geo filter applied');
     }
   };
 }
+
 function newWorker(selectedLang) {
   if (worker) { try { worker.terminate(); } catch{} }
   workerLoaded = false;
@@ -243,6 +343,7 @@ function newWorker(selectedLang) {
   worker = new Worker(makeWorkerUrl(currentWorkerLang));
   attachWorker();
 }
+
 function waitForLoaded(){
   if (workerLoaded) return Promise.resolve();
   return new Promise(res => { resolveWhenLoaded = res; });
@@ -256,6 +357,22 @@ function fmtTime(sec){
   const m=Math.floor(sec/60);
   const s=Math.floor(sec%60);
   return m+':'+String(s).padStart(2,'0');
+}
+
+function fmtTimeDetailed(sec){
+  if(!sec||isNaN(sec)) return '0:00.0';
+  const m=Math.floor(sec/60);
+  const s=(sec%60).toFixed(1);
+  return m+':'+String(s).padStart(4,'0');
+}
+
+function getSpeciesImageUrl(scientificName) {
+  if (!scientificName) return null;
+  return speciesImageBase + encodeURIComponent(scientificName) + '.webp';
+}
+
+function getConfidenceThreshold() {
+  return parseFloat($('#confidenceThreshold').val()) || 0.1;
 }
 
 /* -----------------------------
@@ -297,80 +414,165 @@ function initWaveSurfer(url){
 }
 
 /* -----------------------------
-   Chart rendering
+   Results rendering
 ----------------------------- */
-function drawChart(list, valueKey='confidence'){
-  const labels = list.map(b => b.nameI18n || b.name);
-  const data = list.map(b => b[valueKey] || 0);
-  $('#results').html('<canvas id="predictionChart" height="'+Math.max(220, (labels.length*24+80))+'"></canvas>');
-  if(chart) chart.destroy();
-  const ctx = document.getElementById('predictionChart').getContext('2d');
+function renderResults() {
+  if (!pooledResults) return;
+  
+  const threshold = getConfidenceThreshold();
+  const useGeo = areaModelLoaded && isLocationFilterEnabled() && hasValidLocation();
+  const valueKey = useGeo ? 'filtered' : 'confidence';
+  
+  // Filter and limit to top 15
+  const items = pooledResults
+    .filter(x => x[valueKey] >= threshold)
+    .slice(0, 15);
+  
+  if (items.length === 0) {
+    $('#results').html(`
+      <div class="alert alert-info">
+        <i class="bi bi-info-circle me-2"></i>
+        No species detected above the confidence threshold (${(threshold * 100).toFixed(0)}%). 
+        Try lowering the threshold or using a different audio file.
+      </div>
+    `);
+    return;
+  }
+  
+  // Show info about location filter
+  let filterInfo = '';
+  if (useGeo) {
+    filterInfo = `<div class="alert alert-light border small mb-3">
+      <i class="bi bi-geo-alt-fill text-success me-1"></i>
+      Results filtered by location. Species unlikely to occur at your coordinates are hidden.
+    </div>`;
+  }
+  
+  let html = filterInfo + '<div class="species-results">';
+  
+  items.forEach((item, idx) => {
+    // Use sciName from worker (already parsed from "Scientific Name_Common Name" format)
+    const scientificName = item.sciName || item.name;
+    // Use localized name if available, otherwise fall back to common name
+    const displayName = item.nameI18n || item.name || scientificName;
+    const confidence = item[valueKey];
+    const confidencePercent = (confidence * 100).toFixed(1);
+    const imageUrl = getSpeciesImageUrl(scientificName);
+    
+    // Find segments where this species was detected
+    const segments = getSegmentsForSpecies(scientificName, threshold);
+    
+    html += `
+      <div class="species-card card mb-2" data-species="${scientificName}">
+        <div class="card-body p-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="species-image-wrapper">
+              <img src="${imageUrl}" 
+                   alt="${displayName}" 
+                   class="species-image rounded"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="species-image-placeholder rounded" style="display:none;">
+                <i class="bi bi-card-image text-muted"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 min-width-0">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <h6 class="mb-0 species-name">${displayName}</h6>
+                  <small class="text-muted fst-italic">${scientificName}</small>
+                </div>
+                <div class="text-end">
+                  <span class="badge bg-primary">${confidencePercent}%</span>
+                  ${segments.length > 0 ? `<div class="small text-muted mt-1">${segments.length} detection${segments.length > 1 ? 's' : ''}</div>` : ''}
+                </div>
+              </div>
+              <div class="progress mt-2" style="height: 4px;">
+                <div class="progress-bar" role="progressbar" style="width: ${confidencePercent}%"></div>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-link text-muted expand-btn p-0" type="button" data-bs-toggle="collapse" data-bs-target="#segments-${idx}">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          
+          <!-- Expandable segment details -->
+          <div class="collapse" id="segments-${idx}">
+            <div class="segment-list mt-3 pt-3 border-top">
+              ${segments.length > 0 ? segments.map(seg => `
+                <div class="segment-item d-flex align-items-center gap-2 py-1 px-2 rounded hover-bg" 
+                     data-start="${seg.start}" data-end="${seg.end}">
+                  <button class="btn btn-sm btn-outline-primary play-segment-btn" title="Play segment">
+                    <i class="bi bi-play-fill"></i>
+                  </button>
+                  <span class="small text-muted">${fmtTimeDetailed(seg.start)} – ${fmtTimeDetailed(seg.end)}</span>
+                  <span class="badge bg-secondary ms-auto">${(seg.confidence * 100).toFixed(1)}%</span>
+                </div>
+              `).join('') : '<div class="small text-muted">No individual segment detections above threshold.</div>'}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  html += '</div>';
+  $('#results').html(html);
+  
+  // Attach event listeners for segment playback
+  $('.play-segment-btn').on('click', function(e) {
+    e.stopPropagation();
+    const segmentItem = $(this).closest('.segment-item');
+    const startTime = parseFloat(segmentItem.data('start'));
+    if (ws && !isNaN(startTime)) {
+      const duration = ws.getDuration();
+      ws.seekTo(startTime / duration);
+      ws.play();
+      // Auto-stop after ~3.5 seconds (segment duration + buffer)
+      setTimeout(() => {
+        if (ws.isPlaying()) ws.pause();
+      }, 3500);
+    }
+  });
+  
+  // Toggle chevron on expand/collapse
+  $('.species-card').on('show.bs.collapse', function() {
+    $(this).find('.expand-btn i').removeClass('bi-chevron-down').addClass('bi-chevron-up');
+  }).on('hide.bs.collapse', function() {
+    $(this).find('.expand-btn i').removeClass('bi-chevron-up').addClass('bi-chevron-down');
+  });
+}
 
-  const bgColor = (c) => {
-    const { chart } = c;
-    const area = chart.chartArea;
-    if (!area) return '#7dd3fc';
-    const grad = chart.ctx.createLinearGradient(area.left, 0, area.right, 0);
-    grad.addColorStop(0, '#22d3ee');
-    grad.addColorStop(0.5, '#60a5fa');
-    grad.addColorStop(1, '#a78bfa');
-    return grad;
-  };
-
-  chart = new Chart(ctx, {
-    type:'bar',
-    data:{
-      labels,
-      datasets:[{
-        label: valueKey === 'filtered' ? 'Confidence (geo-filtered)' : 'Confidence',
-        data,
-        backgroundColor: bgColor,
-        borderColor: '#0ea5e9',
-        borderWidth: 1,
-        borderSkipped: false,
-        borderRadius: 8,
-        barPercentage: 0.85,
-        categoryPercentage: 0.9
-      }]
-    },
-    options:{
-      indexAxis:'y',
-      responsive:true,
-      maintainAspectRatio:false,
-      animation:{
-        duration:900,
-        easing:'easeOutQuart',
-        delay: ctx => ctx.dataIndex * 30
-      },
-      scales:{
-        x:{
-          min:0,max:1,
-          grid:{ color:'rgba(0,0,0,0.06)' },
-          ticks:{ callback:v => Number(v).toFixed(1) }
-        },
-        y:{ grid:{ display:false }, ticks:{ color:'#333' } }
-      },
-      plugins:{
-        legend:{ display:false },
-        tooltip:{
-          backgroundColor:'#111',
-          titleColor:'#fff',
-          bodyColor:'#fff',
-          callbacks:{ label:ctx => ctx.raw.toFixed(3) }
-        }
+function getSegmentsForSpecies(sciName, threshold) {
+  if (!segmentPredictions) return [];
+  
+  const segments = [];
+  const useGeo = areaModelLoaded && isLocationFilterEnabled() && hasValidLocation();
+  
+  segmentPredictions.forEach(seg => {
+    const match = seg.preds.find(p => p.sciName === sciName);
+    if (match) {
+      const conf = useGeo && match.geoscore <= GEO_THRESH ? 0 : match.confidence;
+      if (conf >= threshold) {
+        segments.push({
+          start: seg.start,
+          end: seg.end,
+          confidence: conf
+        });
       }
     }
   });
+  
+  return segments.sort((a, b) => b.confidence - a.confidence);
 }
 
 /* -----------------------------
    Clear previous results
 ----------------------------- */
-function clearChart() {
-  if (chart) { try { chart.destroy(); } catch{} chart = null; }
+function clearResults() {
   $('#results').empty();
   $('#downloadCsvBtn').prop('disabled', true).addClass('d-none');
   segmentPredictions = null;
+  pooledResults = null;
 }
 
 /* -----------------------------
@@ -394,92 +596,322 @@ async function fileToPCMWindows(file){
   return { pcm };
 }
 
+async function urlToPCMWindows(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error('Failed to fetch audio');
+  const buf = await response.arrayBuffer();
+  const ctx = new AudioContext({ sampleRate:48000 });
+  const audio = await ctx.decodeAudioData(buf);
+  const chan = audio.numberOfChannels > 1
+    ? (()=>{ const l = audio.getChannelData(0), r = audio.getChannelData(1);
+             const m = new Float32Array(audio.length);
+             for(let i=0;i<audio.length;i++) m[i] = 0.5*(l[i] + r[i]);
+             return m; })()
+    : audio.getChannelData(0);
+  let max = 0;
+  for(let i=0;i<chan.length;i++){ const v=Math.abs(chan[i]); if(v>max) max=v; }
+  const norm = max || 1;
+  const pcm = new Float32Array(chan.length);
+  for(let i=0;i<pcm.length;i++) pcm[i] = chan[i]/norm;
+  return { pcm };
+}
+
+/* -----------------------------
+   Load audio (file or URL)
+----------------------------- */
+async function loadAudioFile(file) {
+  clearResults();
+  currentFileName = file.name.replace(/\.[^/.]+$/, '');
+  $('#fileInfo').text(file.name + ' (' + (file.size/1024/1024).toFixed(2) + ' MB)');
+  initWaveSurfer(URL.createObjectURL(file));
+  showProgress(30, 'Decoding audio...');
+  try {
+    const { pcm } = await fileToPCMWindows(file);
+    lastPCM = pcm;
+    showProgress(100, 'Ready');
+    setTimeout(hideProgress, 300);
+    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Audio loaded. Adjust settings and click <strong>Run Analysis</strong>.');
+  } catch (err) {
+    hideProgress();
+    $('#statusLine').html('<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>Error decoding audio: ' + err.message + '</span>');
+  }
+}
+
+async function loadSampleAudio() {
+  clearResults();
+  currentFileName = 'Blue_Jay_Sample';
+  $('#fileInfo').html('<i class="bi bi-music-note-beamed me-1"></i>Sample: Blue Jay (Cyanocitta cristata)');
+  initWaveSurfer(sampleAudioUrl);
+  showProgress(20, 'Fetching sample...');
+  try {
+    const { pcm } = await urlToPCMWindows(sampleAudioUrl);
+    lastPCM = pcm;
+    showProgress(100, 'Ready');
+    setTimeout(hideProgress, 300);
+    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Sample loaded. Adjust settings and click <strong>Run Analysis</strong>.');
+  } catch (err) {
+    hideProgress();
+    $('#statusLine').html('<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>Error loading sample: ' + err.message + '</span>');
+  }
+}
+
 /* -----------------------------
    Event handlers
 ----------------------------- */
-$('#chooseBtn').on('click',()=>$('#fileupload').trigger('click'));
+$('#chooseBtn').on('click', () => $('#fileupload').trigger('click'));
+
+$('#loadSampleBtn').on('click', loadSampleAudio);
 
 $('#fileupload').on('change', async e => {
   const file = e.currentTarget.files[0];
-  if(!file) return;
-  clearChart();
-  $('#fileInfo').text(file.name+' ('+(file.size/1024/1024).toFixed(2)+' MB)');
-  initWaveSurfer(URL.createObjectURL(file));
-  $('#statusLine').text('Decoding audio...');
-  const { pcm } = await fileToPCMWindows(file);
-  lastPCM = pcm;
-  $('#statusLine').text('Audio ready. Adjust settings, then click "Run analysis".');
+  if (!file) return;
+  await loadAudioFile(file);
 });
 
 $('#runBtn').on('click', async () => {
-  if (!lastPCM) { $('#statusLine').text('Please load audio first.'); return; }
+  if (!lastPCM) { 
+    $('#statusLine').html('<span class="text-warning"><i class="bi bi-exclamation-circle me-1"></i>Please load audio first.</span>'); 
+    return; 
+  }
+  
+  setRunButtonLoading(true);
+  clearResults();
   const selectedLang = $('#langSelect').val() || 'auto';
+  
   if (!worker || !workerLoaded || selectedLang !== currentWorkerLang) {
-    $('#statusLine').text('Loading model...');
+    showProgress(5, 'Initializing model...');
     newWorker(selectedLang);
     await waitForLoaded();
   }
-  const lat = parseFloat($('#latInput').val());
-  const lon = parseFloat($('#lonInput').val());
-  if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
-    $('#statusLine').text('Applying geo scores...');
+  
+  // Only apply geo filter if enabled and coordinates are set
+  if (isLocationFilterEnabled() && hasValidLocation()) {
+    const lat = parseFloat($('#latInput').val());
+    const lon = parseFloat($('#lonInput').val());
+    showProgress(50, 'Applying location filter...');
     worker.postMessage({ message:'area-scores', latitude: lat, longitude: lon });
   }
-  const overlapSec = parseFloat($('#overlapSelect').val() || '1.5');
-  $('#statusLine').text('Running prediction...');
+  
+  const overlapSec = parseFloat($('#overlapSelect').val() || '0.0');
+  showProgress(60, 'Analyzing audio...');
   worker.postMessage({ message:'predict', pcmAudio: lastPCM, overlapSec });
 });
 
+/* Location filter toggle */
+$('#useLocationFilter').on('change', function() {
+  const enabled = $(this).is(':checked');
+  if (enabled) {
+    $('#locationInputs').slideDown(200);
+    $('#locationHelp').slideDown(200);
+  } else {
+    $('#locationInputs').slideUp(200);
+    $('#locationHelp').slideUp(200);
+  }
+  updateLocationStatus();
+  
+  // Re-render results if we have them (to apply/remove geo filter)
+  if (pooledResults) {
+    renderResults();
+  }
+});
+
+/* Location input changes */
+$('#latInput, #lonInput').on('input', function() {
+  updateLocationStatus();
+});
+
+/* Geolocation button */
+$('#geolocateBtn').on('click', function() {
+  const btn = $(this);
+  const originalContent = btn.html();
+  
+  if (!navigator.geolocation) {
+    $('#statusLine').html('<span class="text-warning"><i class="bi bi-exclamation-circle me-1"></i>Geolocation not supported by your browser.</span>');
+    return;
+  }
+  
+  btn.prop('disabled', true).html('<i class="bi bi-arrow-repeat spin me-1"></i>Detecting...');
+  
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      $('#latInput').val(position.coords.latitude.toFixed(4));
+      $('#lonInput').val(position.coords.longitude.toFixed(4));
+      btn.prop('disabled', false).html(originalContent);
+      updateLocationStatus();
+      $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Location detected successfully.');
+    },
+    (error) => {
+      btn.prop('disabled', false).html(originalContent);
+      let msg = 'Could not get location';
+      if (error.code === 1) msg = 'Location access denied. Please allow location access in your browser.';
+      else if (error.code === 2) msg = 'Location unavailable';
+      else if (error.code === 3) msg = 'Location request timed out';
+      $('#statusLine').html('<span class="text-warning"><i class="bi bi-exclamation-circle me-1"></i>' + msg + '</span>');
+    },
+    { enableHighAccuracy: false, timeout: 10000 }
+  );
+});
+
+/* Confidence threshold slider */
+$('#confidenceThreshold').on('input', function() {
+  const val = parseFloat($(this).val());
+  $('#confidenceValue').text(Math.round(val * 100) + '%');
+  // Re-render results if we have them
+  if (pooledResults) {
+    renderResults();
+  }
+});
+
 /* WaveSurfer seek interaction */
-$('#ws-container').on('mousedown',function(e){
-  if(!ws) return;
+$('#ws-container').on('mousedown', function(e) {
+  if (!ws) return;
   const x = e.clientX + window.scrollX - $(this).offset().left;
-  ws.seekTo(Math.min(Math.max(x/$(this).width(),0),1));
+  ws.seekTo(Math.min(Math.max(x / $(this).width(), 0), 1));
 });
 
 /* Player controls */
-$('#playBtn').on('click',()=> ws && ws.play());
-$('#pauseBtn').on('click',()=> ws && ws.pause());
-$('#restartBtn').on('click',()=> { if(ws){ ws.seekTo(0); ws.play(); } });
+$('#playBtn').on('click', () => ws && ws.play());
+$('#pauseBtn').on('click', () => ws && ws.pause());
+$('#restartBtn').on('click', () => { if (ws) { ws.seekTo(0); ws.play(); } });
 
 /* Drag & drop */
-const dz=$('#dropzone');
-dz.on('dragenter dragover',e=>{ e.preventDefault(); e.stopPropagation(); dz.addClass('upload-dropzone-hover'); });
-dz.on('dragleave',e=>{ e.preventDefault(); e.stopPropagation(); dz.removeClass('upload-dropzone-hover'); });
-dz.on('drop',async e=>{
+const dz = $('#dropzone');
+dz.on('dragenter dragover', e => { e.preventDefault(); e.stopPropagation(); dz.addClass('upload-dropzone-hover'); });
+dz.on('dragleave', e => { e.preventDefault(); e.stopPropagation(); dz.removeClass('upload-dropzone-hover'); });
+dz.on('drop', async e => {
   e.preventDefault(); e.stopPropagation();
   dz.removeClass('upload-dropzone-hover');
-  $('#fileupload')[0].files = e.originalEvent.dataTransfer.files;
-  $('#fileupload').trigger('change');
+  const file = e.originalEvent.dataTransfer.files[0];
+  if (file) {
+    $('#fileupload')[0].files = e.originalEvent.dataTransfer.files;
+    await loadAudioFile(file);
+  }
 });
 
 /* -----------------------------
    CSV export
 ----------------------------- */
 $('#downloadCsvBtn').on('click', () => {
-  if(!segmentPredictions){ return; }
-  const MIN_CONF = 0.1;
-  const GEO_THRESH = 0.05;
-  const useGeo = areaModelLoaded;
-  let rows = ['start,end,label,score'];
+  if (!segmentPredictions) return;
+  
+  const threshold = getConfidenceThreshold();
+  const useGeo = areaModelLoaded && isLocationFilterEnabled() && hasValidLocation();
+  let rows = ['start,end,scientific_name,common_name,confidence'];
+  
   segmentPredictions.forEach(seg => {
     const filtered = seg.preds
-      .filter(p => p.confidence >= MIN_CONF && (!useGeo || p.geoscore > GEO_THRESH))
-      .sort((a,b)=> b.confidence - a.confidence);
+      .filter(p => {
+        const conf = useGeo && p.geoscore <= GEO_THRESH ? 0 : p.confidence;
+        return conf >= threshold;
+      })
+      .sort((a, b) => b.confidence - a.confidence);
+    
     filtered.forEach(p => {
-      rows.push(`${seg.start.toFixed(3)},${seg.end.toFixed(3)},"${(p.nameI18n||p.name).replace(/"/g,'""')}",${p.confidence.toFixed(4)}`);
+      const scientificName = (p.sciName || p.name).replace(/"/g, '""');
+      const commonName = (p.nameI18n || p.name).replace(/"/g, '""');
+      rows.push(`${seg.start.toFixed(3)},${seg.end.toFixed(3)},"${scientificName}","${commonName}",${p.confidence.toFixed(4)}`);
     });
   });
-  if(rows.length === 1) rows.push('0,0,"(no detections)",0');
-  const blob = new Blob([rows.join('\n')], { type:'text/csv;charset=utf-8;' });
+  
+  if (rows.length === 1) rows.push('0,0,"(no detections)","(no detections)",0');
+  
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = ($('#fileupload')[0].files[0]?.name || 'audio').replace(/\.[^/.]+$/,'') + '_BirdNET_Results.csv';
+  a.download = currentFileName + '_BirdNET_Results.csv';
   document.body.appendChild(a);
   a.click();
-  setTimeout(()=> {
+  setTimeout(() => {
     URL.revokeObjectURL(a.href);
     a.remove();
   }, 100);
 });
 </script>
+
+<style>
+/* Demo page specific styles */
+.species-results {
+  max-width: 800px;
+}
+
+.species-card {
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.species-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.species-image-wrapper {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.species-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+.species-image-placeholder {
+  width: 56px;
+  height: 56px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.species-name {
+  font-weight: 600;
+}
+
+.min-width-0 {
+  min-width: 0;
+}
+
+.segment-item {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.segment-item:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.hover-bg:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.expand-btn {
+  transition: transform 0.2s ease;
+}
+
+.expand-btn i {
+  transition: transform 0.2s ease;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Progress bar styling */
+#progressContainer .progress {
+  background: rgba(0,0,0,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#progressBar {
+  background: var(--primary-gradient);
+}
+</style>
