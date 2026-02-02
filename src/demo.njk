@@ -21,27 +21,48 @@ permalink: "/demo/"
 <div class="pt-2 pb-5">
     <!-- Upload form / dropzone -->
     <form id="fileform" class="mb-4" enctype="multipart/form-data">
-      <div id="dropzone" class="upload-dropzone text-center p-4 border border-dashed rounded bg-light">
-        <div id="dropzoneDefault">
-          <i class="bi bi-cloud-arrow-up fs-1 text-muted mb-2 d-block"></i>
-          <p class="mb-2 small text-muted">Drag & drop audio or choose a file (48 kHz preferred, WAV/MP3)</p>
-          <input id="fileupload" name="file" type="file" accept="audio/*" hidden>
-          <div class="d-flex gap-2 justify-content-center flex-wrap">
-            <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">
-              <i class="bi bi-folder2-open me-1"></i>Choose file
-            </button>
-            <button type="button" id="loadSampleBtn" class="btn btn-sm btn-outline-primary">
-              <i class="bi bi-music-note-beamed me-1"></i>Try sample audio
-            </button>
-            <button type="button" id="recordBtn" class="btn btn-sm btn-outline-danger">
-              <i class="bi bi-mic me-1"></i>Record from mic
-            </button>
+      <div id="dropzone" class="upload-dropzone border border-dashed rounded bg-light overflow-hidden">
+        
+        <!-- Header bar (always visible, clickable to toggle) -->
+        <div id="dropzoneHeader" class="dropzone-header d-none">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="d-flex align-items-center gap-2 min-width-0">
+              <i class="bi bi-file-earmark-music text-primary flex-shrink-0"></i>
+              <span class="small" id="collapsedFileInfo">Audio loaded</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+              <button type="button" id="downloadRecordingBtn" class="btn btn-sm btn-outline-primary d-none" onclick="event.stopPropagation();">
+                <i class="bi bi-download"></i>
+              </button>
+              <i class="bi bi-chevron-down dropzone-chevron"></i>
+            </div>
           </div>
-          <div class="small mt-2 text-muted" id="fileInfo"></div>
+        </div>
+        
+        <!-- Expandable content area -->
+        <div id="dropzoneContent" class="dropzone-content">
+          <div class="text-center p-4">
+            <i class="bi bi-cloud-arrow-up fs-1 text-muted mb-2 d-block"></i>
+            <p class="mb-2 small text-muted">Drag & drop audio or choose a file (48 kHz preferred, WAV/MP3)</p>
+            <input id="fileupload" name="file" type="file" accept="audio/*" hidden>
+            <div class="d-flex gap-2 justify-content-center flex-wrap">
+              <button type="button" id="chooseBtn" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-folder2-open me-1"></i>Choose file
+              </button>
+              <button type="button" id="loadSampleBtn" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-music-note-beamed me-1"></i>Try sample audio
+              </button>
+              <button type="button" id="recordBtn" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-mic me-1"></i>Record from mic
+              </button>
+            </div>
+            <div class="small mt-2 text-muted" id="fileInfo"></div>
+          </div>
         </div>
         
         <!-- Recording UI (hidden by default) -->
         <div id="recordingUI" class="d-none">
+          <div class="text-center p-4">
           <div class="recording-indicator mb-3">
             <span class="recording-dot"></span>
             <span class="fs-5 fw-medium text-danger">Recording...</span>
@@ -57,6 +78,7 @@ permalink: "/demo/"
           </div>
           <div class="small mt-3 text-muted">
             <i class="bi bi-info-circle me-1"></i>Recording at 48 kHz for best results. Max 5 minutes.
+          </div>
           </div>
         </div>
       </div>
@@ -241,6 +263,7 @@ let lastPCM = null;
 let segmentPredictions = null;
 let pooledResults = null;
 let currentFileName = 'audio';
+let lastRecordingBlob = null; // Store recording for download
 
 const WINDOW_SAMPLES = 144000; // 3s @ 48 kHz
 const GEO_THRESH = 0.05;
@@ -644,12 +667,25 @@ async function urlToPCMWindows(url) {
 /* -----------------------------
    Load audio (file or URL)
 ----------------------------- */
-async function loadAudioFile(file) {
+async function loadAudioFile(file, isRecording = false) {
   clearResults();
   currentFileName = file.name.replace(/\.[^/.]+$/, '');
-  $('#fileInfo').text(file.name + ' (' + (file.size/1024/1024).toFixed(2) + ' MB)');
+  const fileInfoText = file.name + ' (' + (file.size/1024/1024).toFixed(2) + ' MB)';
+  $('#fileInfo').text(fileInfoText);
+  $('#collapsedFileInfo').html('<strong>' + file.name + '</strong> <span class="text-muted">(' + (file.size/1024/1024).toFixed(2) + ' MB)</span>');
   initWaveSurfer(URL.createObjectURL(file));
   showProgress(30, 'Decoding audio...');
+  
+  // Collapse dropzone
+  collapseDropzone();
+  
+  // Show/hide recording download button
+  if (isRecording) {
+    $('#downloadRecordingBtn').removeClass('d-none');
+  } else {
+    lastRecordingBlob = null;
+    $('#downloadRecordingBtn').addClass('d-none');
+  }
   try {
     const { pcm } = await fileToPCMWindows(file);
     lastPCM = pcm;
@@ -665,9 +701,16 @@ async function loadAudioFile(file) {
 async function loadSampleAudio() {
   clearResults();
   currentFileName = 'Blue_Jay_Sample';
-  $('#fileInfo').html('<i class="bi bi-music-note-beamed me-1"></i>Sample: Blue Jay (Cyanocitta cristata)');
+  const sampleText = 'Sample: Blue Jay (Cyanocitta cristata)';
+  $('#fileInfo').html('<i class="bi bi-music-note-beamed me-1"></i>' + sampleText);
+  $('#collapsedFileInfo').html('<i class="bi bi-music-note-beamed me-1"></i><strong>Sample:</strong> Blue Jay');
   initWaveSurfer(sampleAudioUrl);
   showProgress(20, 'Fetching sample...');
+  
+  // Collapse dropzone (no recording to download)
+  collapseDropzone();
+  lastRecordingBlob = null;
+  $('#downloadRecordingBtn').addClass('d-none');
   try {
     const { pcm } = await urlToPCMWindows(sampleAudioUrl);
     lastPCM = pcm;
@@ -683,9 +726,53 @@ async function loadSampleAudio() {
 /* -----------------------------
    Event handlers
 ----------------------------- */
+/* -----------------------------
+   Dropzone visibility helpers
+----------------------------- */
+let dropzoneExpanded = true;
+
+function collapseDropzone() {
+  dropzoneExpanded = false;
+  $('#dropzoneHeader').removeClass('d-none').addClass('collapsed');
+  $('#dropzoneContent').slideUp(250);
+  $('#dropzone').addClass('dropzone-collapsed');
+}
+
+function expandDropzone() {
+  dropzoneExpanded = true;
+  $('#dropzoneHeader').removeClass('collapsed');
+  $('#dropzoneContent').slideDown(250);
+  $('#dropzone').removeClass('dropzone-collapsed');
+}
+
+function toggleDropzone() {
+  if (dropzoneExpanded) {
+    collapseDropzone();
+  } else {
+    expandDropzone();
+  }
+}
+
 $('#chooseBtn').on('click', () => $('#fileupload').trigger('click'));
 
 $('#loadSampleBtn').on('click', loadSampleAudio);
+
+$('#dropzoneHeader').on('click', toggleDropzone);
+
+$('#downloadRecordingBtn').on('click', (e) => {
+  e.stopPropagation();
+  if (!lastRecordingBlob) return;
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(lastRecordingBlob);
+  a.download = `birdnet_recording_${timestamp}.webm`;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    URL.revokeObjectURL(a.href);
+    a.remove();
+  }, 100);
+});
 
 /* -----------------------------
    Microphone Recording
@@ -714,14 +801,15 @@ function updateRecordingTimer() {
 }
 
 function showRecordingUI() {
-  $('#dropzoneDefault').addClass('d-none');
+  $('#dropzoneHeader').addClass('d-none');
+  $('#dropzoneContent').hide();
   $('#recordingUI').removeClass('d-none');
   $('#recordingTimer').text('0:00');
 }
 
 function hideRecordingUI() {
   $('#recordingUI').addClass('d-none');
-  $('#dropzoneDefault').removeClass('d-none');
+  $('#dropzoneContent').show();
 }
 
 async function startRecording() {
@@ -765,9 +853,11 @@ async function startRecording() {
       // Only process if we have audio data (not cancelled)
       if (audioChunks.length > 0) {
         const blob = new Blob(audioChunks, { type: mimeType });
-        const file = new File([blob], 'microphone_recording.webm', { type: mimeType });
+        lastRecordingBlob = blob; // Store for download
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+        const file = new File([blob], `recording_${timestamp}.webm`, { type: mimeType });
         hideRecordingUI();
-        await loadAudioFile(file);
+        await loadAudioFile(file, true); // Pass isRecording=true
       } else {
         hideRecordingUI();
       }
@@ -1004,6 +1094,43 @@ $('#downloadCsvBtn').on('click', () => {
 /* Demo page specific styles */
 .species-results {
   max-width: 800px;
+}
+
+/* Dropzone accordion styles */
+.dropzone-header {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.dropzone-header:hover {
+  background-color: rgba(0,0,0,0.03);
+}
+
+.dropzone-chevron {
+  transition: transform 0.25s ease;
+}
+
+.dropzone-header.collapsed .dropzone-chevron {
+  transform: rotate(0deg);
+}
+
+.dropzone-header:not(.collapsed) .dropzone-chevron {
+  transform: rotate(180deg);
+}
+
+.dropzone-collapsed {
+  border-style: solid !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+.dropzone-content {
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropzone-header + .dropzone-content {
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .species-card {
