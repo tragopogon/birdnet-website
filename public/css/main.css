@@ -138,7 +138,7 @@ section.bg-dark, .bg-dark {
   padding: 8rem 2rem;
   color: #fff;
   background-size: cover;
-  background-position: center right;
+  background-position: center center;
   overflow: hidden;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -151,19 +151,28 @@ section.bg-dark, .bg-dark {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.2));
+  /* Layered gradients: bottom-up for ground text, left side for content area */
+  background: 
+    linear-gradient(to top, rgba(2, 6, 23, 0.7) 0%, rgba(2, 6, 23, 0.3) 30%, transparent 60%),
+    linear-gradient(to right, rgba(2, 6, 23, 0.65) 0%, rgba(2, 6, 23, 0.4) 40%, rgba(2, 6, 23, 0.15) 70%, transparent 100%);
   z-index: 0;
+}
+
+@media (max-width: 576px) {
+  .hero-landing {
+    background-position: left center;
+  }
 }
 
 @media (max-width: 1024px) {
   .hero-landing {
     padding: 4rem 1rem;
-    background-position: center;
   }
   .hero-overlay {
-    background: rgba(2, 6, 23, 0.75); /* Darker mask for readability */
-    backdrop-filter: blur(4px); /* Soften background busy-ness */
-    -webkit-backdrop-filter: blur(4px);
+    background: 
+      linear-gradient(to top, rgba(2, 6, 23, 0.85) 0%, rgba(2, 6, 23, 0.6) 40%, rgba(2, 6, 23, 0.4) 100%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 }
 
@@ -209,6 +218,13 @@ section.bg-dark, .bg-dark {
   pointer-events: auto;
 }
 
+/* Hide scroll indicator on small screens */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
   40% { transform: translateX(-50%) translateY(-10px); }
@@ -223,7 +239,9 @@ section.bg-dark, .bg-dark {
   color: #ffffff;
   margin-bottom: 2rem;
   text-wrap: balance;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-subtitle {
@@ -231,9 +249,11 @@ section.bg-dark, .bg-dark {
   max-width: 44rem;
   line-height: 1.6;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 3.5rem;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Sections */
