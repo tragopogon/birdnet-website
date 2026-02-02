@@ -540,10 +540,10 @@ module.exports = [
       "Latitude": 12.3658204658984,
       "Longitude": -1.51282844580757,
       "Contact": "gabriel.marcacci@vogelwarte.ch",
-      "Website": "https://newtree.org/projekte/burkina-faso/",
+      "Website": null,
       "Paper": null,
-      "Species Image": "https://newtree.org/wp-content/uploads/2015/12/Innenaussen2_web.jpg",
-      "Species Image Credit": "newTree.org",
+      "Species Image": "/img/dummy_birds_image.png",
+      "Species Image Credit": "ChatGPT",
       "Species Icon": "feather"
   },
   {
@@ -782,8 +782,8 @@ module.exports = [
     "Contact": null,
     "Website": "https://thesoundofnorway.com",
     "Paper": "https://hdl.handle.net/11250/2832294",
-    "Species Image": "https://www.nina.no/Portals/NINA/WebSitesCreative_MyContentManager/19376/51e905ef-e514-4b8a-8ff7-921cf7b12191_resized.jpg",
-    "Species Image Credit": "nina.no",
+    "Species Image": "/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
   {
@@ -930,7 +930,7 @@ module.exports = [
   "Latitude": 49.39,
   "Longitude": 8.67,
   "Contact":  "ssc@iwr.uni-heidelberg.de",
-  "Website": "github.com/ssciwr/faunanet",
+  "Website": "https://github.com/ssciwr/faunanet",
   "Paper": null,
   "Species Image": "/img/dummy_project_image.png",
   "Species Image Credit": "ChatGPT",
@@ -945,7 +945,7 @@ module.exports = [
   "Latitude": -19.25,
   "Longitude": 146.81,
   "Contact": "Lin.schwarzkopf@jcu.edu.au",
-  "Website": "Vertecolab.weebly.com",
+  "Website": "https://vertecolab.weebly.com",
   "Paper": null,
   "Species Image": "/img/dummy_project_image.png",
   "Species Image Credit": "ChatGPT",
@@ -1155,7 +1155,7 @@ module.exports = [
     "Latitude": 44.43,
     "Longitude": -91.65,
     "Contact": "mike@haven2.com",
-    "Website": "www.EarsInTheDriftless.com",
+    "Website": "https://www.EarsInTheDriftless.com",
     "Paper": null,
     "Species Image": "/img/dummy_project_image.png",
     "Species Image Credit": "ChatGPT",
@@ -1217,8 +1217,8 @@ module.exports = [
     "Contact": "donovan.tye@tropicalstudies.org",
     "Website": null,
     "Paper": null,
-    "Species Image": "https://drive.google.com/file/d/1tUvqaEpWmE9QPepE0qZJu_2zkgrlQZ4A/view?usp=sharing",
-    "Species Image Credit": "Donovan Tye",
+    "Species Image": "/img/dummy_birds_image.png",
+    "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
   {
@@ -1277,8 +1277,8 @@ module.exports = [
     "Contact": "Anne-Sophie LE GAL <as.legal@ouestam.fr>",
     "Website": null,
     "Paper": null,
-    "Species Image": "https://postimg.cc/8J0bXXCC",
-    "Species Image Credit": "Ouest Am' for ENGIE",
+    "Species Image": "/img/dummy_project_image.png",
+    "Species Image Credit": "ChatGPT",
     "Species Icon": "feather"
   },
   {
