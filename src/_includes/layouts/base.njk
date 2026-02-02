@@ -20,7 +20,15 @@
   {# English content is already in the HTML as the default/fallback #}
   <script>
     window.__i18n = {
-      de: {{ i18n.de | dump | safe }}
+      de: {{ i18n.de | dump | safe }},
+      es: {{ i18n.es | dump | safe }},
+      fr: {{ i18n.fr | dump | safe }},
+      it: {{ i18n.it | dump | safe }},
+      'pt-BR': {{ i18n['pt-BR'] | dump | safe }},
+      pt: {{ i18n.pt | dump | safe }},
+      pl: {{ i18n.pl | dump | safe }},
+      cs: {{ i18n.cs | dump | safe }},
+      tlh: {{ i18n.tlh | dump | safe }}
     };
   </script>
 </head>

@@ -6,7 +6,7 @@
   'use strict';
 
   const DEFAULT_LANG = 'en';
-  const SUPPORTED_LANGS = ['en', 'de'];
+  const SUPPORTED_LANGS = ['en', 'de', 'es', 'fr', 'it', 'pt-BR', 'pt', 'pl', 'cs', 'tlh'];
   const STORAGE_KEY = 'birdnet-lang';
 
   let translations = {};
@@ -152,7 +152,7 @@
     // Update the dropdown button text
     const btn = switcher.querySelector('.dropdown-toggle');
     if (btn) {
-      const langNames = { en: 'EN', de: 'DE' };
+      const langNames = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', 'pt-BR': 'PT-BR', pt: 'PT', pl: 'PL', cs: 'CS', tlh: 'tlhIngan' };
       btn.innerHTML = `<i class="bi bi-globe2 me-1"></i>${langNames[currentLang] || currentLang.toUpperCase()}`;
     }
 
