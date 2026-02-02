@@ -30,32 +30,32 @@
     <nav class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link{% if page.url == homeUrl %} active{% endif %}" href="{{ homeUrl }}">Home</a>
+          <a class="nav-link{% if page.url == homeUrl %} active{% endif %}" href="{{ homeUrl }}" data-i18n="nav.home">Home</a>
         </li>
         <!-- Tools dropdown: Analyzer, App, Open source -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle{% if page.url == analyzerUrl or page.url == appUrl or page.url == toolsUrl %} active{% endif %}"
-             href="{{ toolsUrl }}" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             href="{{ toolsUrl }}" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.tools">
             Tools
           </a>
           <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
-            <li><a class="dropdown-item{% if page.url == analyzerUrl %} active{% endif %}" href="{{ analyzerUrl }}">Analyzer</a></li>
-            <li><a class="dropdown-item{% if page.url == appUrl %} active{% endif %}" href="{{ appUrl }}">App</a></li>
-            <li><a class="dropdown-item{% if page.url == demoUrl %} active{% endif %}" href="{{ demoUrl }}">Browser demo</a></li>
-            <li><a class="dropdown-item" href="https://birdnet-team.github.io/real-time-pwa/" target="_blank" rel="noopener">BirdNET Live <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
-            <li><a class="dropdown-item{% if page.url == toolsUrl %} active{% endif %}" href="{{ toolsUrl }}">Open source</a></li>
+            <li><a class="dropdown-item{% if page.url == analyzerUrl %} active{% endif %}" href="{{ analyzerUrl }}" data-i18n="nav.tools.analyzer">Analyzer</a></li>
+            <li><a class="dropdown-item{% if page.url == appUrl %} active{% endif %}" href="{{ appUrl }}" data-i18n="nav.tools.app">App</a></li>
+            <li><a class="dropdown-item{% if page.url == demoUrl %} active{% endif %}" href="{{ demoUrl }}" data-i18n="nav.tools.browserDemo">Browser demo</a></li>
+            <li><a class="dropdown-item" href="https://birdnet-team.github.io/real-time-pwa/" target="_blank" rel="noopener"><span data-i18n="nav.tools.birdnetLive">BirdNET Live</span> <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
+            <li><a class="dropdown-item{% if page.url == toolsUrl %} active{% endif %}" href="{{ toolsUrl }}" data-i18n="nav.tools.openSource">Open source</a></li>
           </ul>
         </li>
 
         <!-- Projects dropdown (external links) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false">
+             data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.projects">
             Projects
           </a>
           <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
             <li>
-              <a class="dropdown-item{% if page.url == projectsMapUrl %} active{% endif %}" href="{{ projectsMapUrl }}">
+              <a class="dropdown-item{% if page.url == projectsMapUrl %} active{% endif %}" href="{{ projectsMapUrl }}" data-i18n="nav.projects.map">
                 Projects map
               </a>
             </li>
@@ -75,21 +75,21 @@
         <!-- Showroom dropdown grouped by tag (hardcoded) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle{% if page.url == showroomUrl %} active{% endif %}" href="{{ showroomUrl }}"
-             id="showroomDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             id="showroomDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.showroom">
             Showroom
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="showroomDropdown">
-            <li><a class="dropdown-item fw-semibold" href="{{ showroomUrl }}">Showroom overview</a></li>
+            <li><a class="dropdown-item fw-semibold" href="{{ showroomUrl }}" data-i18n="nav.showroom.overview">Showroom overview</a></li>
 
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Backyard monitoring</h6></li>
+            <li><h6 class="dropdown-header" data-i18n="nav.showroom.backyard">Backyard monitoring</h6></li>
             <li><a class="dropdown-item" href="https://haikubox.com" target="_blank" rel="noopener">HaikuBox <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://app.birdweather.com" target="_blank" rel="noopener">BirdWeather <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://birdnetpi.com" target="_blank" rel="noopener">BirdNET-Pi <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://www.terralistens.com" target="_blank" rel="noopener">Terra <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
 
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Tools</h6></li>
+            <li><h6 class="dropdown-header" data-i18n="nav.showroom.tools">Tools</h6></li>
             <li><a class="dropdown-item" href="https://chirpity.mattkirkland.co.uk" target="_blank" rel="noopener">Chirpity <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://github.com/tphakala/go-birdnet" target="_blank" rel="noopener">BirdNET-Go <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://github.com/tphakala/birda" target="_blank" rel="noopener">Birda <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
@@ -100,7 +100,7 @@
             <li><a class="dropdown-item" href="https://www.birdomatic.com" target="_blank" rel="noopener">BirdOMatic <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
 
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Apps</h6></li>
+            <li><h6 class="dropdown-header" data-i18n="nav.showroom.apps">Apps</h6></li>
             <li><a class="dropdown-item" href="https://github.com/auditory-cloud/whoBIRD" target="_blank" rel="noopener">whoBIRD <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://dawn-chorus.org" target="_blank" rel="noopener">Dawn Chorus <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
             <li><a class="dropdown-item" href="https://www.jyu.fi/fi/tutkimus/muuttolintujen-kevat" target="_blank" rel="noopener">Muuttolintujen Kevät <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></li>
@@ -109,23 +109,43 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle{% if page.url == publicationsUrl or page.url == resourcesUrl or page.url == k12Url or page.url == aboutUrl %} active{% endif %}" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle{% if page.url == publicationsUrl or page.url == resourcesUrl or page.url == k12Url or page.url == aboutUrl %} active{% endif %}" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.knowledgeBase">
             Knowledge Base
           </a>
           <ul class="dropdown-menu" aria-labelledby="learningDropdown">
-            <li><a class="dropdown-item{% if page.url == publicationsUrl %} active{% endif %}" href="{{ publicationsUrl }}">Publications</a></li>
-            <li><a class="dropdown-item{% if page.url == resourcesUrl %} active{% endif %}" href="{{ resourcesUrl }}">Online resources</a></li>
-            <li><a class="dropdown-item{% if page.url == k12Url %} active{% endif %}" href="{{ k12Url }}">K-12 learning</a></li>
-            <li><a class="dropdown-item{% if page.url == aboutUrl %} active{% endif %}" href="{{ aboutUrl }}">About BirdNET</a></li>
+            <li><a class="dropdown-item{% if page.url == publicationsUrl %} active{% endif %}" href="{{ publicationsUrl }}" data-i18n="nav.knowledgeBase.publications">Publications</a></li>
+            <li><a class="dropdown-item{% if page.url == resourcesUrl %} active{% endif %}" href="{{ resourcesUrl }}" data-i18n="nav.knowledgeBase.resources">Online resources</a></li>
+            <li><a class="dropdown-item{% if page.url == k12Url %} active{% endif %}" href="{{ k12Url }}" data-i18n="nav.knowledgeBase.k12">K-12 learning</a></li>
+            <li><a class="dropdown-item{% if page.url == aboutUrl %} active{% endif %}" href="{{ aboutUrl }}" data-i18n="nav.knowledgeBase.about">About BirdNET</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle{% if page.url == contributeUrl or page.url == donateUrl %} active{% endif %}" href="#" id="contributeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle{% if page.url == contributeUrl or page.url == donateUrl %} active{% endif %}" href="#" id="contributeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.contribute">
             Contribute
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="contributeDropdown">
-            <li><a class="dropdown-item{% if page.url == contributeUrl %} active{% endif %}" href="{{ contributeUrl }}">Code & data</a></li>
-            <li><a class="dropdown-item{% if page.url == donateUrl %} active{% endif %}" href="{{ donateUrl }}">Donate</a></li>
+            <li><a class="dropdown-item{% if page.url == contributeUrl %} active{% endif %}" href="{{ contributeUrl }}" data-i18n="nav.contribute.codeData">Code & data</a></li>
+            <li><a class="dropdown-item{% if page.url == donateUrl %} active{% endif %}" href="{{ donateUrl }}" data-i18n="nav.contribute.donate">Donate</a></li>
+          </ul>
+        </li>
+
+        <!-- Language Switcher -->
+        <li class="nav-item dropdown" id="language-switcher">
+          <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-globe2 me-1"></i>EN
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown" style="max-height: 400px; overflow-y: auto;">
+            <li><a class="dropdown-item" href="#" data-lang="en"><span class="fi fi-gb me-2"></span>English</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="de"><span class="fi fi-de me-2"></span>Deutsch</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="es"><span class="fi fi-es me-2"></span>Español</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="fr"><span class="fi fi-fr me-2"></span>Français</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="it"><span class="fi fi-it me-2"></span>Italiano</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="pt-BR"><span class="fi fi-br me-2"></span>Português (Brasil)</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="pt"><span class="fi fi-pt me-2"></span>Português</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="pl"><span class="fi fi-pl me-2"></span>Polski</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="cs"><span class="fi fi-cz me-2"></span>Čeština</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" data-lang="tlh">🖖 tlhIngan Hol</a></li>
           </ul>
         </li>
       </ul>

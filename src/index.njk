@@ -10,24 +10,24 @@ containerClass: ""
   <div class="container hero-landing-content">
     <div class="row align-items-center">
       <div class="col-lg-8 text-center text-lg-start">
-        <h1 class="hero-title mb-4 text-balance">
+        <h1 class="hero-title mb-4 text-balance" data-i18n="hero.title">
           AI-powered bioacoustics, at scale.
         </h1>
-        <p class="hero-subtitle mb-5 mx-auto mx-lg-0">
+        <p class="hero-subtitle mb-5 mx-auto mx-lg-0" data-i18n="hero.subtitle">
           BirdNET uses deep learning to recognize over 6,000 species globally. Our open-source tools provide robust workflows for large-scale biodiversity monitoring and citizen science.
         </p>
         <div class="d-flex flex-wrap gap-3 mb-5 justify-content-center justify-content-lg-start">
-          <a class="btn btn-primary btn-lg" href="{{ '/analyzer/' | url }}">
+          <a class="btn btn-primary btn-lg" href="{{ '/analyzer/' | url }}" data-i18n="hero.cta.analyzer">
             Get BirdNET-Analyzer
           </a>
-          <a class="btn btn-outline-light btn-lg" href="{{ '/demo/' | url }}">
+          <a class="btn btn-outline-light btn-lg" href="{{ '/demo/' | url }}" data-i18n="hero.cta.demo">
             Try Sound ID Demo
           </a>
-          <a class="btn btn-outline-light btn-lg" href="{{ '/app/' | url }}">
+          <a class="btn btn-outline-light btn-lg" href="{{ '/app/' | url }}" data-i18n="hero.cta.app">
             Download the App
           </a>
         </div>
-        <p class="mb-4 mt-3 small text-light text-opacity-75 col-lg-8 mx-auto mx-lg-0">
+        <p class="mb-4 mt-3 small text-light text-opacity-75 col-lg-8 mx-auto mx-lg-0" data-i18n="hero.partners">
           A joint effort by:
         </p>
         <div class="d-flex flex-column flex-lg-row align-items-center gap-4 justify-content-center justify-content-lg-start mb-5 opacity-75">
@@ -96,36 +96,36 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
-        <span class="section-label">Research & Tools</span>
-        <h2 class="display-5 fw-bold mb-4">The AI toolkit for conservation.</h2>
-        <p class="lead text-muted mb-4">
+        <span class="section-label" data-i18n="section.researchTools">Research & Tools</span>
+        <h2 class="display-5 fw-bold mb-4" data-i18n="section.researchTools.title">The AI toolkit for conservation.</h2>
+        <p class="lead text-muted mb-4" data-i18n="section.researchTools.subtitle">
           Open-source models and interfaces designed to scale from individual observations to continental monitoring programs.
         </p>
         
         <div class="mb-5">
           <div class="row g-4">
             <div class="col-6">
-              <div class="small fw-bold mb-1">Biogeographical Priors</div>
-              <div class="smaller text-muted">Refine species lists using precise coordinates and date metadata.</div>
+              <div class="small fw-bold mb-1" data-i18n="section.researchTools.biogeoPriors">Biogeographical Priors</div>
+              <div class="smaller text-muted" data-i18n="section.researchTools.biogeoPriorsDesc">Refine species lists using precise coordinates and date metadata.</div>
             </div>
             <div class="col-6">
-              <div class="small fw-bold mb-1">High-Throughput CLI</div>
-              <div class="smaller text-muted">Optimized headless analysis for massive acoustic deployments.</div>
+              <div class="small fw-bold mb-1" data-i18n="section.researchTools.cli">High-Throughput CLI</div>
+              <div class="smaller text-muted" data-i18n="section.researchTools.cliDesc">Optimized headless analysis for massive acoustic deployments.</div>
             </div>
             <div class="col-6">
-              <div class="small fw-bold mb-1">Embedded Models</div>
-              <div class="smaller text-muted">Lightweight model versions for low-power edge computing or mobile devices.</div>
+              <div class="small fw-bold mb-1" data-i18n="section.researchTools.embedded">Embedded Models</div>
+              <div class="smaller text-muted" data-i18n="section.researchTools.embeddedDesc">Lightweight model versions for low-power edge computing or mobile devices.</div>
             </div>
             <div class="col-6">
-              <div class="small fw-bold mb-1">Open Source & Community</div>
-              <div class="smaller text-muted">Contribute code to our core repositories or join our effort by sharing your data.</div>
+              <div class="small fw-bold mb-1" data-i18n="section.researchTools.openSource">Open Source & Community</div>
+              <div class="smaller text-muted" data-i18n="section.researchTools.openSourceDesc">Contribute code to our core repositories or join our effort by sharing your data.</div>
             </div>
           </div>
         </div>
 
         <div class="d-grid gap-3 d-md-flex mb-4">
           <a href="{{ '/analyzer/' | url }}" class="btn btn-primary d-flex align-items-center gap-2">
-            Explore the Analyzer <i class="bi bi-arrow-right"></i>
+            <span data-i18n="section.researchTools.exploreAnalyzer">Explore the Analyzer</span> <i class="bi bi-arrow-right"></i>
           </a>
           <a href="https://github.com/birdnet-team" target="_blank" class="btn btn-outline-primary d-flex align-items-center gap-2">
             GitHub <i class="bi bi-github"></i>
@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="icon-wrapper mb-4">
                   <i class="bi bi-graph-up-arrow"></i>
                 </div>
-                <h3 class="h5 fw-bold">For Ecologists</h3>
-                <p class="small text-muted mb-4">Process months of PAM data with high precision. Filter results by location and time to reduce false positives.</p>
+                <h3 class="h5 fw-bold" data-i18n="section.cards.ecologists">For Ecologists</h3>
+                <p class="small text-muted mb-4" data-i18n="section.cards.ecologistsDesc">Process months of PAM data with high precision. Filter results by location and time to reduce false positives.</p>
                 <div class="mt-auto d-flex flex-wrap gap-3">
-                   <a href="{{ '/analyzer/' | url }}" class="small text-decoration-none fw-bold">Analyzer GUI →</a>
-                   <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="small text-decoration-none fw-bold">Documentation →</a>
+                   <a href="{{ '/analyzer/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.analyzerGui">Analyzer GUI →</a>
+                   <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank" class="small text-decoration-none fw-bold" data-i18n="section.cards.documentation">Documentation →</a>
                 </div>
               </div>
             </div>
@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="icon-wrapper mb-4">
                   <i class="bi bi-code-slash"></i>
                 </div>
-                <h3 class="h5 fw-bold">For Developers</h3>
-                <p class="small text-muted mb-4">Integration-ready Python modules and TFLite models. Access our codebase and community-driven tools.</p>
+                <h3 class="h5 fw-bold" data-i18n="section.cards.developers">For Developers</h3>
+                <p class="small text-muted mb-4" data-i18n="section.cards.developersDesc">Integration-ready Python modules and TFLite models. Access our codebase and community-driven tools.</p>
                 <div class="mt-auto d-flex flex-wrap gap-3">
-                   <a href="{{ '/tools/' | url }}" class="small text-decoration-none fw-bold">Open Source Tools →</a>
-                   <a href="https://github.com/birdnet-team" target="_blank" class="small text-decoration-none fw-bold">GitHub →</a>
+                   <a href="{{ '/tools/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.openSourceTools">Open Source Tools →</a>
+                   <a href="https://github.com/birdnet-team" target="_blank" class="small text-decoration-none fw-bold" data-i18n="section.cards.github">GitHub →</a>
                 </div>
               </div>
             </div>
@@ -170,11 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="icon-wrapper mb-4">
                   <i class="bi bi-people"></i>
                 </div>
-                <h3 class="h5 fw-bold">Citizen Scientists</h3>
-                <p class="small text-muted mb-4">Contribute to global biodiversity monitoring by using the BirdNET app to record and identify birds in your area.</p>
+                <h3 class="h5 fw-bold" data-i18n="section.cards.citizenScientists">Citizen Scientists</h3>
+                <p class="small text-muted mb-4" data-i18n="section.cards.citizenScientistsDesc">Contribute to global biodiversity monitoring by using the BirdNET app to record and identify birds in your area.</p>
                 <div class="mt-auto d-flex flex-wrap gap-3">
-                   <a href="{{ '/app/' | url }}" class="small text-decoration-none fw-bold">BirdNET App →</a>
-                   <a href="{{ '/demo/' | url }}" class="small text-decoration-none fw-bold">Browser Demo →</a>
+                   <a href="{{ '/app/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.birdnetApp">BirdNET App →</a>
+                   <a href="{{ '/demo/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.browserDemo">Browser Demo →</a>
                 </div>
               </div>
             </div>
@@ -185,11 +185,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="icon-wrapper mb-4">
                   <i class="bi bi-journal-text"></i>
                 </div>
-                <h3 class="h5 fw-bold">Bioacoustic Research</h3>
-                <p class="small text-muted mb-4">Scientific publications detailing the models, validation studies, and ecological impact of BirdNET.</p>
+                <h3 class="h5 fw-bold" data-i18n="section.cards.bioacousticResearch">Bioacoustic Research</h3>
+                <p class="small text-muted mb-4" data-i18n="section.cards.bioacousticResearchDesc">Scientific publications detailing the models, validation studies, and ecological impact of BirdNET.</p>
                 <div class="mt-auto d-flex flex-wrap gap-3">
-                   <a href="{{ '/publications/' | url }}" class="small text-decoration-none fw-bold">Publications →</a>
-                   <a href="{{ '/resources/' | url }}" class="small text-decoration-none fw-bold">Tutorials →</a>
+                   <a href="{{ '/publications/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.publications">Publications →</a>
+                   <a href="{{ '/resources/' | url }}" class="small text-decoration-none fw-bold" data-i18n="section.cards.tutorials">Tutorials →</a>
                 </div>
               </div>
             </div>
@@ -207,9 +207,9 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="card-body p-4 position-relative" style="z-index: 2;">
         <div class="row mb-3 justify-content-center text-center">
           <div class="col-lg-8">
-            <span class="section-label section-label-dark mx-auto">Architecture</span>
-            <h2 class="display-6 fw-bold mb-3">How BirdNET works</h2>
-            <p class="text-white text-opacity-75 mb-3">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
+            <span class="section-label section-label-dark mx-auto" data-i18n="section.architecture">Architecture</span>
+            <h2 class="display-6 fw-bold mb-3" data-i18n="section.architecture.title">How BirdNET works</h2>
+            <p class="text-white text-opacity-75 mb-3" data-i18n="section.architecture.subtitle">BirdNET processes raw acoustic data through a multi-stage pipeline designed for ecological accuracy. By transforming varying soundscapes into standardized feature representations, the system can isolate and identify subtle vocal signatures across thousands of species while accounting for biogeographical variations in species distribution.</p>
           </div>
         </div>
 
@@ -225,9 +225,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container">
     <div class="row g-5 align-items-center flex-lg-row-reverse">
       <div class="col-lg-6">
-        <span class="section-label">Software Ecosystem</span>
-        <h2 class="display-6 fw-bold mb-4">A complete stack for research.</h2>
-        <p class="text-muted mb-4">
+        <span class="section-label" data-i18n="section.ecosystem">Software Ecosystem</span>
+        <h2 class="display-6 fw-bold mb-4" data-i18n="section.ecosystem.title">A complete stack for research.</h2>
+        <p class="text-muted mb-4" data-i18n="section.ecosystem.subtitle">
           BirdNET is more than a model—it's an integrated ecosystem of tools designed to fit into your existing research workflow, from raw audio processing to statistical modeling in R.
         </p>
         <div class="mb-5">
@@ -236,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-box-seam"></i>
             </div>
             <div>
-              <h4 class="h6 fw-bold mb-1">birdnet (Python Package)</h4>
-              <p class="smaller text-muted mb-0">Native Python integration for developers and data scientists. Build custom pipelines or run large-scale inference on your own infrastructure. <a href="https://birdnet-team.github.io/birdnet/" target="_blank">Documentation →</a></p>
+              <h4 class="h6 fw-bold mb-1" data-i18n="section.ecosystem.pythonPackage">birdnet (Python Package)</h4>
+              <p class="smaller text-muted mb-0" data-i18n="section.ecosystem.pythonPackageDesc">Native Python integration for developers and data scientists. Build custom pipelines or run large-scale inference on your own infrastructure.</p>
             </div>
           </div>
           <div class="d-flex gap-3 mb-4">
@@ -245,8 +245,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-bar-chart-line"></i>
             </div>
             <div>
-              <h4 class="h6 fw-bold mb-1">birdnetR</h4>
-              <p class="smaller text-muted mb-0">The bridge to R-based ecological analysis. Clean, filter, and summarize BirdNET outputs directly within your R environment for occupancy modeling and trend analysis. <a href="https://birdnet-team.github.io/birdnetR/" target="_blank">Documentation →</a></p>
+              <h4 class="h6 fw-bold mb-1" data-i18n="section.ecosystem.birdnetR">birdnetR</h4>
+              <p class="smaller text-muted mb-0" data-i18n="section.ecosystem.birdnetRDesc">The bridge to R-based ecological analysis. Clean, filter, and summarize BirdNET outputs directly within your R environment for occupancy modeling and trend analysis.</p>
             </div>
           </div>
           <div class="d-flex gap-3">
@@ -254,14 +254,14 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-window-stack"></i>
             </div>
             <div>
-              <h4 class="h6 fw-bold mb-1">birdnetTools</h4>
-              <p class="smaller text-muted mb-0">User-friendly utilities for researchers. Access graphical interfaces for managing thousands of detections, verifying species, and preparing data for publication. <a href="https://birdnet-team.github.io/BirdNET-Analyzer/" target="_blank">Documentation →</a></p>
+              <h4 class="h6 fw-bold mb-1" data-i18n="section.ecosystem.birdnetTools">birdnetTools</h4>
+              <p class="smaller text-muted mb-0" data-i18n="section.ecosystem.birdnetToolsDesc">User-friendly utilities for researchers. Access graphical interfaces for managing thousands of detections, verifying species, and preparing data for publication.</p>
             </div>
           </div>
         </div>
         <div class="d-flex flex-wrap gap-3">
-          <a href="{{ '/tools/' | url }}" class="btn btn-primary px-4">Browse All Tools</a>
-          <a href="https://github.com/birdnet-team" target="_blank" class="btn btn-outline-dark px-4">BirdNET-Team on GitHub</a>
+          <a href="{{ '/tools/' | url }}" class="btn btn-primary px-4" data-i18n="section.ecosystem.browseTools">Browse All Tools</a>
+          <a href="https://github.com/birdnet-team" target="_blank" class="btn btn-outline-dark px-4" data-i18n="section.ecosystem.githubTeam">BirdNET-Team on GitHub</a>
         </div>
       </div>
       <div class="col-lg-6">
@@ -301,9 +301,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container py-lg-4">
     <div class="row align-items-center mb-5">
       <div class="col-lg-7">
-        <div class="section-label mb-3">COMMUNITY PROJECTS</div>
-        <h2 class="h1 fw-bold mb-3">Built with BirdNET</h2>
-        <p class="text-muted lead mb-0">BirdNET powers a diverse ecosystem of external tools, from specialized field hardware to global data visualization platforms.</p>
+        <div class="section-label mb-3" data-i18n="section.community">COMMUNITY PROJECTS</div>
+        <h2 class="h1 fw-bold mb-3" data-i18n="section.community.title">Built with BirdNET</h2>
+        <p class="text-muted lead mb-0" data-i18n="section.community.subtitle">BirdNET powers a diverse ecosystem of external tools, from specialized field hardware to global data visualization platforms.</p>
       </div>
     </div>
 
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/haikubox.png' | url }}" class="img-fluid mb-2" alt="HaikuBox logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">HaikuBox</h3>
-            <div class="small text-muted">Acoustic Hardware</div>
+            <div class="small text-muted" data-i18n="section.community.acousticHardware">Acoustic Hardware</div>
             <a href="https://haikubox.com" class="stretched-link"></a>
           </div>
         </div>
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/birdnet-pi.png' | url }}" class="img-fluid mb-2" alt="BirdNET-Pi logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">BirdNET-Pi</h3>
-            <div class="small text-muted">DIY Monitoring</div>
+            <div class="small text-muted" data-i18n="section.community.diyMonitoring">DIY Monitoring</div>
             <a href="https://birdnetpi.com" class="stretched-link"></a>
           </div>
         </div>
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/birdweather.png' | url }}" class="img-fluid mb-2" alt="BirdWeather logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">BirdWeather</h3>
-            <div class="small text-muted">Global Dashboard</div>
+            <div class="small text-muted" data-i18n="section.community.globalDashboard">Global Dashboard</div>
             <a href="https://app.birdweather.com" class="stretched-link"></a>
           </div>
         </div>
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/chirpity.png' | url }}" class="img-fluid mb-2" alt="Chirpity logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">Chirpity</h3>
-            <div class="small text-muted">Desktop Analysis</div>
+            <div class="small text-muted" data-i18n="section.community.desktopAnalysis">Desktop Analysis</div>
             <a href="https://chirpity.mattkirkland.co.uk" class="stretched-link"></a>
           </div>
         </div>
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/BirdNET-Go-logo.webp' | url }}" class="img-fluid mb-2" alt="BirdNET-Go logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">BirdNET-Go</h3>
-            <div class="small text-muted">CLI & Integrations</div>
+            <div class="small text-muted" data-i18n="section.community.cliIntegrations">CLI & Integrations</div>
             <a href="https://github.com/tphakala/go-birdnet" class="stretched-link"></a>
           </div>
         </div>
@@ -363,14 +363,14 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body p-0 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ '/img/ecosound-web_logo_large_white_on_black.png' | url }}" class="img-fluid mb-2" alt="ecoSound web logo" style="height: 32px; object-fit: contain;">
             <h3 class="h6 fw-bold mb-1">ecoSound</h3>
-            <div class="small text-muted">Web Monitoring</div>
+            <div class="small text-muted" data-i18n="section.community.webMonitoring">Web Monitoring</div>
             <a href="https://ecosound-web.de" class="stretched-link"></a>
           </div>
         </div>
       </div>
     </div>
     <div class="text-center mt-5 pt-3">
-      <a href="{{ '/showroom/' | url }}" class="btn btn-outline-dark px-4">Browse full showroom <i class="bi bi-arrow-right ms-2"></i></a>
+      <a href="{{ '/showroom/' | url }}" class="btn btn-outline-dark px-4"><span data-i18n="section.community.browseShowroom">Browse full showroom</span> <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
   </div>
 </section>
@@ -380,23 +380,23 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container py-lg-5">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5">
-        <div class="section-label mb-3">SCIENTIFIC IMPACT</div>
-        <h2 class="display-6 fw-bold mb-4">A peer-reviewed foundation for bioacoustics.</h2>
-        <p class="text-muted lead mb-5">
+        <div class="section-label mb-3" data-i18n="section.impact">SCIENTIFIC IMPACT</div>
+        <h2 class="display-6 fw-bold mb-4" data-i18n="section.impact.title">A peer-reviewed foundation for bioacoustics.</h2>
+        <p class="text-muted lead mb-5" data-i18n="section.impact.subtitle">
           BirdNET is built on a foundation of rigorous research. Our work focuses on developing reliable, open-source tools that transform raw audio into peer-reviewed ecological data.
         </p>
         <div class="d-flex flex-column gap-3">
           <a href="{{ '/publications/' | url }}" class="btn btn-outline-dark d-flex align-items-center justify-content-between p-4 border-light-subtle rounded-4 transition-all hover-lift text-start">
             <div>
-              <div class="fw-bold text-dark">Publications Archive</div>
-              <div class="smaller text-muted">Explore peer-reviewed papers and conference proceedings.</div>
+              <div class="fw-bold text-dark" data-i18n="section.impact.publicationsArchive">Publications Archive</div>
+              <div class="smaller text-muted" data-i18n="section.impact.publicationsArchiveDesc">Explore peer-reviewed papers and conference proceedings.</div>
             </div>
             <i class="bi bi-arrow-right"></i>
           </a>
           <a href="{{ '/resources/' | url }}" class="btn btn-outline-dark d-flex align-items-center justify-content-between p-4 border-light-subtle rounded-4 transition-all hover-lift text-start">
             <div>
-              <div class="fw-bold text-dark">Technical Resources</div>
-              <div class="smaller text-muted">Access documentation, datasets, and research tools.</div>
+              <div class="fw-bold text-dark" data-i18n="section.impact.technicalResources">Technical Resources</div>
+              <div class="smaller text-muted" data-i18n="section.impact.technicalResourcesDesc">Access documentation, datasets, and research tools.</div>
             </div>
             <i class="bi bi-arrow-right"></i>
           </a>
@@ -409,8 +409,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="mb-4">
                 <i class="bi bi-fire text-primary h3"></i>
               </div>
-              <h3 class="h5 fw-bold mb-3 text-dark">Fire Ecology</h3>
-              <p class="text-muted small mb-0">Our research in the Sierra Nevada mountain range evaluates how forest restoration and fire regimes affect bird occupancy, helping land managers understand biodiversity recovery in fire-adapted ecosystems.</p>
+              <h3 class="h5 fw-bold mb-3 text-dark" data-i18n="section.impact.fireEcology">Fire Ecology</h3>
+              <p class="text-muted small mb-0" data-i18n="section.impact.fireEcologyDesc">Our research in the Sierra Nevada mountain range evaluates how forest restoration and fire regimes affect bird occupancy, helping land managers understand biodiversity recovery in fire-adapted ecosystems.</p>
             </div>
           </div>
           <div class="col-sm-6">
@@ -418,19 +418,19 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="mb-4">
                 <i class="bi bi-diagram-3 text-primary h3"></i>
               </div>
-              <h3 class="h5 fw-bold mb-3 text-dark">Community Dynamics</h3>
-              <p class="text-muted small mb-0">We quantify how survey design, spatial coverage, and recording duration influence species richness estimates, providing a rigorous benchmark for monitoring shifts in avian community composition.</p>
+              <h3 class="h5 fw-bold mb-3 text-dark" data-i18n="section.impact.communityDynamics">Community Dynamics</h3>
+              <p class="text-muted small mb-0" data-i18n="section.impact.communityDynamicsDesc">We quantify how survey design, spatial coverage, and recording duration influence species richness estimates, providing a rigorous benchmark for monitoring shifts in avian community composition.</p>
             </div>
           </div>
           <div class="col-12">
             <div class="stat-card p-5 rounded-4 border border-light-subtle shadow-sm bg-light bg-opacity-25 transition-all hover-lift">
               <div class="row g-4 align-items-center">
                 <div class="col-md-9">
-                  <h3 class="h5 fw-bold mb-2 text-dark">Research & Education Outreach</h3>
-                  <p class="small text-muted mb-0">We provide tools and documentation for K-12 programs and workshops, supporting the next generation of researchers in bioacoustics.</p>
+                  <h3 class="h5 fw-bold mb-2 text-dark" data-i18n="section.impact.researchOutreach">Research & Education Outreach</h3>
+                  <p class="small text-muted mb-0" data-i18n="section.impact.researchOutreachDesc">We provide tools and documentation for K-12 programs and workshops, supporting the next generation of researchers in bioacoustics.</p>
                 </div>
                 <div class="col-md-3 text-md-end">
-                  <a href="{{ '/k12/' | url }}" class="btn btn-primary px-4">K-12 Resources</a>
+                  <a href="{{ '/k12/' | url }}" class="btn btn-primary px-4" data-i18n="section.impact.k12Resources">K-12 Resources</a>
                 </div>
               </div>
             </div>
@@ -446,13 +446,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container pb-lg-5">
     <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden position-relative rounded-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);">
       <div class="card-body p-5 text-center position-relative" style="z-index: 2;">
-        <h2 class="display-5 fw-bold mb-4">Support the Future of Bioacoustics</h2>
-        <p class="lead text-white-50 mb-5 mx-auto" style="max-width: 700px;">
+        <h2 class="display-5 fw-bold mb-4" data-i18n="section.cta.title">Support the Future of Bioacoustics</h2>
+        <p class="lead text-white-50 mb-5 mx-auto" style="max-width: 700px;" data-i18n="section.cta.subtitle">
           BirdNET is an open-source research project powered by global collaboration. Whether you're a developer contributing code or a birder recording sounds, your help is vital.
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a href="{{ '/contribute/' | url }}" class="btn btn-primary btn-lg px-5 shadow-sm">Join the Community</a>
-          <a href="{{ '/donate/' | url }}" class="btn btn-outline-light btn-lg px-5">Make a Donation</a>
+          <a href="{{ '/contribute/' | url }}" class="btn btn-primary btn-lg px-5 shadow-sm" data-i18n="section.cta.joinCommunity">Join the Community</a>
+          <a href="{{ '/donate/' | url }}" class="btn btn-outline-light btn-lg px-5" data-i18n="section.cta.makeDonation">Make a Donation</a>
         </div>
       </div>
       <!-- Enhanced background glow -->
