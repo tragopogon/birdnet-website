@@ -442,7 +442,14 @@ permalink: "/app/"
     setText('stat-observations-24h', fmtInt(observations24h));
     setText('stat-species-24h', fmtInt(species24h));
     setText('stat-users-24h', fmtInt(users24h));
-    const updatedLabel = (window.i18n ? i18n.t('app.stats.updated') : 'Updated');
+    
+    // Fallback to "Updated" if English (which returns the key from t())
+    let updatedLabel = 'Updated';
+    if (window.i18n) {
+      const t = i18n.t('app.stats.updated');
+      if (t !== 'app.stats.updated') updatedLabel = t;
+    }
+    
     setText('stats-updated', updatedLabel + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
     clearTimeout(refreshTimer);
@@ -493,7 +500,7 @@ permalink: "/app/"
         
         // Auto-select first one if none selected
         if (top8.length > 0 && document.getElementById('species-detail-view').classList.contains('d-none')) {
-          showSpeciesDetail(top8[0][0], top8[0][1]);
+          showSpeciesDetail(top8[0][0], top8[0][1], false);
         }
         
         if (window.i18n) i18n.translatePage();
@@ -501,7 +508,7 @@ permalink: "/app/"
     }
   }
 
-  window.showSpeciesDetail = function(scientific, count) {
+  window.showSpeciesDetail = function(scientific, count, shouldScroll = true) {
     const detailView = document.getElementById('species-detail-view');
     detailView.classList.remove('d-none');
     
@@ -564,7 +571,9 @@ permalink: "/app/"
       });
     }
     
-    detailView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (shouldScroll) {
+      detailView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   };
 
   async function init(){
