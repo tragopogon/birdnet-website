@@ -25,10 +25,10 @@
   "nav.contribute.codeData": "Code & Daten",
   "nav.contribute.donate": "Spenden",
 
-  "hero.title": "KI-gestützte Bioakustik, skalierbar.",
+  "hero.title": "KI-gestützte Bioakustik. Skalierbar.",
   "hero.subtitle": "BirdNET nutzt Deep Learning zur Erkennung von über 6.000 Arten weltweit. Unsere Open-Source-Tools bieten robuste Workflows für Biodiversitäts-Monitoring und Citizen Science.",
-  "hero.cta.analyzer": "BirdNET-Analyzer herunterladen",
-  "hero.cta.demo": "Sound-ID-Demo ausprobieren",
+  "hero.cta.analyzer": "Analyzer herunterladen",
+  "hero.cta.demo": "Demo ausprobieren",
   "hero.cta.app": "App herunterladen",
   "hero.partners": "Eine gemeinsame Initiative von:",
 

@@ -54,9 +54,15 @@
 
   /**
    * Load translation file for the specified language
+   * English uses the original text in the HTML, so no translations needed
    */
   async function loadTranslations(lang) {
-    // Load from inline embedded data
+    // English is the default - original HTML content is already in English
+    if (lang === DEFAULT_LANG) {
+      return {};
+    }
+    
+    // Load from inline embedded data for other languages
     if (window.__i18n && window.__i18n[lang]) {
       return window.__i18n[lang];
     }
@@ -159,6 +165,7 @@
 
   /**
    * Change the current language
+   * Reloads the page to ensure clean state (original HTML is in English)
    */
   async function setLanguage(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) {
@@ -166,19 +173,23 @@
       return;
     }
 
-    if (lang === currentLang && Object.keys(translations).length > 0) {
-      return; // Already loaded
+    if (lang === currentLang) {
+      return; // Already on this language
     }
 
-    currentLang = lang;
+    // Store the new language preference
     localStorage.setItem(STORAGE_KEY, lang);
-    updateUrlParam(lang);
-
-    translations = await loadTranslations(lang);
-    translatePage();
-
-    // Dispatch event for other scripts that might need to know
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    
+    // Update URL and reload to get fresh HTML
+    // This is needed because English content comes from the original HTML,
+    // not from a translations file
+    const url = new URL(window.location);
+    if (lang === DEFAULT_LANG) {
+      url.searchParams.delete('lang');
+    } else {
+      url.searchParams.set('lang', lang);
+    }
+    window.location.href = url.toString();
   }
 
   /**

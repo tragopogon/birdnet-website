@@ -16,10 +16,10 @@
 
   <link rel="icon" type="image/png" href="{{ '/favicon.png' | url }}">
 
-  {# i18n translations embedded inline #}
+  {# i18n translations embedded inline - only non-English languages needed #}
+  {# English content is already in the HTML as the default/fallback #}
   <script>
     window.__i18n = {
-      en: {{ i18n.en | dump | safe }},
       de: {{ i18n.de | dump | safe }}
     };
   </script>
