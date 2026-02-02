@@ -95,10 +95,13 @@ async function main() {
 
   const birds = birdsList.map((base, i) => {
     const loc = birdsListI18n[i] || base;
+    const [sciName, commonName] = base.split('_');
+    const [, locCommonName] = (loc || base).split('_');
     return {
       geoscore: 1,
-      name: base.split('_')[1] || base,
-      nameI18n: loc.split('_')[1] || base
+      sciName: sciName || base,
+      name: commonName || base,
+      nameI18n: locCommonName || commonName || base
     };
   });
 
@@ -173,6 +176,7 @@ async function main() {
           index: i,
           confidence: conf,
           geoscore: birds[i].geoscore,
+          sciName: birds[i].sciName,
           name: birds[i].name,
           nameI18n: birds[i].nameI18n
         }));
@@ -192,6 +196,7 @@ async function main() {
 
       const pooled = lastMeans.map((m, i) => ({
         index: i,
+        sciName: birds[i].sciName,
         name: birds[i].name,
         nameI18n: birds[i].nameI18n,
         confidence: m,
@@ -223,6 +228,7 @@ async function main() {
             index: i,
             confidence: conf,
             geoscore: birds[i].geoscore,
+            sciName: birds[i].sciName,
             name: birds[i].name,
             nameI18n: birds[i].nameI18n
           }));
@@ -235,6 +241,7 @@ async function main() {
       if (lastMeans) {
         const pooled = lastMeans.map((m, i) => ({
           index: i,
+          sciName: birds[i].sciName,
           name: birds[i].name,
           nameI18n: birds[i].nameI18n,
           confidence: m,
