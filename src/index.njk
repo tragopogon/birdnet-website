@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateIndicator() {
     if (!hero || !indicator) return;
     
-    const heroHeight = hero.offsetHeight;
-    const windowHeight = window.innerHeight;
     const scrollPos = window.scrollY;
     
     // Show if we are still near the top of the page
@@ -77,9 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Scroll to next section on click
   indicator.addEventListener('click', function() {
-    const nextSection = hero.nextElementSibling;
+    // Find the next <section> element after the hero
+    let nextSection = hero.nextElementSibling;
+    while (nextSection && nextSection.tagName !== 'SECTION') {
+      nextSection = nextSection.nextElementSibling;
+    }
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback: scroll down by viewport height
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
     }
   });
 });
