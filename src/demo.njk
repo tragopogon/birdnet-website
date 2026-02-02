@@ -220,7 +220,7 @@ permalink: "/demo/"
 
     <!-- Status line -->
     <div id="statusArea" class="mb-3">
-      <div id="statusLine" class="small text-muted">Waiting for audio…</div>
+      <div id="statusLine" class="small text-muted" data-i18n="demo.status.waitingAudio">Waiting for audio…</div>
     </div>
 
     <!-- Results: interactive species list -->
@@ -267,6 +267,16 @@ let lastRecordingBlob = null; // Store recording for download
 const WINDOW_SAMPLES = 144000; // 3s @ 48 kHz
 const GEO_THRESH = 0.05;
 
+// i18n helper - returns translation or fallback, never the key
+function _t(key, fallback) {
+  if (window.i18n && typeof window.i18n.t === 'function') {
+    const result = window.i18n.t(key);
+    // If t() returns the key itself, use fallback
+    return result !== key ? result : fallback;
+  }
+  return fallback;
+}
+
 /* -----------------------------
    Progress helpers
 ----------------------------- */
@@ -284,9 +294,9 @@ function hideProgress() {
 function setRunButtonLoading(loading) {
   const btn = $('#runBtn');
   if (loading) {
-    btn.prop('disabled', true).html('<i class="bi bi-arrow-repeat spin me-1"></i>Analyzing...');
+    btn.prop('disabled', true).html('<i class="bi bi-arrow-repeat spin me-1"></i>' + _t('demo.status.analyzingBtn', 'Analyzing...'));
   } else {
-    btn.prop('disabled', false).html('<i class="bi bi-play-fill me-1"></i>Run Analysis');
+    btn.prop('disabled', false).html('<i class="bi bi-play-fill me-1"></i>' + _t('demo.settings.run', 'Run Analysis'));
   }
 }
 
@@ -334,16 +344,16 @@ function attachWorker() {
   worker.onmessage = ({ data }) => {
     if(['load_model','warmup','load_geomodel','load_labels'].includes(data.message)){
       const progress = data.progress ?? 0;
-      let stepText = window.i18n?.t('demo.status.loadModel') || 'Loading model...';
-      if (data.message === 'load_model') stepText = window.i18n?.t('demo.status.loadModel') || 'Loading neural network...';
-      if (data.message === 'warmup') stepText = window.i18n?.t('demo.status.warmup') || 'Warming up model...';
-      if (data.message === 'load_geomodel') stepText = window.i18n?.t('demo.status.loadGeo') || 'Loading geo model...';
-      if (data.message === 'load_labels') stepText = window.i18n?.t('demo.status.loadLabels') || 'Loading species labels...';
+      let stepText = _t('demo.status.loadModel', 'Loading model...');
+      if (data.message === 'load_model') stepText = _t('demo.status.loadModel', 'Loading neural network...');
+      if (data.message === 'warmup') stepText = _t('demo.status.warmup', 'Warming up model...');
+      if (data.message === 'load_geomodel') stepText = _t('demo.status.loadGeo', 'Loading geo model...');
+      if (data.message === 'load_labels') stepText = _t('demo.status.loadLabels', 'Loading species labels...');
       showProgress(Math.min(progress * 0.4, 40), stepText);
     }
     if(data.message === 'loaded'){
       workerLoaded = true;
-      showProgress(45, window.i18n?.t('demo.status.modelReady') || 'Model ready');
+      showProgress(45, _t('demo.status.modelReady', 'Model ready'));
       if (resolveWhenLoaded) { resolveWhenLoaded(); resolveWhenLoaded = null; }
     }
     if(data.message === 'predict_debug'){
@@ -357,11 +367,11 @@ function attachWorker() {
     }
     if(data.message === 'segments'){
       segmentPredictions = data.segments;
-      showProgress(90, window.i18n?.t('demo.status.processing') || 'Processing results...');
+      showProgress(90, _t('demo.status.processing', 'Processing results...'));
       $('#downloadCsvBtn').prop('disabled', false).removeClass('d-none');
     }
     if(data.message === 'pooled'){
-      showProgress(100, window.i18n?.t('demo.status.complete') || 'Complete!');
+      showProgress(100, _t('demo.status.complete', 'Complete!'));
       setTimeout(() => {
         hideProgress();
         setRunButtonLoading(false);
@@ -373,12 +383,12 @@ function attachWorker() {
         return { ...x, filtered };
       }).sort((a,b) => b.filtered - a.filtered);
       renderResults();
-      const completeMsg = window.i18n?.t('demo.status.analysisComplete') || 'Analysis complete. Click a species to see detections.';
+      const completeMsg = _t('demo.status.analysisComplete', 'Analysis complete. Click a species to see detections.');
       $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>' + completeMsg);
     }
     if(data.message === 'area-scores'){
       areaModelLoaded = true;
-      showProgress(55, 'Geo filter applied');
+      showProgress(55, _t('demo.status.geoApplied', 'Geo filter applied'));
     }
   };
 }
@@ -674,7 +684,7 @@ async function loadAudioFile(file, isRecording = false) {
   $('#fileInfo').text(fileInfoText);
   $('#collapsedFileInfo').html('<strong>' + file.name + '</strong> <span class="text-muted">(' + (file.size/1024/1024).toFixed(2) + ' MB)</span>');
   initWaveSurfer(URL.createObjectURL(file));
-  showProgress(30, 'Decoding audio...');
+  showProgress(30, _t('demo.status.decodingAudio', 'Decoding audio...'));
   
   // Collapse dropzone
   collapseDropzone();
@@ -689,9 +699,9 @@ async function loadAudioFile(file, isRecording = false) {
   try {
     const { pcm } = await fileToPCMWindows(file);
     lastPCM = pcm;
-    showProgress(100, 'Ready');
+    showProgress(100, _t('demo.status.ready', 'Ready'));
     setTimeout(hideProgress, 300);
-    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Audio loaded. Adjust settings and click <strong>Run Analysis</strong>.');
+    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>' + _t('demo.status.audioLoaded', 'Audio loaded. Adjust settings and click <strong>Run Analysis</strong>.'));
   } catch (err) {
     hideProgress();
     $('#statusLine').html('<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>Error decoding audio: ' + err.message + '</span>');
@@ -705,7 +715,7 @@ async function loadSampleAudio() {
   $('#fileInfo').html('<i class="bi bi-music-note-beamed me-1"></i>' + sampleText);
   $('#collapsedFileInfo').html('<i class="bi bi-music-note-beamed me-1"></i><strong>Sample:</strong> Blue Jay');
   initWaveSurfer(sampleAudioUrl);
-  showProgress(20, 'Fetching sample...');
+  showProgress(20, _t('demo.status.fetchingSample', 'Fetching sample...'));
   
   // Collapse dropzone (no recording to download)
   collapseDropzone();
@@ -714,9 +724,9 @@ async function loadSampleAudio() {
   try {
     const { pcm } = await urlToPCMWindows(sampleAudioUrl);
     lastPCM = pcm;
-    showProgress(100, 'Ready');
+    showProgress(100, _t('demo.status.ready', 'Ready'));
     setTimeout(hideProgress, 300);
-    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>Sample loaded. Adjust settings and click <strong>Run Analysis</strong>.');
+    $('#statusLine').html('<i class="bi bi-check-circle text-success me-1"></i>' + _t('demo.status.sampleLoaded', 'Sample loaded. Adjust settings and click <strong>Run Analysis</strong>.'));
   } catch (err) {
     hideProgress();
     $('#statusLine').html('<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>Error loading sample: ' + err.message + '</span>');
@@ -941,7 +951,7 @@ $('#runBtn').on('click', async () => {
   const selectedLang = $('#langSelect').val() || 'auto';
   
   if (!worker || !workerLoaded || selectedLang !== currentWorkerLang) {
-    showProgress(5, 'Initializing model...');
+    showProgress(5, _t('demo.status.initModel', 'Initializing model...'));
     newWorker(selectedLang);
     await waitForLoaded();
   }
@@ -950,12 +960,12 @@ $('#runBtn').on('click', async () => {
   if (isLocationFilterEnabled() && hasValidLocation()) {
     const lat = parseFloat($('#latInput').val());
     const lon = parseFloat($('#lonInput').val());
-    showProgress(50, window.i18n?.t('demo.status.applyingLocation') || 'Applying location filter...');
+    showProgress(50, _t('demo.status.applyingLocation', 'Applying location filter...'));
     worker.postMessage({ message:'area-scores', latitude: lat, longitude: lon });
   }
   
   const overlapSec = parseFloat($('#overlapSelect').val() || '0.0');
-  showProgress(60, window.i18n?.t('demo.status.analyzing') || 'Analyzing audio...');
+  showProgress(60, _t('demo.status.analyzing', 'Analyzing audio...'));
   worker.postMessage({ message:'predict', pcmAudio: lastPCM, overlapSec });
 });
 
