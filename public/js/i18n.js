@@ -84,12 +84,21 @@
    * Translate all elements with data-i18n attribute
    */
   function translatePage() {
-    // Translate text content
+    // Translate text content (supports [html] prefix for innerHTML)
     document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
+      const rawKey = el.getAttribute('data-i18n');
+      
+      // Check for [html] prefix
+      const isHtml = rawKey.startsWith('[html]');
+      const key = isHtml ? rawKey.slice(6) : rawKey;
+      
       const translated = t(key, { year: new Date().getFullYear() });
       if (translated !== key) {
-        el.textContent = translated;
+        if (isHtml) {
+          el.innerHTML = translated;
+        } else {
+          el.textContent = translated;
+        }
       }
     });
 

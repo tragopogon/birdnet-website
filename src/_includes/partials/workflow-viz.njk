@@ -11,7 +11,7 @@
                         <div class="icon-wrapper mx-auto mb-2">
                             <i class="bi bi-mic"></i>
                         </div>
-                        <div class="smaller fw-bold">1. Capture</div>
+                        <div class="smaller fw-bold" data-i18n="workflow.step1.title">1. Capture</div>
                     </div>
                     <div class="viz-panel active" id="panel-1">
                         <!-- Prerendered Waveform from JSON -->
@@ -30,7 +30,7 @@
                             <path d="{{ d }} Z" fill="rgba(255,255,255,0.9)" stroke="none" />
                         </svg>
                     </div>
-                    <p class="small text-white-50 mb-0 step-desc text-center">Audio is captured at 48 kHz and divided into 3-second segments, optimizing the balance between model input size and the natural duration of avian vocalizations.</p>
+                    <p class="small text-white-50 mb-0 step-desc text-center" data-i18n="workflow.step1.desc">Audio is captured at 48 kHz and divided into 3-second segments, optimizing the balance between model input size and the natural duration of avian vocalizations.</p>
                 </div>
 
                 <!-- Step 2 -->
@@ -39,13 +39,13 @@
                         <div class="icon-wrapper mx-auto mb-2">
                             <i class="bi bi-soundwave"></i>
                         </div>
-                        <div class="smaller fw-bold">2. Spectrogram</div>
+                        <div class="smaller fw-bold" data-i18n="workflow.step2.title">2. Spectrogram</div>
                     </div>
                     <div class="viz-panel" id="panel-2">
                         <!-- Prerendered Spectrogram -->
                         <canvas id="canvas-spectrogram-static" width="200" height="60" style="width:100%; height:100%;"></canvas>
                     </div>
-                    <p class="small text-white-50 mb-0 step-desc text-center">Signals are processed into two log-scaled Mel-spectrograms, visualizing frequency patterns from 0 to 3 kHz and 150 Hz to 15 kHz for detailed analysis.</p>
+                    <p class="small text-white-50 mb-0 step-desc text-center" data-i18n="workflow.step2.desc">Signals are processed into two log-scaled Mel-spectrograms, visualizing frequency patterns from 0 to 3 kHz and 150 Hz to 15 kHz for detailed analysis.</p>
                 </div>
 
                 <!-- Step 3 -->
@@ -54,12 +54,12 @@
                         <div class="icon-wrapper mx-auto mb-2">
                             <i class="bi bi-cpu"></i>
                         </div>
-                        <div class="smaller fw-bold">3. Neural Net</div>
+                        <div class="smaller fw-bold" data-i18n="workflow.step3.title">3. Neural Net</div>
                     </div>
                     <div class="viz-panel" id="panel-3">
                         <svg id="nn-svg" class="nn-svg" viewBox="0 0 200 80" preserveAspectRatio="xMidYMid meet"></svg>
                     </div>
-                    <p class="small text-white-50 mb-0 step-desc text-center">A Convolutional Neural Network (CNN) scans these visuals, utilizing millions of trained weights to detect species-specific patterns.</p>
+                    <p class="small text-white-50 mb-0 step-desc text-center" data-i18n="workflow.step3.desc">A Convolutional Neural Network (CNN) scans these visuals, utilizing millions of trained weights to detect species-specific patterns.</p>
                 </div>
 
                 <!-- Step 4 -->
@@ -68,12 +68,12 @@
                         <div class="icon-wrapper mx-auto mb-2">
                             <i class="bi bi-check2-circle"></i>
                         </div>
-                        <div class="smaller fw-bold">4. Result</div>
+                        <div class="smaller fw-bold" data-i18n="workflow.step4.title">4. Result</div>
                     </div>
                     <div class="viz-panel" id="panel-4">
                         <canvas id="canvas-results"></canvas>
                     </div>
-                    <p class="small text-white-50 mb-0 step-desc text-center">Initial predictions are cross-referenced with local metadata (location and date) to produce high-confidence species probabilities.</p>
+                    <p class="small text-white-50 mb-0 step-desc text-center" data-i18n="workflow.step4.desc">Initial predictions are cross-referenced with local metadata (location and date) to produce high-confidence species probabilities.</p>
                 </div>
             </div>
         </div>
