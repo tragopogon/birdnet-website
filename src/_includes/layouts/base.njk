@@ -47,7 +47,7 @@
   <script src="{{ '/vendor/bootstrap/bootstrap.bundle.min.js' | url }}"></script>
   <script src="{{ '/js/i18n.js' | url }}"></script>
   <script>
-  (function(){try{var isDev=location.hostname==='localhost'||location.hostname==='127.0.0.1';var url='https://birdnet.cornell.edu/views/track?site='+encodeURIComponent(location.href)+'&referer='+encodeURIComponent(document.referrer||'');if(isDev){fetch(url).then(function(r){console.log('[PageView]',r.status,r.statusText)}).catch(function(e){console.log('[PageView] error',e)})}else{fetch(url,{keepalive:true,mode:'no-cors'})}}catch(e){}})();
+  (function(){try{var isDev=location.hostname==='localhost'||location.hostname==='127.0.0.1';if(isDev){console.log('[PageView] Skipped (dev mode)');return}var url='https://birdnet.cornell.edu/views/track?site='+encodeURIComponent(location.href)+'&referer='+encodeURIComponent(document.referrer||'');fetch(url,{keepalive:true,mode:'no-cors'})}catch(e){}})();
   </script>
 </body>
 </html>
