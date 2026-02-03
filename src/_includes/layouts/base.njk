@@ -46,5 +46,8 @@
 
   <script src="{{ '/vendor/bootstrap/bootstrap.bundle.min.js' | url }}"></script>
   <script src="{{ '/js/i18n.js' | url }}"></script>
+  <script>
+  (function(){try{if(navigator.doNotTrack==='1'||location.hostname==='localhost'||location.hostname==='127.0.0.1')return;fetch('https://birdnet.cornell.edu/views/track?site='+encodeURIComponent(location.href),{method:'GET',keepalive:true,mode:'no-cors'})}catch(e){}})();
+  </script>
 </body>
 </html>
