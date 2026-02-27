@@ -405,6 +405,7 @@
   "resources.tutorials.title": "Video-Guides",
   "resources.watchYoutube": "Auf YouTube ansehen",
   "resources.watchCornell": "Auf Cornell Video ansehen",
+  "resources.inGerman": "Auf Deutsch",
   "resources.video1.desc": "Ein Überblick darüber, wie BirdNETs KI-Tools großflächige Audio-Analysen zur Vogelbestimmung automatisieren und dabei Naturschutzforschung und ökologisches Monitoring unterstützen.",
   "resources.video2.desc": "Eine Präsentation über das Potenzial des BirdNET-Projekts für den Vogelschutz, die zeigt, wie App und Technologien sowohl breites Monitoring als auch detaillierte Forschung unterstützen.",
   "resources.video3.desc": "Ein Webinar über solarbetriebene Aufnahmestationen mit KI, die Arten erkennen, Ökosysteme überwachen und Naturklänge teilen.",
@@ -413,6 +414,7 @@
   "resources.video6.desc": "Eine BioacousTalks-Präsentation mit Stefan Kahl (BirdNET-Entwickler) über den Aufbau eigener Machine-Learning-Modelle mit BirdNET Analyzer – nützlich für die Erweiterung auf neue Taxa oder Umgebungen.",
   "resources.video7.desc": "Ein Video über den Einsatz von BirdNET-Modellen in echten akustischen Monitoring-Projekten, das bioakustische Community-Surveys und minimale lokale Trainingsanpassungen zeigt.",
   "resources.video8.desc": "Eine Einführung in die Nutzung von Sound und Machine Learning zur Vogelbestimmung, die erklärt, wie Modelle wie BirdNET Audiosignale aus Spektrogrammen klassifizieren.",
+  "resources.video9.desc": "Ein wissenschaftlicher Vortrag von Dr. Stefan Kahl darüber, wie Vögel als Umweltindikatoren dienen und wie KI-gestützte BirdNET-Technologie neue Ansätze für Forschung und Naturschutz bietet.",
 
   "k12.label": "Bildung",
   "k12.title": "K-12 Ressourcen",

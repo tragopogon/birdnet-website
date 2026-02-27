@@ -405,6 +405,7 @@
   "resources.tutorials.title": "Przewodniki wideo",
   "resources.watchYoutube": "Obejrzyj na YouTube",
   "resources.watchCornell": "Obejrzyj na Cornell Video",
+  "resources.inGerman": "Po niemiecku",
   "resources.video1.desc": "Przegląd jak narzędzia AI BirdNET automatyzują analizę audio na dużą skalę do identyfikacji ptaków, wspierając badania ochrony przyrody i monitoring ekologiczny.",
   "resources.video2.desc": "Prezentacja o potencjale projektu BirdNET dla ochrony ptaków, pokazująca jak aplikacja i technologie wspierają zarówno szeroki monitoring, jak i szczegółowe badania.",
   "resources.video3.desc": "Webinar o solanych stacjach nagrywających z AI, które wykrywają gatunki, monitorują ekosystemy i dzielą się dźwiękami natury.",
@@ -413,6 +414,7 @@
   "resources.video6.desc": "Prezentacja BioacousTalks ze Stefanem Kahlem (deweloperem BirdNET) o budowaniu własnych modeli machine learning z BirdNET Analyzer – przydatna do rozszerzenia na nowe taksony lub środowiska.",
   "resources.video7.desc": "Film o używaniu modeli BirdNET w rzeczywistych projektach monitoringu akustycznego, pokazujący bioakustyczne badania społeczności i adaptacje z minimalnym trenowaniem lokalnym.",
   "resources.video8.desc": "Wprowadzenie do używania dźwięku i machine learning do identyfikacji ptaków, wyjaśniające jak modele takie jak BirdNET klasyfikują sygnały audio ze spektrogramów.",
+  "resources.video9.desc": "Wykład naukowy Dr. Stefana Kahla o tym, jak ptaki służą jako wskaźniki środowiskowe i jak technologia BirdNET oparta na AI oferuje nowe podejścia do badań i ochrony przyrody.",
 
   "k12.label": "Edukacja",
   "k12.title": "Zasoby K-12",

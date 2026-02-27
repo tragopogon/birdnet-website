@@ -404,8 +404,7 @@
   "resources.tutorials.label": "TUTORIALS je WEBINARS",
   "resources.tutorials.title": "Video Guides",
   "resources.watchYoutube": "YouTube yIlegh",
-  "resources.watchCornell": "Cornell Video yIlegh",
-  "resources.video1.desc": "Overview chay' BirdNET AI lI'wI'mey automate Hoch audio analysis bird identification while support conservation QulmoH je ecological monitoring.",
+  "resources.watchCornell": "Cornell Video yIlegh",  "resources.inGerman": "German Hol",  "resources.video1.desc": "Overview chay' BirdNET AI lI'wI'mey automate Hoch audio analysis bird identification while support conservation QulmoH je ecological monitoring.",
   "resources.video2.desc": "Presentation BirdNET tlhIgh potential bird conservation, show chay' ghunwI' je technologies support broad monitoring je detailed QulmoH.",
   "resources.video3.desc": "Webinar solar-powered AI recording stations detect species, monitor ecosystems, je share nature sounds.",
   "resources.video4.desc": "Practical video tips, tricks, je insights lo' BirdNET je similar machine learning lI'wI'mey eco-acoustic analysis, model interpretation, je workflow configuration.",
@@ -413,6 +412,7 @@
   "resources.video6.desc": "BioacousTalks presentation Stefan Kahl (BirdNET developer) build Segh machine learning models BirdNET Analyzer – useful extend chu' taxa qoj environments.",
   "resources.video7.desc": "Video lo' BirdNET models real-world acoustic monitoring tlhIgh, show bioacoustic community surveys je minimal local training adaptations.",
   "resources.video8.desc": "Introduction lo' sound je machine learning bird identification, explain chay' models BirdNET classify audio signals spectrograms.",
+  "resources.video9.desc": "Scientific talk Dr. Stefan Kahl, birds environmental indicators serve, BirdNET AI technology new approaches research conservation offer.",
 
   "k12.label": "Education",
   "k12.title": "K-12 De'",

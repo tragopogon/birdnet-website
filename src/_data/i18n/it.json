@@ -405,6 +405,7 @@
   "resources.tutorials.title": "Guide video",
   "resources.watchYoutube": "Guarda su YouTube",
   "resources.watchCornell": "Guarda su Cornell Video",
+  "resources.inGerman": "In tedesco",
   "resources.video1.desc": "Una panoramica di come gli strumenti AI di BirdNET automatizzano l'analisi audio su larga scala per l'identificazione degli uccelli supportando la ricerca sulla conservazione e il monitoraggio ecologico.",
   "resources.video2.desc": "Una presentazione sul potenziale del progetto BirdNET per la conservazione degli uccelli, mostrando come l'app e le tecnologie supportano sia il monitoraggio ampio che la ricerca dettagliata.",
   "resources.video3.desc": "Un webinar sulle stazioni di registrazione solari con AI che rilevano le specie, monitorano gli ecosistemi e condividono i suoni della natura.",
@@ -413,6 +414,7 @@
   "resources.video6.desc": "Una presentazione BioacousTalks con Stefan Kahl (sviluppatore BirdNET) sulla costruzione dei propri modelli di machine learning con BirdNET Analyzer – utile per l'estensione a nuovi taxa o ambienti.",
   "resources.video7.desc": "Un video sull'uso dei modelli BirdNET in progetti reali di monitoraggio acustico, mostrando survey community bioacustici e adattamenti minimi di training locale.",
   "resources.video8.desc": "Un'introduzione all'uso del suono e del machine learning per l'identificazione degli uccelli, spiegando come modelli come BirdNET classificano i segnali audio dagli spettrogrammi.",
+  "resources.video9.desc": "Una conferenza scientifica del Dr. Stefan Kahl su come gli uccelli fungono da indicatori ambientali e su come la tecnologia BirdNET basata sull'IA offre nuovi approcci per la ricerca e la conservazione.",
 
   "k12.label": "Educazione",
   "k12.title": "Risorse K-12",

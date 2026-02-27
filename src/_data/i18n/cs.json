@@ -405,6 +405,7 @@
   "resources.tutorials.title": "Video průvodci",
   "resources.watchYoutube": "Sledovat na YouTube",
   "resources.watchCornell": "Sledovat na Cornell Video",
+  "resources.inGerman": "V němčině",
   "resources.video1.desc": "Přehled jak AI nástroje BirdNET automatizují analýzu audia ve velkém měřítku pro identifikaci ptáků při podpoře výzkumu ochrany přírody a ekologického monitoringu.",
   "resources.video2.desc": "Prezentace o potenciálu projektu BirdNET pro ochranu ptáků, ukazující jak aplikace a technologie podporují široký monitoring i detailní výzkum.",
   "resources.video3.desc": "Webinář o solárních nahrávacích stanicích s AI, které detekují druhy, monitorují ekosystémy a sdílejí zvuky přírody.",
@@ -413,6 +414,7 @@
   "resources.video6.desc": "Prezentace BioacousTalks se Stefanem Kahlem (vývojář BirdNET) o budování vlastních modelů strojového učení s BirdNET Analyzer – užitečné pro rozšíření na nové taxony nebo prostředí.",
   "resources.video7.desc": "Video o používání modelů BirdNET v reálných projektech akustického monitoringu, ukazující bioakustické komunitní průzkumy a adaptace s minimálním lokálním tréninkem.",
   "resources.video8.desc": "Úvod do používání zvuku a strojového učení pro identifikaci ptáků, vysvětlující jak modely jako BirdNET klasifikují audio signály ze spektrogramů.",
+  "resources.video9.desc": "Vědecká přednáška Dr. Stefana Kahla o tom, jak ptáci slouží jako indikátory životního prostředí a jak technologie BirdNET poháněná umělou inteligencí nabízí nové přístupy pro výzkum a ochranu přírody.",
 
   "k12.label": "Vzdělávání",
   "k12.title": "Zdroje K-12",
