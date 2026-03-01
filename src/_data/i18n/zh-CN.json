@@ -219,7 +219,7 @@
   "analyzer.scientific.precision": "大规模精确分析",
   "analyzer.scientific.precisionDesc": "使用多线程命令行分析处理 TB 级数据。通过 --batch_size 参数优化 CPU 或 GPU 性能。",
   "analyzer.scientific.adaptive": "自适应学习",
-  "analyzer.scientific.adaptiveDesc": "以"追加"模式训练分类器，添加本地物种而不丢失 BirdNET 中 6,000+ 基础物种。",
+  "analyzer.scientific.adaptiveDesc": "以「追加」模式训练分类器，添加本地物种而不丢失 BirdNET 中 6,000+ 基础物种。",
   "analyzer.scientific.filtering": "智能过滤",
   "analyzer.scientific.filteringDesc": "使用物种分布模型（基于 eBird 数据），按纬度、经度和日历周自动过滤检测结果。",
   "analyzer.scientific.search": "嵌入向量搜索",
@@ -455,7 +455,7 @@
   "k12.pedagogy.materials": "为教师提供现成的材料，包括评估模板和项目指南。",
   "k12.maker.label": "创客空间",
   "k12.maker.title": "DIY 录音站",
-  "k12.maker.desc": "最受欢迎的项目之一是建造自己的"Smart Finch"鸟屋。学生使用树莓派和小型麦克风，构建一个可实时识别访客鸟类的永久监测站。",
+  "k12.maker.desc": "最受欢迎的项目之一是建造自己的「Smart Finch」鸟屋。学生使用树莓派和小型麦克风，构建一个可实时识别访客鸟类的永久监测站。",
   "k12.maker.viewGuide": "查看指南",
 
   "projectsMap.label": "全球网络",
