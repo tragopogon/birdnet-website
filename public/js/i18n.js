@@ -6,7 +6,7 @@
   'use strict';
 
   const DEFAULT_LANG = 'en';
-  const SUPPORTED_LANGS = ['en', 'de', 'es', 'fr', 'it', 'pt-BR', 'pt', 'pl', 'cs', 'tlh'];
+  const SUPPORTED_LANGS = ['en', 'de', 'es', 'fr', 'it', 'pt-BR', 'pt', 'pl', 'cs', 'zh-CN', 'tlh'];
   const STORAGE_KEY = 'birdnet-lang';
 
   let translations = {};
@@ -29,10 +29,14 @@
       return storedLang;
     }
 
-    // 3. Check browser language
-    const browserLang = navigator.language?.split('-')[0];
-    if (browserLang && SUPPORTED_LANGS.includes(browserLang)) {
-      return browserLang;
+    // 3. Check browser language (try full locale first, e.g. zh-CN, then base language)
+    const fullLang = navigator.language;
+    if (fullLang && SUPPORTED_LANGS.includes(fullLang)) {
+      return fullLang;
+    }
+    const baseLang = fullLang?.split('-')[0];
+    if (baseLang && SUPPORTED_LANGS.includes(baseLang)) {
+      return baseLang;
     }
 
     // 4. Fallback to default
@@ -152,7 +156,7 @@
     // Update the dropdown button text
     const btn = switcher.querySelector('.dropdown-toggle');
     if (btn) {
-      const langNames = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', 'pt-BR': 'PT-BR', pt: 'PT', pl: 'PL', cs: 'CS', tlh: 'tlhIngan' };
+      const langNames = { en: 'EN', de: 'DE', es: 'ES', fr: 'FR', it: 'IT', 'pt-BR': 'PT-BR', pt: 'PT', pl: 'PL', cs: 'CS', 'zh-CN': '中文', tlh: 'tlhIngan' };
       btn.innerHTML = `<i class="bi bi-globe2 me-1"></i>${langNames[currentLang] || currentLang.toUpperCase()}`;
     }
 
