@@ -1,7 +1,6 @@
 {
   "lang": "tlh",
   "langName": "tlhIngan Hol",
-
   "nav.home": "juH",
   "nav.tools": "lI'wI'mey",
   "nav.tools.analyzer": "Analyzer",
@@ -24,14 +23,12 @@
   "nav.contribute.codeData": "ghun De'",
   "nav.contribute.donate": "nobHa'",
   "nav.showroom": "ta'mey",
-
   "hero.title": "Bioakustik QaH AI – Hoch tlhoy.",
   "hero.subtitle": "BirdNET lo' Deep Learning jatlhlaHbogh cha' 6,000 Ha'DIbaH qo' Hoch. maH poS source lI'wI'mey nob HoS workflow vaD biodiversity monitoring je tlhIngan Science.",
   "hero.cta.analyzer": "Analyzer yIQaw'",
   "hero.cta.demo": "Demo yISuq",
   "hero.cta.app": "ghunwI' yIQaw'",
   "hero.partners": "wa'DIch jev:",
-
   "section.researchTools": "QulmoH je lI'wI'mey",
   "section.researchTools.title": "AI toolkit vaD yInSIp.",
   "section.researchTools.subtitle": "poS source model je interface tlhoy wa' observation vo' continental monitoring program.",
@@ -44,7 +41,6 @@
   "section.researchTools.openSource": "poS source je community",
   "section.researchTools.openSourceDesc": "ghun boQ maH repositories qoj support tlhIgh De' gift.",
   "section.researchTools.exploreAnalyzer": "Analyzer yISuq",
-
   "section.cards.ecologists": "vaD ecologists",
   "section.cards.ecologistsDesc": "jar PAM De' yIqel pov. yIfilter results location je poH vaD false positive reduction.",
   "section.cards.analyzerGui": "Analyzer GUI →",
@@ -61,11 +57,9 @@
   "section.cards.bioacousticResearchDesc": "QulmoH ghItlhmey BirdNET model, validation studies je impact.",
   "section.cards.publications": "ghItlhmey →",
   "section.cards.tutorials": "ghojmoHwI' →",
-
   "section.architecture": "Architecture",
   "section.architecture.title": "chay' BirdNET Qap",
   "section.architecture.subtitle": "BirdNET process audio Hoch step: soundscapes vo' standardized features vo' species recognition – SaD species, regional variants je.",
-
   "workflow.step1.title": "1. bo'",
   "workflow.step1.desc": "Audio bo' 48 kHz je DIvI' 3-second segments – bird song typical duration vaD SuH.",
   "workflow.step2.title": "2. Spectrogram",
@@ -74,7 +68,6 @@
   "workflow.step3.desc": "Convolutional neural network (CNN) analyze 'oH images je lo' millions trained weights species-specific patterns recognize.",
   "workflow.step4.title": "4. Result",
   "workflow.step4.desc": "Initial predictions combine local metadata (location je jaj) species probabilities pov confidence nob.",
-
   "section.ecosystem": "Software Ecosystem",
   "section.ecosystem.title": "naQ QulmoH stack.",
   "section.ecosystem.subtitle": "BirdNET law' model – integrated ecosystem lI'wI'mey existing QulmoH workflow fit, raw recordings vo' R statistical modeling.",
@@ -86,7 +79,6 @@
   "section.ecosystem.birdnetToolsDesc": "Friendly lI'wI'mey vaD researchers. Graphical interfaces SaD detections manage, species verification, je publication De' preparation.",
   "section.ecosystem.browseTools": "Hoch lI'wI'mey yIlegh",
   "section.ecosystem.githubTeam": "BirdNET-Team GitHub",
-
   "section.community": "COMMUNITY tlhIgh",
   "section.community.title": "BirdNET chenmoHta'",
   "section.community.subtitle": "BirdNET power diverse ecosystem external lI'wI'mey – specialized field hardware vo' global De' visualization platforms.",
@@ -97,7 +89,6 @@
   "section.community.cliIntegrations": "CLI je integrations",
   "section.community.webMonitoring": "Web monitoring",
   "section.community.browseShowroom": "Showroom yIjaH",
-
   "section.impact": "QulmoH IMPACT",
   "section.impact.title": "QulmoH foundation.",
   "section.impact.subtitle": "BirdNET grounded rigorous QulmoH. focus reliable poS source lI'wI'mey develop transform raw audio ecological De' publication-ready.",
@@ -112,12 +103,10 @@
   "section.impact.technicalResources": "Technical De'",
   "section.impact.technicalResourcesDesc": "Documentation, datasets, je QulmoH lI'wI'mey access.",
   "section.impact.k12Resources": "K-12 De'",
-
   "section.cta.title": "bioakustik tIqDu' yIQaH",
   "section.cta.subtitle": "BirdNET poS source QulmoH tlhIgh yIn community. ghun boQ qoj bird recordings – Hoch boQ poQ.",
   "section.cta.joinCommunity": "community yImuv",
   "section.cta.makeDonation": "nobHa'",
-
   "footer.description": "yInSIp Deep Learning. K. Lisa Yang Center for Conservation Bioacoustics je TU Chemnitz collaboration.",
   "footer.copyright": "© {year} BirdNET-Team. Hoch chut reserved.",
   "footer.tools": "lI'wI'mey",
@@ -138,7 +127,6 @@
   "footer.support.contact": "QumwI'",
   "footer.support.legal": "chut",
   "footer.support.privacy": "pegh",
-
   "about.label": "COLLABORATION",
   "about.title": "BirdNET",
   "about.intro": "BirdNET QulmoH tlhIgh machine learning lo' biodiversity monitoring. maH develop poS source lI'wI'mey transform bioakustik specialized field vo' scalable yInSIp solution.",
@@ -168,7 +156,6 @@
   "about.process.architecture": "Architecture",
   "about.process.architectureDesc": "Deep convolutional neural networks EfficientNet backbone je custom spectrogram layer produce embeddings je per-species confidence scores visual patterns.",
   "about.design.title": "Design Priorities",
-
   "analyzer.label": "QulmoH je lI'wI'mey",
   "analyzer.title": "BirdNET-Analyzer",
   "analyzer.intro": "BirdNET-Analyzer central lI'wI' Hoch audio collections analyze – QulmoH workflows je long-term acoustic monitoring vaD chenmoH.",
@@ -245,7 +232,6 @@
   "analyzer.help.desc": "BirdNET-Analyzer poS source tlhIgh. Segh ghun contributions, bug reports, je De' QaH maH improve lI'wI' Hoch.",
   "analyzer.help.contribute": "ghun je De' boQ",
   "analyzer.help.github": "GitHub Repository",
-
   "app.label": "Mobile Detection",
   "app.title": "BirdNET ghunwI'",
   "app.intro": "phone yIteq je birds identify wa' touch. nom, free, je BirdNET AI – professional bioakustik Hoch.",
@@ -301,13 +287,13 @@
   "app.tips.minimize": "Noise yImaqmoH",
   "app.tips.steady": "Steady yIQam",
   "app.tips.quality": "QaQ Recording",
-  "app.live.label": "BROWSER ID",
+  "app.live.label": "MOBILE APP CHUGH",
   "app.live.title": "BirdNET yIn",
-  "app.live.desc": "Identify birds real-time directly Segh browser.",
-  "app.live.fullDesc": "Progressive Web App (PWA) sound locally Segh device process TensorFlow.js – pagh audio phone leave.",
+  "app.live.desc": "Continuous real-time bird species identification using on-device inference.",
+  "app.live.fullDesc": "is our new mobile app built for field researchers, conservationists, and serious birders. It runs the BirdNET+ model directly on your device — no internet required.",
   "app.live.offline": "naQ offline Qap",
   "app.live.instant": "Real-time detections",
-  "app.live.launch": "Web App yIchenmoH",
+  "app.live.launch": "Start app",
   "app.support.label": "SUPPORT",
   "app.support.title": "Feedback je QaH",
   "app.support.desc": "Problems? maH team active GitHub je email. Segh feedback QaH maH improve model je ghunwI' Hoch.",
@@ -315,13 +301,11 @@
   "app.support.android": "Android Release",
   "app.support.ios": "iOS Release",
   "app.uiCaption": "User interface je species details",
-
   "tools.label": "BIOACOUSTIC STACK",
   "tools.title": "poS Source lI'wI'mey",
   "tools.intro": "poS source lI'wI'mey BirdNET team GitHub je partners. tlhIgh bring BirdNET QulmoH workflows, field devices, je analysis environments.",
   "tools.viewGithub": "GitHub Organization yIjaH",
   "tools.repos.label": "REPOSITORIES",
-
   "demo.label": "yIn INFERENCE",
   "demo.title": "BirdNET Demo",
   "demo.intro": "BirdNET locally TensorFlow.js yIQap. Hoch audio De' browser process – pagh ngeH.",
@@ -363,7 +347,6 @@
   "demo.status.waitingAudio": "Audio loS…",
   "demo.downloadCsv": "CSV Results yIQaw'",
   "demo.locationHelp": "Segh location QaH filter species list Segh area likely.",
-
   "showroom.label": "COMMUNITY ECOSYSTEM",
   "showroom.title": "BirdNET Showroom",
   "showroom.intro": "BirdNET power growing ecosystem community tlhIgh bring bird song recognition homes, field work, je creative applications.",
@@ -388,7 +371,6 @@
   "showroom.faunanet.desc": "Bioacoustic platform based BirdNET-Analyzer je birdnetlib offer flexible environment QulmoH tlhIgh je Hoch soundscape analysis.",
   "showroom.muuttolintujen.desc": "Mobile ghunwI' University Jyväskylä enable citizens record bird songs je contribute observations – BirdNET-based classifier Finnish birds.",
   "showroom.birdomatic.desc": "Web-based workbench explore millions BirdNET-Analyzer detections, extensive filters, charts, weather context, je access spectrograms je audio files.",
-
   "publications.label": "QulmoH IMPACT",
   "publications.title": "ghItlhmey",
   "publications.intro": "Peer-reviewed QulmoH je conference contributions lo' BirdNET vaD ecological monitoring, machine learning development, je community De' collection.",
@@ -397,14 +379,15 @@
   "publications.papers": "Papers",
   "publications.summary": "Summary",
   "publications.open": "yIpoSmoH",
-
   "resources.label": "LEARNING CENTER",
   "resources.title": "De'",
   "resources.intro": "Collection tutorials, technical documentation, je community guides deploy BirdNET QulmoH qoj personal tlhIgh.",
   "resources.tutorials.label": "TUTORIALS je WEBINARS",
   "resources.tutorials.title": "Video Guides",
   "resources.watchYoutube": "YouTube yIlegh",
-  "resources.watchCornell": "Cornell Video yIlegh",  "resources.inGerman": "German Hol",  "resources.video1.desc": "Overview chay' BirdNET AI lI'wI'mey automate Hoch audio analysis bird identification while support conservation QulmoH je ecological monitoring.",
+  "resources.watchCornell": "Cornell Video yIlegh",
+  "resources.inGerman": "German Hol",
+  "resources.video1.desc": "Overview chay' BirdNET AI lI'wI'mey automate Hoch audio analysis bird identification while support conservation QulmoH je ecological monitoring.",
   "resources.video2.desc": "Presentation BirdNET tlhIgh potential bird conservation, show chay' ghunwI' je technologies support broad monitoring je detailed QulmoH.",
   "resources.video3.desc": "Webinar solar-powered AI recording stations detect species, monitor ecosystems, je share nature sounds.",
   "resources.video4.desc": "Practical video tips, tricks, je insights lo' BirdNET je similar machine learning lI'wI'mey eco-acoustic analysis, model interpretation, je workflow configuration.",
@@ -413,7 +396,6 @@
   "resources.video7.desc": "Video lo' BirdNET models real-world acoustic monitoring tlhIgh, show bioacoustic community surveys je minimal local training adaptations.",
   "resources.video8.desc": "Introduction lo' sound je machine learning bird identification, explain chay' models BirdNET classify audio signals spectrograms.",
   "resources.video9.desc": "Scientific talk Dr. Stefan Kahl, birds environmental indicators serve, BirdNET AI technology new approaches research conservation offer.",
-
   "k12.label": "Education",
   "k12.title": "K-12 De'",
   "k12.intro": "Schlaumeise interdisciplinary educational je QulmoH tlhIgh connect modern AI technology nature observation vaD students Hoch ages.",
@@ -455,7 +437,6 @@
   "k12.maker.title": "DIY Recording Stations",
   "k12.maker.desc": "wa' popular tlhIgh build Segh \"Smart Finch\" birdhouse. Raspberry Pi je mach microphone, students build permanent monitoring station identify visitors real-time.",
   "k12.maker.viewGuide": "Guide yIlegh",
-
   "projectsMap.label": "qo' NETWORK",
   "projectsMap.title": "tlhIgh juHqo'",
   "projectsMap.intro": "Discover chay' BirdNET lo' researchers qo' Hoch. wIv tlhIgh find 'oH juHqo'.",
@@ -483,7 +464,6 @@
   "projectsMap.accurate.title": "Keep Accurate",
   "projectsMap.accurate.desc": "vaD updates qoj incorrect De', let maH know wa' contribution channels.",
   "projectsMap.accurate.viewGithub": "GitHub yIlegh",
-
   "tools.moreOnGithub": "law' GitHub",
   "tools.moreOnGithubDesc": "tlhIgh page show important repositories BirdNET-Team organization. naQ je current list public tlhIgh directly available GitHub.",
   "tools.birdnetTeamGithub": "BirdNET-Team GitHub",
@@ -495,7 +475,6 @@
   "tools.built.contribute": "ghun je De' boQ",
   "tools.built.showroom": "Showroom yISuq",
   "tools.viewOnGithub": "GitHub yIlegh",
-
   "about.funding.label": "FUNDING je PARTNERS",
   "about.funding.title": "qo' Network Support",
   "about.funding.institutional": "Institutional Support",
@@ -514,13 +493,11 @@
   "about.design.realtime": "Real-time je Batch Optimization",
   "about.design.coverage": "pov Species Coverage (6k+)",
   "about.design.updates": "Continuous De'-Driven Updates",
-
   "donate.impact.item1": "Develop je train chu' BirdNET models vaD law' species je regions.",
   "donate.impact.item2": "Maintain je scale infrastructure vaD ghunwI'mey, web lI'wI'mey, je APIs.",
   "donate.impact.item3": "Develop poS source software vaD conservation je QulmoH workflows.",
   "donate.impact.item4": "Collaborate partners deploy BirdNET real-world conservation tlhIgh.",
   "donate.impact.closing": "Hoch donation, Hoch qoj mach, QaH server costs je support ongoing QulmoH je development.",
-
   "contribute.label": "boQ",
   "contribute.title": "BirdNET boQ",
   "contribute.intro": "Acoustic monitoring vaD conservation needs law' ghopDu'. SoH developer, De' scientist, qoj bird lover – law' ways participate.",
@@ -557,7 +534,6 @@
   "contribute.other.title": "pong Ways",
   "contribute.other.desc": "Even without development qoj De' experience, SoH support tlhIgh donations vaD infrastructure je QulmoH costs.",
   "contribute.other.support": "tlhIgh yIQaH",
-
   "donate.label": "nobHa'",
   "donate.title": "BirdNET yIQaH",
   "donate.intro": "BirdNET QulmoH tlhIgh rely support – vaD better models, chu' lI'wI'mey, je services qo' community.",
@@ -567,5 +543,30 @@
   "donate.impact.desc": "Segh contribution QaH:",
   "donate.contact.title": "Lab QumwI'",
   "donate.contact.desc": "Questions support BirdNET qoj K. Lisa Yang Center for Conservation Bioacoustics:",
-  "donate.contact.btn": "Team QumwI'"
+  "donate.contact.btn": "Team QumwI'",
+  "app.live.species": "More than 11,000 species",
+  "app.live.learnMore": "Learn more about BirdNET Live",
+  "live.label": "Mobile Application",
+  "live.title": "BirdNET Live",
+  "live.intro": "Continuous real-time bird species identification using on-device inference. Built for field researchers, conservationists, and serious birders. It runs the BirdNET+ model directly on your device — no internet required.",
+  "live.features.label": "FEATURES",
+  "live.features.title": "Professional Bioacoustics in Your Pocket",
+  "live.features.liveMode": "Live Mode",
+  "live.features.liveModeDesc": "Real-time spectrogram with scrolling detection list.",
+  "live.features.explore": "Explore",
+  "live.features.exploreDesc": "Browse species expected at your location using the geo-model.",
+  "live.features.library": "Session Library",
+  "live.features.libraryDesc": "Review, edit, and export past sessions with audio playback.",
+  "live.features.export": "Export Options",
+  "live.features.exportDesc": "Export to Raven Pro, CSV, JSON, GPX, and ZIP bundle formats.",
+  "live.features.pointCount": "Point Count Mode",
+  "live.features.pointCountDesc": "Timed survey sessions with countdown timer and station metadata.",
+  "live.features.survey": "Survey Mode",
+  "live.features.surveyDesc": "Long-running transect surveys with GPS tracking, background monitoring, and detection sampling.",
+  "live.gallery.label": "GALLERY",
+  "live.gallery.title": "App Interface Screenshots",
+  "live.docs.title": "Comprehensive Documentation",
+  "live.docs.desc": "Whether you're a user looking for a quick start guide or a developer wanting to understand the architecture, we've got you covered.",
+  "live.docs.userGuide": "User Guide",
+  "live.docs.devGuide": "Developer Guide"
 }

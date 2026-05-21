@@ -1,7 +1,6 @@
 {
   "lang": "zh-CN",
   "langName": "简体中文",
-
   "nav.home": "首页",
   "nav.tools": "工具",
   "nav.tools.analyzer": "分析器",
@@ -24,14 +23,12 @@
   "nav.contribute": "参与贡献",
   "nav.contribute.codeData": "代码与数据",
   "nav.contribute.donate": "捐赠",
-
   "hero.title": "AI 驱动的生物声学，可规模化应用。",
   "hero.subtitle": "BirdNET 利用深度学习识别全球超过 6,000 种鸟类。我们的开源工具为生物多样性监测和公民科学提供强大的工作流程。",
   "hero.cta.analyzer": "下载分析器",
   "hero.cta.demo": "试用演示",
   "hero.cta.app": "下载应用",
   "hero.partners": "联合发起方：",
-
   "section.researchTools": "研究与工具",
   "section.researchTools.title": "自然保护的 AI 工具箱。",
   "section.researchTools.subtitle": "开源模型和界面，从个体观测到洲际监测项目均可扩展。",
@@ -44,7 +41,6 @@
   "section.researchTools.openSource": "开源与社区",
   "section.researchTools.openSourceDesc": "向我们的代码仓库贡献代码，或通过数据捐赠支持项目。",
   "section.researchTools.exploreAnalyzer": "探索分析器",
-
   "section.cards.ecologists": "面向生态学家",
   "section.cards.ecologistsDesc": "高精度处理数月的被动声学监测数据。按地点和时间过滤结果，减少误报。",
   "section.cards.analyzerGui": "分析器 GUI →",
@@ -61,11 +57,9 @@
   "section.cards.bioacousticResearchDesc": "关于模型、验证研究和 BirdNET 影响力的科学论文。",
   "section.cards.publications": "学术发表 →",
   "section.cards.tutorials": "教程 →",
-
   "section.architecture": "架构",
   "section.architecture.title": "BirdNET 的工作原理",
   "section.architecture.subtitle": "BirdNET 分多个步骤处理音频：从声景到标准化特征再到物种识别——覆盖数千种物种，兼顾区域差异。",
-
   "workflow.step1.title": "1. 录音",
   "workflow.step1.desc": "音频以 48 kHz 采样率录制，并分割为 3 秒片段——与鸟类鸣叫的典型时长相匹配。",
   "workflow.step2.title": "2. 频谱图",
@@ -74,7 +68,6 @@
   "workflow.step3.desc": "卷积神经网络 (CNN) 分析这些图像，利用数百万训练权重识别物种特异性模式。",
   "workflow.step4.title": "4. 结果",
   "workflow.step4.desc": "初步预测结果与本地元数据（地点和日期）进行交叉验证，输出高置信度的物种概率。",
-
   "section.ecosystem": "软件生态系统",
   "section.ecosystem.title": "完整的研究技术栈。",
   "section.ecosystem.subtitle": "BirdNET 不只是一个模型——它是一个完整的工具生态系统，可融入现有研究工作流程，从原始录音到 R 语言统计建模。",
@@ -86,7 +79,6 @@
   "section.ecosystem.birdnetToolsDesc": "面向研究人员的用户友好型工具。图形界面用于管理数千条检测记录、物种验证和论文数据准备。",
   "section.ecosystem.browseTools": "浏览所有工具",
   "section.ecosystem.githubTeam": "GitHub 上的 BirdNET 团队",
-
   "section.community": "社区项目",
   "section.community.title": "基于 BirdNET 构建",
   "section.community.subtitle": "BirdNET 驱动着一个多样化的外部工具生态系统——从专业野外硬件到全球数据可视化平台。",
@@ -97,7 +89,6 @@
   "section.community.cliIntegrations": "命令行与集成",
   "section.community.webMonitoring": "网页监测",
   "section.community.browseShowroom": "浏览展示厅",
-
   "section.impact": "科学影响力",
   "section.impact.title": "以研究为基础。",
   "section.impact.subtitle": "BirdNET 建立在严谨的科学研究之上。重点是开发可靠的开源工具，将原始音频转化为可发表的生态数据。",
@@ -112,12 +103,10 @@
   "section.impact.technicalResources": "技术资源",
   "section.impact.technicalResourcesDesc": "获取文档、数据集和研究工具。",
   "section.impact.k12Resources": "K-12 资源",
-
   "section.cta.title": "支持生物声学的未来",
   "section.cta.subtitle": "BirdNET 是一个由社区驱动的开源研究项目。无论是贡献代码还是鸟类录音——每一份帮助都很重要。",
   "section.cta.joinCommunity": "加入社区",
   "section.cta.makeDonation": "捐赠",
-
   "footer.description": "通过深度学习推动自然保护。康奈尔大学 K. Lisa Yang 保护生物声学中心与开姆尼茨工业大学的合作项目。",
   "footer.copyright": "© {year} BirdNET 团队。保留所有权利。",
   "footer.tools": "工具",
@@ -138,7 +127,6 @@
   "footer.support.contact": "联系方式",
   "footer.support.legal": "法律声明",
   "footer.support.privacy": "隐私政策",
-
   "about.label": "合作项目",
   "about.title": "关于 BirdNET",
   "about.intro": "BirdNET 是一个利用机器学习进行生物多样性监测的研究项目。我们开发开源工具，将生物声学从一个专业领域转变为可扩展的自然保护解决方案。",
@@ -168,7 +156,6 @@
   "about.process.architecture": "架构",
   "about.process.architectureDesc": "采用 EfficientNet 骨干网络和定制频谱图层的深度卷积神经网络，基于视觉模式生成嵌入向量和每个物种的置信度评分。",
   "about.design.title": "设计优先级",
-
   "analyzer.label": "研究与工具",
   "analyzer.title": "BirdNET 分析器",
   "analyzer.intro": "BirdNET 分析器是用于分析大规模音频集合的核心工具——为科学工作流程和长期声学监测而设计。",
@@ -245,7 +232,6 @@
   "analyzer.help.desc": "BirdNET 分析器是一个开源项目。您的代码贡献、Bug 报告和数据帮助我们为所有人改进这个工具。",
   "analyzer.help.contribute": "贡献代码与数据",
   "analyzer.help.github": "GitHub 仓库",
-
   "app.label": "移动识别",
   "app.title": "BirdNET 应用",
   "app.intro": "举起手机，一键识别鸟类。快速、免费，搭载 BirdNET AI——为所有人提供的专业生物声学工具。",
@@ -301,13 +287,13 @@
   "app.tips.minimize": "减少噪音",
   "app.tips.steady": "保持稳定",
   "app.tips.quality": "高质量录音",
-  "app.live.label": "浏览器识别",
+  "app.live.label": "全新移动应用",
   "app.live.title": "BirdNET Live",
-  "app.live.desc": "直接在浏览器中实时识别鸟类。",
-  "app.live.fullDesc": "是一个渐进式 Web 应用 (PWA)，使用 TensorFlow.js 在本地设备上处理声音——没有任何音频离开您的手机。",
+  "app.live.desc": "使用本地设备推理进行连续实时的鸟类识别。",
+  "app.live.fullDesc": "是我们为野外研究人员、自然保护者和严谨的观鸟者打造的全新移动应用。它直接在您的设备上运行 BirdNET+ 模型——无需互联网连接。",
   "app.live.offline": "完全离线可用",
   "app.live.instant": "实时检测",
-  "app.live.launch": "启动 Web 应用",
+  "app.live.launch": "启动应用",
   "app.support.label": "支持",
   "app.support.title": "反馈与帮助",
   "app.support.desc": "遇到问题？我们的团队在 GitHub 和电子邮件上都很活跃。您的反馈帮助我们改进模型和应用。",
@@ -315,13 +301,11 @@
   "app.support.android": "Android 版本",
   "app.support.ios": "iOS 版本",
   "app.uiCaption": "用户界面与物种详情",
-
   "tools.label": "生物声学技术栈",
   "tools.title": "开源工具",
   "tools.intro": "来自 GitHub 上 BirdNET 团队和合作伙伴的开源工具。这些项目将 BirdNET 引入研究工作流程、野外设备和分析环境。",
   "tools.viewGithub": "访问 GitHub 组织",
   "tools.repos.label": "代码仓库",
-
   "demo.label": "实时推理",
   "demo.title": "BirdNET 演示",
   "demo.intro": "使用 TensorFlow.js 在本地运行 BirdNET。所有音频数据在浏览器中处理——不会上传任何内容。",
@@ -363,7 +347,6 @@
   "demo.status.waitingAudio": "等待音频…",
   "demo.downloadCsv": "下载 CSV 结果",
   "demo.locationHelp": "您的位置有助于将物种列表缩小到可能出现的物种。",
-
   "showroom.label": "社区生态系统",
   "showroom.title": "BirdNET 展示厅",
   "showroom.intro": "BirdNET 驱动着一个不断增长的社区项目生态系统，将鸟鸣识别带入家庭、野外工作和创意应用。",
@@ -388,7 +371,6 @@
   "showroom.faunanet.desc": "基于 BirdNET-Analyzer 和 birdnetlib 的生物声学平台，为研究项目和大规模声景分析提供灵活环境。",
   "showroom.muuttolintujen.desc": "由韦斯屈莱大学开发的移动应用，市民可以录制鸟鸣并贡献观测数据——使用基于 BirdNET 的芬兰鸟类分类器。",
   "showroom.birdomatic.desc": "一个基于 Web 的工作台，用于探索数百万条 BirdNET 分析器检测记录，提供丰富的过滤器、图表、天气上下文以及频谱图和音频文件访问。",
-
   "publications.label": "科学影响力",
   "publications.title": "学术发表",
   "publications.intro": "利用 BirdNET 进行生态监测、机器学习开发和社区数据收集的同行评审研究和会议论文。",
@@ -397,7 +379,6 @@
   "publications.papers": "论文",
   "publications.summary": "摘要",
   "publications.open": "打开",
-
   "resources.label": "学习中心",
   "resources.title": "资源",
   "resources.intro": "教程、技术文档和社区指南合集，用于在研究或个人项目中实施 BirdNET。",
@@ -415,7 +396,6 @@
   "resources.video7.desc": "关于在实际声学监测项目中使用 BirdNET 模型的视频，展示生物声学社区调查和最少的本地训练适应。",
   "resources.video8.desc": "介绍使用声音和机器学习进行鸟类识别的基础知识，解释 BirdNET 等模型如何从频谱图中分类音频信号。",
   "resources.video9.desc": "Stefan Kahl 博士的科学讲座，阐述鸟类如何作为环境指标，以及 AI 驱动的 BirdNET 技术如何为研究和自然保护提供新方法。",
-
   "k12.label": "教育",
   "k12.title": "K-12 资源",
   "k12.intro": "Schlaumeise 是一个跨学科教育和研究项目，将现代 AI 技术与自然观察结合，面向各年龄段学生。",
@@ -457,7 +437,6 @@
   "k12.maker.title": "DIY 录音站",
   "k12.maker.desc": "最受欢迎的项目之一是建造自己的「Smart Finch」鸟屋。学生使用树莓派和小型麦克风，构建一个可实时识别访客鸟类的永久监测站。",
   "k12.maker.viewGuide": "查看指南",
-
   "projectsMap.label": "全球网络",
   "projectsMap.title": "项目地图",
   "projectsMap.intro": "探索全球研究人员如何使用 BirdNET。选择一个项目在地图上查看。",
@@ -485,7 +464,6 @@
   "projectsMap.accurate.title": "保持更新",
   "projectsMap.accurate.desc": "如需更新或有信息错误，请通过以下贡献渠道告知我们。",
   "projectsMap.accurate.viewGithub": "在 GitHub 上查看",
-
   "tools.moreOnGithub": "更多内容在 GitHub",
   "tools.moreOnGithubDesc": "本页显示 BirdNET 团队组织中的重要代码仓库。完整且最新的公开项目列表请直接访问 GitHub。",
   "tools.birdnetTeamGithub": "GitHub 上的 BirdNET 团队",
@@ -497,7 +475,6 @@
   "tools.built.contribute": "贡献代码与数据",
   "tools.built.showroom": "探索展示厅",
   "tools.viewOnGithub": "在 GitHub 上查看",
-
   "about.funding.label": "资助与合作伙伴",
   "about.funding.title": "全球网络支持",
   "about.funding.institutional": "机构支持",
@@ -516,13 +493,11 @@
   "about.design.realtime": "实时与批处理优化",
   "about.design.coverage": "高物种覆盖 (6k+)",
   "about.design.updates": "持续数据驱动更新",
-
   "donate.impact.item1": "为更多物种和区域开发和训练新的 BirdNET 模型。",
   "donate.impact.item2": "维护和扩展应用、Web 工具和 API 的基础设施。",
   "donate.impact.item3": "开发面向自然保护和研究工作流程的开源软件。",
   "donate.impact.item4": "与合作伙伴协作，在实际自然保护项目中部署 BirdNET。",
   "donate.impact.closing": "每一笔捐赠，无论大小，都有助于服务器成本并支持持续的研究与开发。",
-
   "contribute.label": "参与贡献",
   "contribute.title": "为 BirdNET 做贡献",
   "contribute.intro": "面向自然保护的声学监测需要众人之力。无论你是开发者、数据科学家还是鸟类爱好者——都有很多参与方式。",
@@ -559,7 +534,6 @@
   "contribute.other.title": "更多方式",
   "contribute.other.desc": "即使没有开发或数据背景，也可以通过捐赠支持项目的基础设施和研究费用。",
   "contribute.other.support": "支持项目",
-
   "donate.label": "捐赠",
   "donate.title": "支持 BirdNET",
   "donate.intro": "BirdNET 是一个研究项目，依赖支持来改进模型、开发新工具，并为全球社区提供服务。",
@@ -569,5 +543,30 @@
   "donate.impact.desc": "您的捐助有助于：",
   "donate.contact.title": "联系实验室",
   "donate.contact.desc": "如有关于支持 BirdNET 或 K. Lisa Yang 保护生物声学中心的问题：",
-  "donate.contact.btn": "联系团队"
+  "donate.contact.btn": "联系团队",
+  "app.live.species": "超过 11,000 种鸟类",
+  "app.live.learnMore": "了解更多关于 BirdNET Live 的信息",
+  "live.label": "Mobile Application",
+  "live.title": "BirdNET Live",
+  "live.intro": "Continuous real-time bird species identification using on-device inference. Built for field researchers, conservationists, and serious birders. It runs the BirdNET+ model directly on your device — no internet required.",
+  "live.features.label": "FEATURES",
+  "live.features.title": "Professional Bioacoustics in Your Pocket",
+  "live.features.liveMode": "Live Mode",
+  "live.features.liveModeDesc": "Real-time spectrogram with scrolling detection list.",
+  "live.features.explore": "Explore",
+  "live.features.exploreDesc": "Browse species expected at your location using the geo-model.",
+  "live.features.library": "Session Library",
+  "live.features.libraryDesc": "Review, edit, and export past sessions with audio playback.",
+  "live.features.export": "Export Options",
+  "live.features.exportDesc": "Export to Raven Pro, CSV, JSON, GPX, and ZIP bundle formats.",
+  "live.features.pointCount": "Point Count Mode",
+  "live.features.pointCountDesc": "Timed survey sessions with countdown timer and station metadata.",
+  "live.features.survey": "Survey Mode",
+  "live.features.surveyDesc": "Long-running transect surveys with GPS tracking, background monitoring, and detection sampling.",
+  "live.gallery.label": "GALLERY",
+  "live.gallery.title": "App Interface Screenshots",
+  "live.docs.title": "Comprehensive Documentation",
+  "live.docs.desc": "Whether you're a user looking for a quick start guide or a developer wanting to understand the architecture, we've got you covered.",
+  "live.docs.userGuide": "User Guide",
+  "live.docs.devGuide": "Developer Guide"
 }

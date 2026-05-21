@@ -1,7 +1,6 @@
 {
   "lang": "pt",
   "langName": "Português (Portugal)",
-
   "nav.home": "Início",
   "nav.tools": "Ferramentas",
   "nav.tools.analyzer": "Analyzer",
@@ -24,14 +23,12 @@
   "nav.contribute": "Contribuir",
   "nav.contribute.codeData": "Código e dados",
   "nav.contribute.donate": "Doar",
-
   "hero.title": "Bioacústica com IA – em qualquer escala.",
   "hero.subtitle": "O BirdNET utiliza deep learning para identificar mais de 6.000 espécies em todo o mundo. As nossas ferramentas de código aberto oferecem workflows robustos para monitorização de biodiversidade e ciência cidadã.",
   "hero.cta.analyzer": "Descarregar Analyzer",
   "hero.cta.demo": "Experimentar demo",
   "hero.cta.app": "Descarregar app",
   "hero.partners": "Uma iniciativa conjunta de:",
-
   "section.researchTools": "Investigação e ferramentas",
   "section.researchTools.title": "O toolkit de IA para conservação.",
   "section.researchTools.subtitle": "Modelos e interfaces de código aberto que escalam de observações individuais a programas de monitorização continentais.",
@@ -44,7 +41,6 @@
   "section.researchTools.openSource": "Código aberto e comunidade",
   "section.researchTools.openSourceDesc": "Contribui código para os nossos repositórios ou apoia o projeto com doações de dados.",
   "section.researchTools.exploreAnalyzer": "Explorar Analyzer",
-
   "section.cards.ecologists": "Para ecólogos",
   "section.cards.ecologistsDesc": "Processa meses de dados PAM com alta precisão. Filtra resultados por localização e tempo para reduzir falsos positivos.",
   "section.cards.analyzerGui": "GUI do Analyzer →",
@@ -53,7 +49,7 @@
   "section.cards.developersDesc": "Módulos Python e modelos TFLite prontos para integração. Acesso ao código-fonte e ferramentas da comunidade.",
   "section.cards.openSourceTools": "Ferramentas open source →",
   "section.cards.github": "GitHub →",
-  "section.cards.citizenScientists": "Cientistas cidadãos",
+  "section.cards.citizenScientists": "comunidade de ciência cidadã",
   "section.cards.citizenScientistsDesc": "Contribui para a monitorização global de biodiversidade – grava e identifica aves com a app BirdNET.",
   "section.cards.birdnetApp": "App BirdNET →",
   "section.cards.browserDemo": "Demo no browser →",
@@ -61,11 +57,9 @@
   "section.cards.bioacousticResearchDesc": "Publicações científicas sobre os modelos BirdNET, estudos de validação e impacto.",
   "section.cards.publications": "Publicações →",
   "section.cards.tutorials": "Tutoriais →",
-
   "section.architecture": "Arquitetura",
   "section.architecture.title": "Como funciona o BirdNET",
   "section.architecture.subtitle": "O BirdNET processa áudio em várias etapas: de paisagens sonoras a features padronizados e reconhecimento de espécies – milhares de espécies, considerando variações regionais.",
-
   "workflow.step1.title": "1. Gravação",
   "workflow.step1.desc": "O áudio é gravado a 48 kHz e dividido em segmentos de 3 segundos – adequado para a duração típica dos cantos de aves.",
   "workflow.step2.title": "2. Espectrograma",
@@ -74,19 +68,17 @@
   "workflow.step3.desc": "Uma rede neuronal convolucional (CNN) analisa estas imagens e utiliza milhões de pesos treinados para reconhecer padrões específicos de espécies.",
   "workflow.step4.title": "4. Resultado",
   "workflow.step4.desc": "As previsões iniciais são combinadas com metadados locais (localização e data) para fornecer probabilidades de espécies com alta confiança.",
-
   "section.ecosystem": "Ecossistema de software",
   "section.ecosystem.title": "A stack completa para investigação.",
   "section.ecosystem.subtitle": "O BirdNET é mais que um modelo – é um ecossistema integrado de ferramentas que se encaixa em workflows de investigação existentes, de gravações brutas a modelação estatística em R.",
   "section.ecosystem.pythonPackage": "birdnet (pacote Python)",
-  "section.ecosystem.pythonPackageDesc": "Integração Python nativa para programadores e cientistas de dados. Constrói os teus próprios pipelines ou executa análises na tua própria infraestrutura.",
+  "section.ecosystem.pythonPackageDesc": "Integração Python nativa para programadores e especialistas em dados. Constrói os teus próprios pipelines ou executa análises na tua própria infraestrutura.",
   "section.ecosystem.birdnetR": "birdnetR",
   "section.ecosystem.birdnetRDesc": "A ponte para análise ecológica baseada em R. Limpa, filtra e prepara outputs do BirdNET diretamente em R para modelação de ocupação e análise de tendências.",
   "section.ecosystem.birdnetTools": "birdnetTools",
   "section.ecosystem.birdnetToolsDesc": "Ferramentas amigáveis para investigadores. Interfaces gráficas para gerir milhares de deteções, verificação de espécies e preparação de dados para publicação.",
   "section.ecosystem.browseTools": "Ver todas as ferramentas",
   "section.ecosystem.githubTeam": "BirdNET-Team no GitHub",
-
   "section.community": "PROJETOS DA COMUNIDADE",
   "section.community.title": "Desenvolvido com BirdNET",
   "section.community.subtitle": "O BirdNET alimenta um ecossistema diversificado de ferramentas externas – de hardware de campo especializado a plataformas globais de visualização de dados.",
@@ -97,7 +89,6 @@
   "section.community.cliIntegrations": "CLI e integrações",
   "section.community.webMonitoring": "Monitorização web",
   "section.community.browseShowroom": "Ir para o Showroom",
-
   "section.impact": "IMPACTO CIENTÍFICO",
   "section.impact.title": "Investigação como base.",
   "section.impact.subtitle": "O BirdNET está fundamentado em investigação rigorosa. O foco é desenvolver ferramentas open source fiáveis que transformam áudio bruto em dados ecológicos prontos para publicação.",
@@ -112,12 +103,10 @@
   "section.impact.technicalResources": "Recursos técnicos",
   "section.impact.technicalResourcesDesc": "Acesso a documentação, conjuntos de dados e ferramentas de investigação.",
   "section.impact.k12Resources": "Recursos K-12",
-
   "section.cta.title": "Apoia o futuro da bioacústica",
   "section.cta.subtitle": "O BirdNET é um projeto de investigação de código aberto que vive da comunidade. Quer contribuas código ou gravações de aves – toda ajuda conta.",
   "section.cta.joinCommunity": "Junta-te à comunidade",
   "section.cta.makeDonation": "Doar",
-
   "footer.description": "Conservação através de deep learning. Uma colaboração entre o K. Lisa Yang Center for Conservation Bioacoustics e a TU Chemnitz.",
   "footer.copyright": "© {year} BirdNET-Team. Todos os direitos reservados.",
   "footer.tools": "Ferramentas",
@@ -138,7 +127,6 @@
   "footer.support.contact": "Contacto",
   "footer.support.legal": "Legal",
   "footer.support.privacy": "Privacidade",
-
   "about.label": "A COLABORAÇÃO",
   "about.title": "Sobre o BirdNET",
   "about.intro": "O BirdNET é um projeto de investigação que utiliza machine learning para monitorização de biodiversidade. Desenvolvemos ferramentas de código aberto que transformam a bioacústica de um campo especializado numa solução escalável para conservação.",
@@ -168,7 +156,6 @@
   "about.process.architecture": "Arquitetura",
   "about.process.architectureDesc": "Redes neuronais convolucionais profundas com backbone EfficientNet e camada de espectrograma personalizada que produzem embeddings e pontuações de confiança por espécie baseados em padrões visuais.",
   "about.design.title": "Prioridades de design",
-
   "analyzer.label": "Investigação e ferramentas",
   "analyzer.title": "BirdNET-Analyzer",
   "analyzer.intro": "O BirdNET-Analyzer é a ferramenta central para analisar grandes coleções de áudio – desenvolvido para workflows científicos e monitorização acústica de longo prazo.",
@@ -245,7 +232,6 @@
   "analyzer.help.desc": "O BirdNET-Analyzer é um projeto de código aberto. As tuas contribuições de código, relatórios de bugs e dados ajudam-nos a melhorar a ferramenta para todos.",
   "analyzer.help.contribute": "Contribuir código e dados",
   "analyzer.help.github": "Repositório GitHub",
-
   "app.label": "Deteção móvel",
   "app.title": "App BirdNET",
   "app.intro": "Levanta o telemóvel e identifica aves com um toque. Rápido, gratuito e com a IA do BirdNET – bioacústica profissional para todos.",
@@ -301,13 +287,13 @@
   "app.tips.minimize": "Minimiza o ruído",
   "app.tips.steady": "Mantém firme",
   "app.tips.quality": "Boa gravação",
-  "app.live.label": "ID NO BROWSER",
+  "app.live.label": "NOVA APP MOBILE",
   "app.live.title": "BirdNET Live",
-  "app.live.desc": "Identifica aves em tempo real diretamente no teu browser.",
-  "app.live.fullDesc": "é uma Progressive Web App (PWA) que processa som localmente no teu dispositivo com TensorFlow.js – nenhum áudio sai do teu telemóvel.",
+  "app.live.desc": "Identificação contínua de espécies de aves em tempo real usando inferência no próprio dispositivo.",
+  "app.live.fullDesc": "é a nossa nova aplicação mobile para equipes de pesquisa de campo, conservacionistas e pessoas que observam aves. Executa o modelo BirdNET+ diretamente no seu dispositivo — sem necessidade de Internet.",
   "app.live.offline": "Funciona completamente offline",
   "app.live.instant": "Deteções em tempo real",
-  "app.live.launch": "Iniciar web app",
+  "app.live.launch": "Iniciar app",
   "app.support.label": "SUPORTE",
   "app.support.title": "Feedback e ajuda",
   "app.support.desc": "Problemas? A nossa equipa está ativa no GitHub e por email. O teu feedback ajuda-nos a melhorar o modelo e a app para todos.",
@@ -315,13 +301,11 @@
   "app.support.android": "Release Android",
   "app.support.ios": "Release iOS",
   "app.uiCaption": "Interface do utilizador e detalhes das espécies",
-
   "tools.label": "STACK BIOACÚSTICO",
   "tools.title": "Ferramentas de código aberto",
   "tools.intro": "Ferramentas de código aberto da equipa BirdNET no GitHub e de parceiros. Estes projetos levam o BirdNET para workflows de investigação, dispositivos de campo e ambientes de análise.",
   "tools.viewGithub": "Ir para a organização GitHub",
   "tools.repos.label": "REPOSITÓRIOS",
-
   "demo.label": "INFERÊNCIA AO VIVO",
   "demo.title": "Demo BirdNET",
   "demo.intro": "Executa o BirdNET localmente com TensorFlow.js. Todos os dados de áudio são processados no browser – nada é enviado.",
@@ -363,7 +347,6 @@
   "demo.status.waitingAudio": "À espera de áudio…",
   "demo.downloadCsv": "Descarregar resultados CSV",
   "demo.locationHelp": "A tua localização ajuda a filtrar a lista de espécies para as que provavelmente estão na tua área.",
-
   "showroom.label": "ECOSSISTEMA DA COMUNIDADE",
   "showroom.title": "Showroom BirdNET",
   "showroom.intro": "O BirdNET alimenta um ecossistema crescente de projetos da comunidade que levam o reconhecimento de cantos de aves para casas, trabalho de campo e aplicações criativas.",
@@ -388,7 +371,6 @@
   "showroom.faunanet.desc": "Uma plataforma de bioacústica baseada no BirdNET-Analyzer e birdnetlib que oferece um ambiente flexível para projetos de investigação e análise de paisagens sonoras em larga escala.",
   "showroom.muuttolintujen.desc": "Uma app móvel da Universidade de Jyväskylä que permite aos cidadãos gravar cantos de aves e contribuir observações – com um classificador baseado em BirdNET para aves finlandesas.",
   "showroom.birdomatic.desc": "Um workbench baseado na web para explorar milhões de deteções do BirdNET-Analyzer, com filtros extensivos, gráficos, contexto meteorológico e acesso a espectrogramas e ficheiros de áudio.",
-
   "publications.label": "IMPACTO CIENTÍFICO",
   "publications.title": "Publicações",
   "publications.intro": "Investigação revista por pares e contribuições para conferências que utilizam BirdNET para monitorização ecológica, desenvolvimento de machine learning e recolha de dados comunitários.",
@@ -397,7 +379,6 @@
   "publications.papers": "Artigos",
   "publications.summary": "Resumo",
   "publications.open": "Abrir",
-
   "resources.label": "CENTRO DE APRENDIZAGEM",
   "resources.title": "Recursos",
   "resources.intro": "Uma coleção de tutoriais, documentação técnica e guias da comunidade para implementar BirdNET em investigação ou projetos pessoais.",
@@ -415,7 +396,6 @@
   "resources.video7.desc": "Um vídeo sobre o uso de modelos BirdNET em projetos reais de monitorização acústica, mostrando inquéritos comunitários bioacústicos e adaptações mínimas de treino local.",
   "resources.video8.desc": "Uma introdução ao uso de som e machine learning para identificação de aves, explicando como modelos como BirdNET classificam sinais de áudio a partir de espectrogramas.",
   "resources.video9.desc": "Uma palestra científica do Dr. Stefan Kahl sobre como as aves servem como indicadores ambientais e como a tecnologia BirdNET baseada em IA oferece novas abordagens para investigação e conservação.",
-
   "k12.label": "Educação",
   "k12.title": "Recursos K-12",
   "k12.intro": "Schlaumeise é um projeto educacional e de investigação interdisciplinar que liga a tecnologia moderna de IA com a observação da natureza para estudantes de todas as idades.",
@@ -457,7 +437,6 @@
   "k12.maker.title": "Estações de gravação DIY",
   "k12.maker.desc": "Um dos projetos mais populares é construir a tua própria casa de pássaros \"Smart Finch\". Com um Raspberry Pi e um pequeno microfone, os estudantes constroem uma estação de monitorização permanente que identifica visitantes em tempo real.",
   "k12.maker.viewGuide": "Ver guia",
-
   "projectsMap.label": "REDE GLOBAL",
   "projectsMap.title": "Mapa de projetos",
   "projectsMap.intro": "Descobre como o BirdNET é usado por investigadores em todo o mundo. Seleciona um projeto para encontrá-lo no mapa.",
@@ -485,7 +464,6 @@
   "projectsMap.accurate.title": "Manter atualizado",
   "projectsMap.accurate.desc": "Para atualizações ou informações incorretas, avisa-nos através de um dos canais de contribuição.",
   "projectsMap.accurate.viewGithub": "Ver no GitHub",
-
   "tools.moreOnGithub": "Mais no GitHub",
   "tools.moreOnGithubDesc": "Esta página mostra repositórios importantes da organização BirdNET-Team. A lista completa e atualizada de projetos públicos está disponível diretamente no GitHub.",
   "tools.birdnetTeamGithub": "BirdNET-Team no GitHub",
@@ -497,7 +475,6 @@
   "tools.built.contribute": "Contribuir código e dados",
   "tools.built.showroom": "Explorar Showroom",
   "tools.viewOnGithub": "Ver no GitHub",
-
   "about.funding.label": "FINANCIAMENTO E PARCEIROS",
   "about.funding.title": "Apoiado por uma rede global",
   "about.funding.institutional": "Apoio institucional",
@@ -516,16 +493,14 @@
   "about.design.realtime": "Otimização em tempo real e em lote",
   "about.design.coverage": "Alta cobertura de espécies (6k+)",
   "about.design.updates": "Atualizações contínuas baseadas em dados",
-
   "donate.impact.item1": "Desenvolver e treinar novos modelos BirdNET para mais espécies e regiões.",
   "donate.impact.item2": "Manter e escalar infraestrutura para apps, ferramentas web e APIs.",
   "donate.impact.item3": "Desenvolver software de código aberto para workflows de conservação e investigação.",
   "donate.impact.item4": "Colaborar com parceiros para implementar BirdNET em projetos de conservação reais.",
   "donate.impact.closing": "Cada donativo, grande ou pequeno, ajuda com custos de servidor e apoia investigação e desenvolvimento contínuos.",
-
   "contribute.label": "CONTRIBUIR",
   "contribute.title": "Contribui para o BirdNET",
-  "contribute.intro": "A monitorização acústica para conservação precisa de muitas mãos. Sejas programador, cientista de dados ou amante de aves – há muitas formas de participar.",
+  "contribute.intro": "A monitorização acústica para conservação precisa de muitas mãos. Sejas programador, especialista em dados ou amante de aves – há muitas formas de participar.",
   "contribute.code.title": "Código e código aberto",
   "contribute.code.desc": "O BirdNET é baseado em princípios de código aberto. Vários repositórios são mantidos no GitHub, do motor de análise a implementações móveis e web.",
   "contribute.code.help": "Ajuda a melhorar as ferramentas:",
@@ -559,7 +534,6 @@
   "contribute.other.title": "Outras formas",
   "contribute.other.desc": "Mesmo sem experiência em desenvolvimento ou dados, podes apoiar o projeto com donativos para infraestrutura e custos de investigação.",
   "contribute.other.support": "Apoiar o projeto",
-
   "donate.label": "DOAR",
   "donate.title": "Apoia o BirdNET",
   "donate.intro": "O BirdNET é um projeto de investigação que depende de apoio – para melhores modelos, novas ferramentas e serviços para a comunidade global.",
@@ -569,5 +543,30 @@
   "donate.impact.desc": "A tua contribuição ajuda a:",
   "donate.contact.title": "Contactar o lab",
   "donate.contact.desc": "Para perguntas sobre apoiar o BirdNET ou o K. Lisa Yang Center for Conservation Bioacoustics:",
-  "donate.contact.btn": "Contactar a equipa"
+  "donate.contact.btn": "Contactar a equipa",
+  "app.live.species": "Mais de 11.000 espécies",
+  "app.live.learnMore": "Learn more about BirdNET Live",
+  "live.label": "Mobile Application",
+  "live.title": "BirdNET Live",
+  "live.intro": "Continuous real-time bird species identification using on-device inference. Built for field researchers, conservationists, and serious birders. It runs the BirdNET+ model directly on your device — no internet required.",
+  "live.features.label": "FEATURES",
+  "live.features.title": "Professional Bioacoustics in Your Pocket",
+  "live.features.liveMode": "Live Mode",
+  "live.features.liveModeDesc": "Real-time spectrogram with scrolling detection list.",
+  "live.features.explore": "Explore",
+  "live.features.exploreDesc": "Browse species expected at your location using the geo-model.",
+  "live.features.library": "Session Library",
+  "live.features.libraryDesc": "Review, edit, and export past sessions with audio playback.",
+  "live.features.export": "Export Options",
+  "live.features.exportDesc": "Export to Raven Pro, CSV, JSON, GPX, and ZIP bundle formats.",
+  "live.features.pointCount": "Point Count Mode",
+  "live.features.pointCountDesc": "Timed survey sessions with countdown timer and station metadata.",
+  "live.features.survey": "Survey Mode",
+  "live.features.surveyDesc": "Long-running transect surveys with GPS tracking, background monitoring, and detection sampling.",
+  "live.gallery.label": "GALLERY",
+  "live.gallery.title": "App Interface Screenshots",
+  "live.docs.title": "Comprehensive Documentation",
+  "live.docs.desc": "Whether you're a user looking for a quick start guide or a developer wanting to understand the architecture, we've got you covered.",
+  "live.docs.userGuide": "User Guide",
+  "live.docs.devGuide": "Developer Guide"
 }
