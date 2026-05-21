@@ -306,7 +306,7 @@
   "app.live.desc": "Identyfikuj ptaki w czasie rzeczywistym bezpośrednio w przeglądarce.",
   "app.live.fullDesc": "to Progressive Web App (PWA), która przetwarza dźwięk lokalnie na urządzeniu za pomocą TensorFlow.js – żaden dźwięk nie opuszcza telefonu.",
   "app.live.offline": "Działa całkowicie offline",
-  "app.live.instant": "Natychmiastowa lokalna inferencja",
+  "app.live.instant": "Detekcje w czasie rzeczywistym",
   "app.live.launch": "Uruchom web aplikację",
   "app.support.label": "WSPARCIE",
   "app.support.title": "Feedback i pomoc",

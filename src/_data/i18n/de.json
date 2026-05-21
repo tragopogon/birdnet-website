@@ -306,7 +306,7 @@
   "app.live.desc": "Vögel in Echtzeit direkt im Browser erkennen.",
   "app.live.fullDesc": "ist eine Progressive Web App (PWA), die Sound lokal auf deinem Gerät mit TensorFlow.js verarbeitet – kein Audio verlässt dein Handy.",
   "app.live.offline": "Funktioniert komplett offline",
-  "app.live.instant": "Sofortige lokale Inferenz",
+  "app.live.instant": "Echtzeit-Erkennungen",
   "app.live.launch": "Web-App starten",
   "app.support.label": "SUPPORT",
   "app.support.title": "Feedback & Hilfe",

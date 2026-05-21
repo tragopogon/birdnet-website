@@ -306,7 +306,7 @@
   "app.live.desc": "直接在浏览器中实时识别鸟类。",
   "app.live.fullDesc": "是一个渐进式 Web 应用 (PWA)，使用 TensorFlow.js 在本地设备上处理声音——没有任何音频离开您的手机。",
   "app.live.offline": "完全离线可用",
-  "app.live.instant": "即时本地推理",
+  "app.live.instant": "实时检测",
   "app.live.launch": "启动 Web 应用",
   "app.support.label": "支持",
   "app.support.title": "反馈与帮助",

@@ -32,6 +32,49 @@ permalink: "/app/"
 </div>
 
 <div class="pt-2 mb-5 pb-4">
+    <!-- BirdNET Live Promo -->
+    <div class="card bg-dark text-white border-0 shadow-sm mb-5 rounded-4 overflow-hidden">
+      <div class="card-body p-5">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <div class="mb-3">
+              <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fw-bold shadow-sm" style="letter-spacing: 1px; font-size: 0.85rem;">
+                <i class="bi bi-stars me-1"></i> <span data-i18n="app.live.label">NEW MOBILE APP</span>
+              </span>
+            </div>
+            <h2 class="h3 fw-bold mb-3" data-i18n="app.live.title">BirdNET Live</h2>
+            <p class="mb-4 text-white text-opacity-75"><span data-i18n="app.live.desc">Continuous real-time bird species identification using on-device inference.</span> <strong>BirdNET Live</strong> <span data-i18n="app.live.fullDesc">is our new mobile app built for field researchers, conservationists, and serious birders. It runs the BirdNET+ model directly on your device — no internet required.</span></p>
+            <div class="row g-3 small text-white text-opacity-50 mb-4">
+              <div class="col-sm-4">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-wifi-off"></i> <span data-i18n="app.live.offline">Works completely offline</span>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-lightning-charge"></i> <span data-i18n="app.live.instant">Real-time detections</span>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-globe"></i> <span data-i18n="app.live.species">More than 11,000 species</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center d-flex flex-column gap-3 justify-content-center">
+            <a href="https://play.google.com/store/apps/details?id=de.tu_chemnitz.mi.kahst.birdnet_live" class="btn btn-primary btn-lg px-4 d-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener">
+              <i class="bi bi-google-play"></i> Get it on Google Play
+            </a>
+            <div class="btn btn-outline-light btn-lg px-4 disabled custom-disabled-btn d-flex align-items-center justify-content-center gap-2" style="opacity: 0.6; pointer-events: none;">
+              <i class="bi bi-apple"></i> iOS Coming Soon
+            </div>
+            <a href="{{ '/tools/live/' | url }}" class="text-white small text-decoration-underline" data-i18n="app.live.learnMore">Learn more about BirdNET Live</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Live BirdNET app stats -->
     <div id="network-stats">
       <div class="row mb-5 justify-content-center text-center">
@@ -46,7 +89,7 @@ permalink: "/app/"
           <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
             <div class="card-body p-4 text-center">
               <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;" data-i18n="app.stats.total">Total Observations</div>
-              <div id="stat-total-observations" class="h3 mb-0 fw-bold text-primary">—</div>
+              <div id="stat-total-observations" class="h3 mb-0 fw-bold text-primary"><div class="spinner-border spinner-border-sm" role="status"></div></div>
             </div>
           </div>
         </div>
@@ -54,7 +97,7 @@ permalink: "/app/"
           <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
             <div class="card-body p-4 text-center">
               <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;" data-i18n="app.stats.24h">Observations (24h)</div>
-              <div id="stat-observations-24h" class="h3 mb-0 fw-bold text-primary">—</div>
+              <div id="stat-observations-24h" class="h3 mb-0 fw-bold text-primary"><div class="spinner-border spinner-border-sm" role="status"></div></div>
             </div>
           </div>
         </div>
@@ -62,7 +105,7 @@ permalink: "/app/"
           <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
             <div class="card-body p-4 text-center">
               <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;" data-i18n="app.stats.species">Species (24h)</div>
-              <div id="stat-species-24h" class="h3 mb-0 fw-bold text-primary">—</div>
+              <div id="stat-species-24h" class="h3 mb-0 fw-bold text-primary"><div class="spinner-border spinner-border-sm" role="status"></div></div>
             </div>
           </div>
         </div>
@@ -70,7 +113,7 @@ permalink: "/app/"
           <div class="card border-0 shadow-sm rounded-4 h-100 transition-all hover-lift">
             <div class="card-body p-4 text-center">
               <div class="small text-muted text-uppercase fw-bold mb-2 ls-1" style="font-size: 0.65rem;" data-i18n="app.stats.users">Users (24h)</div>
-              <div id="stat-users-24h" class="h3 mb-0 fw-bold text-primary">—</div>
+              <div id="stat-users-24h" class="h3 mb-0 fw-bold text-primary"><div class="spinner-border spinner-border-sm" role="status"></div></div>
             </div>
           </div>
         </div>
@@ -90,7 +133,7 @@ permalink: "/app/"
               
               <!-- Species Grid -->
               <div id="top-species-grid" class="row g-3">
-                <div class="col-12 text-center py-5 text-primary small">—</div>
+                <div class="col-12 text-center py-5 text-primary"><div class="spinner-border" role="status"></div></div>
               </div>
 
               <!-- Detail view (hidden by default) -->
@@ -290,36 +333,6 @@ permalink: "/app/"
       </div>
     </div>
 
-    <!-- BirdNET Live (PWA) Promo -->
-    <div class="card bg-dark text-white border-0 shadow-sm mb-5 rounded-4 overflow-hidden">
-      <div class="card-body p-5">
-        <div class="row align-items-center">
-          <div class="col-lg-8">
-            <span class="section-label section-label-dark" data-i18n="app.live.label">BROWSER ID</span>
-            <h2 class="h3 fw-bold mb-3" data-i18n="app.live.title">BirdNET Live</h2>
-            <p class="mb-4 text-white text-opacity-75"><span data-i18n="app.live.desc">Identify birds in real-time directly in your browser.</span> <strong>BirdNET Live</strong> <span data-i18n="app.live.fullDesc">is a Progressive Web App (PWA) that processes sound locally on your device using TensorFlow.js—no audio ever leaves your phone.</span></p>
-            <div class="row g-3 small text-white text-opacity-50 mb-4">
-              <div class="col-sm-6">
-                <div class="d-flex gap-2">
-                  <i class="bi bi-wifi-off"></i> <span data-i18n="app.live.offline">Works completely offline</span>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="d-flex gap-2">
-                  <i class="bi bi-lightning-charge"></i> <span data-i18n="app.live.instant">Instant local inference</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 text-center text-lg-end">
-            <a href="https://birdnet-team.github.io/real-time-pwa/" class="btn btn-primary btn-lg px-4" target="_blank" rel="noopener" data-i18n="app.live.launch">
-              Launch Web App
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Support -->
     <div class="row g-5 mb-5 pb-lg-4">
       <div class="col-lg-7">
@@ -473,7 +486,7 @@ permalink: "/app/"
     const container = document.getElementById('top-species-grid');
     if (container) {
       if (top8.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center py-5 text-primary small">—</div>';
+        container.innerHTML = '<div class="col-12 text-center py-5 text-primary"><div class="spinner-border" role="status"></div></div>';
       } else {
         container.innerHTML = top8.map(([scientific, count]) => {
           const common = labelMap.get(scientific) || scientific.split('_')[1] || scientific;

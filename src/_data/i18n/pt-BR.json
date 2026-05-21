@@ -306,7 +306,7 @@
   "app.live.desc": "Identifique aves em tempo real diretamente no seu navegador.",
   "app.live.fullDesc": "é uma Progressive Web App (PWA) que processa som localmente no seu dispositivo com TensorFlow.js – nenhum áudio sai do seu celular.",
   "app.live.offline": "Funciona completamente offline",
-  "app.live.instant": "Inferência local instantânea",
+  "app.live.instant": "Detecções em tempo real",
   "app.live.launch": "Iniciar web app",
   "app.support.label": "SUPORTE",
   "app.support.title": "Feedback e ajuda",

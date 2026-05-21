@@ -306,7 +306,7 @@
   "app.live.desc": "Identifikuj ptáky v reálném čase přímo v prohlížeči.",
   "app.live.fullDesc": "je Progressive Web App (PWA), která zpracovává zvuk lokálně na tvém zařízení pomocí TensorFlow.js – žádný zvuk neopouští tvůj telefon.",
   "app.live.offline": "Funguje kompletně offline",
-  "app.live.instant": "Okamžitá lokální inference",
+  "app.live.instant": "Detekce v reálném čase",
   "app.live.launch": "Spustit web aplikaci",
   "app.support.label": "PODPORA",
   "app.support.title": "Feedback a pomoc",
