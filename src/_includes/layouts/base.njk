@@ -7,9 +7,6 @@
 
   {# Bootstrap CSS (local only) #}
   <link rel="stylesheet" href="{{ '/vendor/bootstrap/bootstrap.min.css' | url }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
   <link rel="stylesheet" href="{{ '/vendor/bootstrap-icons/bootstrap-icons.css' | url }}">
   <link rel="stylesheet" href="{{ '/vendor/fontawesome/css/all.min.css' | url }}">
@@ -48,8 +45,5 @@
 
   <script src="{{ '/vendor/bootstrap/bootstrap.bundle.min.js' | url }}"></script>
   <script src="{{ '/js/i18n.js' | url }}"></script>
-  <script>
-  (function(){try{var isDev=location.hostname==='localhost'||location.hostname==='127.0.0.1';if(isDev){console.log('[PageView] Skipped (dev mode)');return}var url='https://birdnet.cornell.edu/views/track?site='+encodeURIComponent(location.href)+'&referer='+encodeURIComponent(document.referrer||'');fetch(url,{keepalive:true,mode:'no-cors'})}catch(e){}})();
-  </script>
 </body>
 </html>
