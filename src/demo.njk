@@ -436,8 +436,13 @@ function getConfidenceThreshold() {
 /* -----------------------------
    WaveSurfer + Spectrogram init
 ----------------------------- */
+let currentObjectUrl = null;
+
 function initWaveSurfer(url){
   if(ws){ try{ ws.destroy(); } catch{} ws=null; }
+  // Revoke previous object URL to free memory (critical on iOS)
+  if (currentObjectUrl) { URL.revokeObjectURL(currentObjectUrl); currentObjectUrl = null; }
+  if (url.startsWith('blob:')) currentObjectUrl = url;
   $('#spectro-controls').addClass('d-none');
   const SpectrogramPlugin = WaveSurfer.Spectrogram;
   const MinimapPlugin = WaveSurfer.Minimap;
@@ -636,22 +641,36 @@ function clearResults() {
 /* -----------------------------
    Audio decoding + normalization
 ----------------------------- */
+// Max file size: 50 MB; Max duration: ~15 min at 48kHz
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+const MAX_PCM_SAMPLES = 48000 * 60 * 15;
+
 async function fileToPCMWindows(file){
+  if (file.size > MAX_FILE_SIZE) {
+    throw new Error('File too large (max 50 MB). Please use a shorter recording.');
+  }
   const buf = await file.arrayBuffer();
   const ctx = new AudioContext({ sampleRate:48000 });
-  const audio = await ctx.decodeAudioData(buf);
-  const chan = audio.numberOfChannels > 1
-    ? (()=>{ const l = audio.getChannelData(0), r = audio.getChannelData(1);
-             const m = new Float32Array(audio.length);
-             for(let i=0;i<audio.length;i++) m[i] = 0.5*(l[i] + r[i]);
-             return m; })()
-    : audio.getChannelData(0);
-  let max = 0;
-  for(let i=0;i<chan.length;i++){ const v=Math.abs(chan[i]); if(v>max) max=v; }
-  const norm = max || 1;
-  const pcm = new Float32Array(chan.length);
-  for(let i=0;i<pcm.length;i++) pcm[i] = chan[i]/norm;
-  return { pcm };
+  try {
+    const audio = await ctx.decodeAudioData(buf);
+    if (audio.length > MAX_PCM_SAMPLES) {
+      throw new Error('Audio too long (max ~15 minutes). Please trim your recording.');
+    }
+    const chan = audio.numberOfChannels > 1
+      ? (()=>{ const l = audio.getChannelData(0), r = audio.getChannelData(1);
+               const m = new Float32Array(audio.length);
+               for(let i=0;i<audio.length;i++) m[i] = 0.5*(l[i] + r[i]);
+               return m; })()
+      : audio.getChannelData(0);
+    let max = 0;
+    for(let i=0;i<chan.length;i++){ const v=Math.abs(chan[i]); if(v>max) max=v; }
+    const norm = max || 1;
+    const pcm = new Float32Array(chan.length);
+    for(let i=0;i<pcm.length;i++) pcm[i] = chan[i]/norm;
+    return { pcm };
+  } finally {
+    ctx.close();
+  }
 }
 
 async function urlToPCMWindows(url) {
@@ -659,19 +678,26 @@ async function urlToPCMWindows(url) {
   if (!response.ok) throw new Error('Failed to fetch audio');
   const buf = await response.arrayBuffer();
   const ctx = new AudioContext({ sampleRate:48000 });
-  const audio = await ctx.decodeAudioData(buf);
-  const chan = audio.numberOfChannels > 1
-    ? (()=>{ const l = audio.getChannelData(0), r = audio.getChannelData(1);
-             const m = new Float32Array(audio.length);
-             for(let i=0;i<audio.length;i++) m[i] = 0.5*(l[i] + r[i]);
-             return m; })()
-    : audio.getChannelData(0);
-  let max = 0;
-  for(let i=0;i<chan.length;i++){ const v=Math.abs(chan[i]); if(v>max) max=v; }
-  const norm = max || 1;
-  const pcm = new Float32Array(chan.length);
-  for(let i=0;i<pcm.length;i++) pcm[i] = chan[i]/norm;
-  return { pcm };
+  try {
+    const audio = await ctx.decodeAudioData(buf);
+    if (audio.length > MAX_PCM_SAMPLES) {
+      throw new Error('Audio too long (max ~15 minutes). Please trim your recording.');
+    }
+    const chan = audio.numberOfChannels > 1
+      ? (()=>{ const l = audio.getChannelData(0), r = audio.getChannelData(1);
+               const m = new Float32Array(audio.length);
+               for(let i=0;i<audio.length;i++) m[i] = 0.5*(l[i] + r[i]);
+               return m; })()
+      : audio.getChannelData(0);
+    let max = 0;
+    for(let i=0;i<chan.length;i++){ const v=Math.abs(chan[i]); if(v>max) max=v; }
+    const norm = max || 1;
+    const pcm = new Float32Array(chan.length);
+    for(let i=0;i<pcm.length;i++) pcm[i] = chan[i]/norm;
+    return { pcm };
+  } finally {
+    ctx.close();
+  }
 }
 
 /* -----------------------------
@@ -966,7 +992,9 @@ $('#runBtn').on('click', async () => {
   
   const overlapSec = parseFloat($('#overlapSelect').val() || '0.0');
   showProgress(60, _t('demo.status.analyzing', 'Analyzing audio...'));
-  worker.postMessage({ message:'predict', pcmAudio: lastPCM, overlapSec });
+  // Transfer the buffer to the worker to avoid doubling memory on iOS
+  const pcmCopy = lastPCM.slice();
+  worker.postMessage({ message:'predict', pcmAudio: pcmCopy, overlapSec }, [pcmCopy.buffer]);
 });
 
 /* Location filter toggle */
